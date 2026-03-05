@@ -1,152 +1,193 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
-    "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "name": "Evenson Auguste",
+    "email": "evenson.auguste@umontreal.ca",
+    "phone": "+1 514 224 7004",
+    "website": "https://evenson0.github.io",
+    "summary": "Actuarial analyst (P&C) based in Montréal. I develop actuarial and mathematical tools and write about actuarial science, quantitative finance, and pure and applied mathematics.",
     "location": {
-      "address": "",
-      "postalCode": "",
-      "city": "Earth",
-      "countryCode": "US",
-      "region": ""
+      "city": "Montréal",
+      "countryCode": "CA",
+      "region": "QC"
     },
     "profiles": [
       {
-        "network": "Google Scholar",
-        "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-      },
-      {
-        "network": "ORCID",
-        "username": "",
-        "url": "https://orcid.org/yourorcidurl"
-      },
-      {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "evenson0",
+        "url": "https://github.com/evenson0"
+      },
+      {
+        "network": "Blog",
+        "username": "evenson0.github.io",
+        "url": "https://evenson0.github.io"
+      },
+      {
+        "network": "Substack",
+        "username": "",
+        "url": ""
+      },
+      {
+        "network": "LinkedIn",
+        "username": "",
+        "url": ""
       }
     ]
   },
-  "work": [],
+
+  "work": [
+    {
+      "name": "Optimum General Insurance",
+      "position": "Actuarial Analyst – Commercial Lines Pricing",
+      "startDate": "2025",
+      "endDate": "",
+      "summary": "Development and improvement of actuarial pricing tools for commercial lines. Data analysis, statistical modeling, and automation using Python, VBA, R and SQL."
+    },
+    {
+      "name": "Optimum General Insurance",
+      "position": "Actuarial Intern – Corporate Actuarial",
+      "startDate": "2025",
+      "endDate": "2025",
+      "summary": "Development of pricing models for automobile and property insurance. Portfolio analysis and automation of actuarial workflows."
+    },
+    {
+      "name": "Optimum Reinsurance",
+      "position": "Actuarial Intern – Research and Development",
+      "startDate": "2023",
+      "endDate": "2023",
+      "summary": "Development of a RShiny application for actuarial data visualization and exploratory machine learning analyses."
+    },
+    {
+      "name": "Observatoire de la Francophonie Économique",
+      "position": "Research Assistant",
+      "startDate": "2024",
+      "endDate": "2024",
+      "summary": "Development of a data platform for economic research using RShiny and data visualization tools."
+    },
+    {
+      "name": "Université de Montréal",
+      "position": "Teaching Assistant",
+      "startDate": "2022",
+      "endDate": "2024",
+      "summary": "Teaching assistant for undergraduate courses in statistics and mathematics. Assisted students with R, SAS and statistical modeling."
+    }
+  ],
+
+  "volunteer": [
+    {
+      "organization": "P&C Actuarial Association",
+      "position": "Treasurer",
+      "startDate": "2026",
+      "endDate": "",
+      "summary": "Volunteer role supporting the financial management of the association."
+    },
+    {
+      "organization": "L’Axiomatique – Mathematics and Statistics Student Journal",
+      "position": "Columnist",
+      "startDate": "2021",
+      "endDate": "2024",
+      "summary": "Author of a monthly column on actuarial science, finance, and risk."
+    }
+  ],
+
   "education": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
-      "gpa": null,
-      "courses": []
+      "institution": "Université de Montréal",
+      "area": "B.Sc. in Mathematics – Actuarial Science",
+      "studyType": "Bachelor of Science",
+      "startDate": "2021",
+      "endDate": "2024"
     },
     {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2014",
-      "gpa": null,
-      "courses": []
+      "institution": "Polytechnique Montréal",
+      "area": "Software Engineering – Artificial Intelligence and Data Science",
+      "studyType": "Bachelor of Engineering",
+      "startDate": "2022",
+      "endDate": ""
     },
     {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2012",
-      "gpa": null,
-      "courses": []
+      "institution": "Université d'État d'Haïti",
+      "area": "Electromechanical Engineering",
+      "studyType": "Bachelor",
+      "startDate": "2015",
+      "endDate": "2020"
     }
   ],
-  "skills": [],
-  "languages": [],
-  "interests": [],
-  "references": [],
-  "publications": [
+
+  "skills": [
     {
-      "name": "Paper Title Number 1",
-      "publisher": "Journal 1",
-      "releaseDate": "2009-10-01",
-      "website": "https://academicpages.github.io/files/paper1.pdf",
-      "summary": "This paper is about the number 1. The number 2 is left for future work."
+      "name": "Programming",
+      "keywords": [
+        "Python",
+        "R",
+        "SQL",
+        "VBA",
+        "C/C++",
+        "Java"
+      ]
     },
     {
-      "name": "Paper Title Number 2",
-      "publisher": "Journal 1",
-      "releaseDate": "2010-10-01",
-      "website": "https://academicpages.github.io/files/paper2.pdf",
-      "summary": "This paper is about the number 2. The number 3 is left for future work."
+      "name": "Actuarial and Data Tools",
+      "keywords": [
+        "Excel",
+        "SAS",
+        "RShiny",
+        "Statistical Modeling",
+        "Machine Learning"
+      ]
     },
     {
-      "name": "Paper Title Number 3",
-      "publisher": "Journal 1",
-      "releaseDate": "2015-10-01",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about the number 3. The number 4 is left for future work."
-    },
-    {
-      "name": "Paper Title Number 4",
-      "publisher": "GitHub Journal of Bugs",
-      "releaseDate": "2024-02-17",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about fixing template issue #693."
+      "name": "Other",
+      "keywords": [
+        "LaTeX",
+        "Git",
+        "Data Visualization"
+      ]
     }
   ],
-  "presentations": [
+
+  "languages": [
     {
-      "name": "Talk 1 on Relevant Topic in Your Field",
-      "event": "UC San Francisco, Department of Testing",
-      "date": "2012-03-01",
-      "location": "San Francisco, CA, USA",
-      "description": ""
+      "language": "French",
+      "fluency": "Native"
     },
     {
-      "name": "Tutorial 1 on Relevant Topic in Your Field",
-      "event": "UC-Berkeley Institute for Testing Science",
-      "date": "2013-03-01",
-      "location": "Berkeley, CA, USA",
-      "description": ""
+      "language": "Haitian Creole",
+      "fluency": "Native"
     },
     {
-      "name": "Talk 2 on Relevant Topic in Your Field",
-      "event": "London School of Testing",
-      "date": "2014-02-01",
-      "location": "London, UK",
-      "description": ""
-    },
-    {
-      "name": "Conference Proceeding talk 3 on Relevant Topic in Your Field",
-      "event": "Testing Institute of America 2014 Annual Conference",
-      "date": "2014-03-01",
-      "location": "Los Angeles, CA, USA",
-      "description": ""
+      "language": "English",
+      "fluency": "Professional working proficiency"
     }
   ],
-  "teaching": [
+
+  "interests": [
     {
-      "course": "Teaching experience 1",
-      "institution": "University 1, Department",
-      "date": "2014-01-01",
-      "role": "Undergraduate course",
-      "description": ""
+      "name": "Actuarial Science"
     },
     {
-      "course": "Teaching experience 2",
-      "institution": "University 1, Department",
-      "date": "2015-01-01",
-      "role": "Workshop",
-      "description": ""
+      "name": "Quantitative Finance"
+    },
+    {
+      "name": "Stochastic Processes"
+    },
+    {
+      "name": "Mathematical Modeling"
     }
   ],
+
+  "publications": [],
+  "presentations": [],
   "portfolio": [
     {
-      "name": "Portfolio item number 1",
-      "category": "portfolio",
-      "date": "",
-      "url": "",
-      "description": "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+      "name": "OFE Data Platform",
+      "category": "project",
+      "description": "Development of an economic data platform using RShiny."
+    },
+    {
+      "name": "Personal Research Blog",
+      "category": "project",
+      "url": "https://evenson0.github.io",
+      "description": "Personal website publishing articles on actuarial science, quantitative finance and mathematics."
     }
   ]
 }
