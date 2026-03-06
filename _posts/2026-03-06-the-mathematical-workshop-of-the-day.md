@@ -11,7 +11,7 @@ tags:
   - divisibility
 ---
 
-# The Mathematical Workshop of the Day
+In this post I solve three short problems in the spirit of mathematical competitions such as the Putnam or various Olympiads. Each one is elementary, but hides a nice idea, a combinatorial observation, a clever polynomial trick, and a simple divisibility argument.
 
 ## Problem
 
