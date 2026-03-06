@@ -13,7 +13,7 @@ tags:
 
 In this post I solve three short problems in the spirit of mathematical competitions such as the Putnam or various Olympiads. Each one is elementary, but hides a nice idea, a combinatorial observation, a clever polynomial trick, and a simple divisibility argument.
 
-<hr style="margin:50px 0;">
+<div style="height:1px; background:rgba(128,128,128,0.45); margin:40px 0;"></div>
 
 ## Problem
 
@@ -71,7 +71,7 @@ $$
 \boxed{\sum_{k=1}^{n} W_k^2 = \sum_{k=1}^{n} L_k^2}.
 $$
 
-<hr style="margin:50px 0;">
+<div style="height:1px; background:rgba(128,128,128,0.45); margin:40px 0;"></div>
 
 ## Problem
 
@@ -157,7 +157,7 @@ $$
 \boxed{P(-1) = n}.
 $$
 
-<hr style="margin:50px 0;">
+<div style="height:1px; background:rgba(128,128,128,0.45); margin:40px 0;"></div>
 
 ## Problem
 
