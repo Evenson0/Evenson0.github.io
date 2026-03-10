@@ -1,6 +1,6 @@
 ---
 title: "The Mathematical Workshop of the Day"
-date: 2026-03-09
+date: 2026-03-10
 permalink: /posts/2026/03/10/the/mathematical/workshop/of/the/day
 tags:
   - combinatorial games
