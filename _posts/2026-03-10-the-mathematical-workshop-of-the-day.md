@@ -9,7 +9,7 @@ tags:
   - game theory
 ---
 
-In this post I solve two short problems in the spirit of mathematical competitions such as the Putnam or various Olympiads. Each one is elementary, but hides a nice idea, a combinatorial observation, a clever polynomial trick, and a simple divisibility argument.
+In this post I solve two short problems in the spirit of mathematical competitions such as the Putnam or various Olympiads. The first is a simple combinatorial game with a clean winning strategy, while the second studies a functional equation whose structure determines the values of the function.
 
 <hr style="border:none; border-top:2px solid rgba(120,120,120,0.7); margin:50px 0; width:100%;">
 
