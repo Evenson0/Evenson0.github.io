@@ -42,25 +42,27 @@
     "vendor/font-awesome/brands"
 ;
 
-/* GLOBAL FONT */
-body {
+html, body {
   font-family: 'Inter', sans-serif !important;
+  background: #fff8dc !important;
 }
 
-/* HEADINGS */
 h1, h2, h3, h4, h5, h6,
 .page__title,
-.archive__item-title {
+.archive__item-title,
+.author__name {
   font-family: 'Playfair Display', serif !important;
 }
 
-/* NAVIGATION */
-.masthead,
-.site-title {
-  font-family: 'Inter', sans-serif !important;
+code, pre,
+.highlight,
+.highlighter-rouge {
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
-/* CODE */
-code, pre {
-  font-family: 'JetBrains Mono', monospace !important;
+.masthead,
+.site-title,
+.greedy-nav a,
+.page__footer {
+  font-family: 'Inter', sans-serif !important;
 }
