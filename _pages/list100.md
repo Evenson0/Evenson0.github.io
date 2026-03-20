@@ -3,7 +3,12 @@ title: "List 100"
 permalink: /list-100/
 ---
 
-"It is not that we have a short time to live, but that we waste a lot of it." — Seneca
+<div style="text-align:center; margin:40px 0;">
+
+<p><em>“It is not that we have a short time to live, but that we waste a lot of it.”</em><br>
+<strong>— Seneca</strong></p>
+
+</div>
 
 After looking at the life calendar, I realized how limited time really is. This list is my attempt to live a life I can be fully satisfied with, by turning intentions into concrete actions.
 
