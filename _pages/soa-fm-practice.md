@@ -4,12 +4,16 @@ permalink: /tools/soa-fm-practice/
 ---
 
 <style>
-  .fm-btn {
+  .fm-btn,
+  .fm-btn:hover,
+  .fm-btn:focus,
+  .fm-btn:active,
+  .fm-btn:visited {
     position: relative;
     padding: 10px 16px;
     border-radius: 12px;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     background: rgba(127,127,127,0.08);
     border: 1px solid rgba(127,127,127,0.28);
@@ -21,6 +25,29 @@ permalink: /tools/soa-fm-practice/
       color 0.22s ease;
     overflow: hidden;
     backdrop-filter: blur(6px);
+  }
+
+  .fm-btn *,
+  .fm-btn:hover *,
+  .fm-btn:focus *,
+  .fm-btn:active * {
+    text-decoration: none !important;
+  }
+
+  a.fm-btn,
+  a.fm-btn:hover,
+  a.fm-btn:focus,
+  a.fm-btn:active,
+  a.fm-btn:visited {
+    text-decoration: none !important;
+  }
+
+  #solutionBox a,
+  #solutionBox a:hover,
+  #solutionBox a:focus,
+  #solutionBox a:active,
+  #solutionBox a:visited {
+    text-decoration: none !important;
   }
 
   .fm-btn::before {
@@ -59,7 +86,7 @@ permalink: /tools/soa-fm-practice/
 
   .fm-btn-primary {
     background: linear-gradient(135deg, #111827, #1f2937);
-    color: white;
+    color: white !important;
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   }
