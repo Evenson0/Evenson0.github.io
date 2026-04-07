@@ -22,6 +22,6 @@ This website is a place where I think in public. Here I write about actuarial sc
 
 Over time, I hope this site becomes a record of sustained intellectual work: a space where technical ideas, mathematical curiosity, and long-term ambition meet.
 
-Outside of industry work, I have remained interested in teaching, writing, and the communication of mathematics. I have worked as a teaching assistant in mathematics and statistics, contributed articles to the student journal *L’Axiomatique*, and I continue to look for ways to connect rigorous ideas with practical applications.
+Outside of industry work, I have remained interested in teaching, writing, and the communication of mathematics. I have worked as a teaching assistant in mathematics and statistics, contributed articles to the student journal [*L’Axiomatique*](https://dms.umontreal.ca/fr/capsule/le-journal-de-l-association-des-etudiants-et-etudiantes-en-mathematiques-et-statistique), and currently serve as Treasurer of the [Association des actuaires IARD (AAIARD)](https://www.casact.org/fr/affiliate/association-des-actuaires-iard-aaiard). More broadly, I continue to look for ways to connect rigorous ideas with practical applications.
 
 If your interests include actuarial modeling, stochastic processes, financial mathematics, or computational approaches to quantitative problems, you may find something of interest here.
