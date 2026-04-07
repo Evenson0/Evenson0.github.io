@@ -70,6 +70,19 @@ permalink: /tools/financial-math-calculator/
       box-shadow 0.22s ease,
       background 0.22s ease,
       transform 0.22s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .fmc-input::placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+
+  .fmc-select option {
+    background: #111827;
+    color: #f3f4f6;
   }
 
   .fmc-input:focus,
@@ -159,7 +172,7 @@ permalink: /tools/financial-math-calculator/
 
   .fmc-param-row {
     display: grid;
-    grid-template-columns: minmax(220px, 1.4fr) minmax(160px, 1fr) auto;
+    grid-template-columns: minmax(220px, 1.4fr) minmax(220px, 1fr) auto;
     gap: 12px;
     align-items: end;
   }
@@ -240,6 +253,12 @@ permalink: /tools/financial-math-calculator/
   .fmc-muted {
     opacity: 0.72;
   }
+
+  .fmc-help {
+    font-size: 0.92rem;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+  }
 </style>
 
 <div class="fmc-shell">
@@ -251,7 +270,7 @@ permalink: /tools/financial-math-calculator/
   </p>
 
   <p class="fmc-muted">
-    The structure below is modular, so additional variables and formulas can be added gradually as the tool evolves.
+    Interest-rate inputs are entered as percentages. For example, enter <strong>5</strong> for <strong>5%</strong>.
   </p>
 
   <hr class="fmc-rule">
@@ -260,6 +279,7 @@ permalink: /tools/financial-math-calculator/
     <div class="fmc-field">
       <label for="targetVariable">What do you want to calculate?</label>
       <select id="targetVariable" class="fmc-select"></select>
+      <div class="fmc-help">Example: choose Present Value, Effective annual rate, or Accumulated value of annuity.</div>
     </div>
   </div>
 
@@ -306,31 +326,21 @@ permalink: /tools/financial-math-calculator/
 </div>
 
 <script>
-/* =========================
-   VARIABLE DEFINITIONS
-   ========================= */
+const PERCENT_VARIABLES = new Set(["i", "d", "delta", "j"]);
 
 const VARIABLES = {
-  pv: { label: "Present Value (PV)" },
-  fv: { label: "Future Value (FV)" },
-  i: { label: "Effective annual rate i" },
-  d: { label: "Effective discount rate d" },
-  delta: { label: "Force of interest δ" },
-  j: { label: "Nominal annual rate j^(m)" },
-  m: { label: "Conversion frequency m" },
-  n: { label: "Number of periods n" },
-  payment: { label: "Periodic payment R" },
-  acc: { label: "Accumulated value of annuity AV" },
-  annuityPV: { label: "Present value of annuity PV_annuity" }
+  pv: { label: "Present Value (PV)", eg: "e.g. 1000" },
+  fv: { label: "Future Value (FV)", eg: "e.g. 1500" },
+  i: { label: "Effective annual rate i (%)", eg: "e.g. 5 for 5%" },
+  d: { label: "Effective discount rate d (%)", eg: "e.g. 4.7619 for 4.7619%" },
+  delta: { label: "Force of interest δ (%)", eg: "e.g. 4.879 for 4.879%" },
+  j: { label: "Nominal annual rate j^(m) (%)", eg: "e.g. 6 for 6%" },
+  m: { label: "Conversion frequency m", eg: "e.g. 12" },
+  n: { label: "Number of periods n", eg: "e.g. 5" },
+  payment: { label: "Periodic payment R", eg: "e.g. 100" },
+  acc: { label: "Accumulated value of annuity AV", eg: "e.g. 1257.79" },
+  annuityPV: { label: "Present value of annuity PV_annuity", eg: "e.g. 772.17" }
 };
-
-/* =========================
-   FORMULA LIBRARY
-   Each formula computes exactly one output.
-   inputs = required known quantities
-   compute(inputs) returns numeric result
-   latex(inputs, result) returns explanation
-   ========================= */
 
 const FORMULAS = [
   {
@@ -340,7 +350,7 @@ const FORMULAS = [
     compute: ({ fv, i, n }) => fv / Math.pow(1 + i, n),
     latex: ({ fv, i, n }, result) =>
       `Using \\[ PV = \\frac{FV}{(1+i)^n} \\]
-       with \\(FV=${formatNum(fv)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       with \\(FV=${formatNum(fv)}\\), \\(i=${formatPercent(i)}\\), \\(n=${formatNum(n)}\\),
        we obtain \\[ PV \\approx ${formatNum(result)}. \\]`
   },
   {
@@ -350,7 +360,7 @@ const FORMULAS = [
     compute: ({ pv, i, n }) => pv * Math.pow(1 + i, n),
     latex: ({ pv, i, n }, result) =>
       `Using \\[ FV = PV(1+i)^n \\]
-       with \\(PV=${formatNum(pv)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       with \\(PV=${formatNum(pv)}\\), \\(i=${formatPercent(i)}\\), \\(n=${formatNum(n)}\\),
        we obtain \\[ FV \\approx ${formatNum(result)}. \\]`
   },
   {
@@ -360,8 +370,8 @@ const FORMULAS = [
     compute: ({ j, m }) => Math.pow(1 + j / m, m) - 1,
     latex: ({ j, m }, result) =>
       `Using \\[ i = \\left(1+\\frac{j}{m}\\right)^m - 1 \\]
-       with \\(j=${formatNum(j)}\\), \\(m=${formatNum(m)}\\),
-       we obtain \\[ i \\approx ${formatNum(result)}. \\]`
+       with \\(j=${formatPercent(j)}\\), \\(m=${formatNum(m)}\\),
+       we obtain \\[ i \\approx ${formatPercent(result)}. \\]`
   },
   {
     output: "j",
@@ -370,8 +380,8 @@ const FORMULAS = [
     compute: ({ i, m }) => m * (Math.pow(1 + i, 1 / m) - 1),
     latex: ({ i, m }, result) =>
       `Using \\[ j = m\\big((1+i)^{1/m} - 1\\big) \\]
-       with \\(i=${formatNum(i)}\\), \\(m=${formatNum(m)}\\),
-       we obtain \\[ j \\approx ${formatNum(result)}. \\]`
+       with \\(i=${formatPercent(i)}\\), \\(m=${formatNum(m)}\\),
+       we obtain \\[ j \\approx ${formatPercent(result)}. \\]`
   },
   {
     output: "delta",
@@ -380,8 +390,8 @@ const FORMULAS = [
     compute: ({ i }) => Math.log(1 + i),
     latex: ({ i }, result) =>
       `Using \\[ \\delta = \\ln(1+i) \\]
-       with \\(i=${formatNum(i)}\\),
-       we obtain \\[ \\delta \\approx ${formatNum(result)}. \\]`
+       with \\(i=${formatPercent(i)}\\),
+       we obtain \\[ \\delta \\approx ${formatPercent(result)}. \\]`
   },
   {
     output: "i",
@@ -390,8 +400,8 @@ const FORMULAS = [
     compute: ({ delta }) => Math.exp(delta) - 1,
     latex: ({ delta }, result) =>
       `Using \\[ i = e^{\\delta} - 1 \\]
-       with \\(\\delta=${formatNum(delta)}\\),
-       we obtain \\[ i \\approx ${formatNum(result)}. \\]`
+       with \\(\\delta=${formatPercent(delta)}\\),
+       we obtain \\[ i \\approx ${formatPercent(result)}. \\]`
   },
   {
     output: "d",
@@ -400,8 +410,8 @@ const FORMULAS = [
     compute: ({ i }) => i / (1 + i),
     latex: ({ i }, result) =>
       `Using \\[ d = \\frac{i}{1+i} \\]
-       with \\(i=${formatNum(i)}\\),
-       we obtain \\[ d \\approx ${formatNum(result)}. \\]`
+       with \\(i=${formatPercent(i)}\\),
+       we obtain \\[ d \\approx ${formatPercent(result)}. \\]`
   },
   {
     output: "i",
@@ -410,8 +420,8 @@ const FORMULAS = [
     compute: ({ d }) => d / (1 - d),
     latex: ({ d }, result) =>
       `Using \\[ i = \\frac{d}{1-d} \\]
-       with \\(d=${formatNum(d)}\\),
-       we obtain \\[ i \\approx ${formatNum(result)}. \\]`
+       with \\(d=${formatPercent(d)}\\),
+       we obtain \\[ i \\approx ${formatPercent(result)}. \\]`
   },
   {
     output: "acc",
@@ -423,7 +433,7 @@ const FORMULAS = [
     },
     latex: ({ payment, i, n }, result) =>
       `Using \\[ s_{\\overline{n}|} = \\frac{(1+i)^n-1}{i}, \\qquad AV = R\\,s_{\\overline{n}|} \\]
-       with \\(R=${formatNum(payment)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       with \\(R=${formatNum(payment)}\\), \\(i=${formatPercent(i)}\\), \\(n=${formatNum(n)}\\),
        we obtain \\[ AV \\approx ${formatNum(result)}. \\]`
   },
   {
@@ -436,7 +446,7 @@ const FORMULAS = [
     },
     latex: ({ acc, i, n }, result) =>
       `Using \\[ s_{\\overline{n}|} = \\frac{(1+i)^n-1}{i}, \\qquad R = \\frac{AV}{s_{\\overline{n}|}} \\]
-       with \\(AV=${formatNum(acc)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       with \\(AV=${formatNum(acc)}\\), \\(i=${formatPercent(i)}\\), \\(n=${formatNum(n)}\\),
        we obtain \\[ R \\approx ${formatNum(result)}. \\]`
   },
   {
@@ -449,7 +459,7 @@ const FORMULAS = [
     },
     latex: ({ payment, i, n }, result) =>
       `Using \\[ a_{\\overline{n}|} = \\frac{1-(1+i)^{-n}}{i}, \\qquad PV_{annuity}=R\\,a_{\\overline{n}|} \\]
-       with \\(R=${formatNum(payment)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       with \\(R=${formatNum(payment)}\\), \\(i=${formatPercent(i)}\\), \\(n=${formatNum(n)}\\),
        we obtain \\[ PV_{annuity} \\approx ${formatNum(result)}. \\]`
   },
   {
@@ -462,20 +472,20 @@ const FORMULAS = [
     },
     latex: ({ annuityPV, i, n }, result) =>
       `Using \\[ a_{\\overline{n}|} = \\frac{1-(1+i)^{-n}}{i}, \\qquad R=\\frac{PV_{annuity}}{a_{\\overline{n}|}} \\]
-       with \\(PV_{annuity}=${formatNum(annuityPV)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       with \\(PV_{annuity}=${formatNum(annuityPV)}\\), \\(i=${formatPercent(i)}\\), \\(n=${formatNum(n)}\\),
        we obtain \\[ R \\approx ${formatNum(result)}. \\]`
   }
 ];
-
-/* =========================
-   UI HELPERS
-   ========================= */
 
 let parameterCounter = 0;
 
 function formatNum(x) {
   if (!Number.isFinite(x)) return String(x);
   return Number(x).toFixed(6).replace(/\.?0+$/, "");
+}
+
+function formatPercent(x) {
+  return `${formatNum(100 * x)}\\%`;
 }
 
 function variableOptionsHTML(selected = "") {
@@ -502,7 +512,7 @@ function addParameterRow(selectedVar = "pv", value = "") {
   row.innerHTML = `
     <div class="fmc-field">
       <label>Parameter</label>
-      <select class="fmc-select fmc-param-name">
+      <select class="fmc-select fmc-param-name" onchange="updatePlaceholder('${rowId}')">
         ${variableOptionsHTML(selectedVar)}
       </select>
     </div>
@@ -518,6 +528,15 @@ function addParameterRow(selectedVar = "pv", value = "") {
   `;
 
   document.getElementById("parameterRows").appendChild(row);
+  updatePlaceholder(rowId);
+}
+
+function updatePlaceholder(rowId) {
+  const row = document.getElementById(rowId);
+  if (!row) return;
+  const name = row.querySelector(".fmc-param-name").value;
+  const input = row.querySelector(".fmc-param-value");
+  input.placeholder = VARIABLES[name]?.eg || "e.g.";
 }
 
 function removeParameterRow(rowId) {
@@ -541,6 +560,13 @@ function showError(message) {
     `<div class="fmc-alert fmc-alert-error">${message}</div>`;
 }
 
+function normalizeInputValue(varName, num) {
+  if (PERCENT_VARIABLES.has(varName)) {
+    return num / 100;
+  }
+  return num;
+}
+
 function collectKnownValues() {
   const known = {};
   const rows = document.querySelectorAll(".fmc-param-row");
@@ -553,16 +579,10 @@ function collectKnownValues() {
     const num = Number(raw);
     if (!Number.isFinite(num)) continue;
 
-    known[name] = num;
+    known[name] = normalizeInputValue(name, num);
   }
   return known;
 }
-
-/* =========================
-   SOLVER
-   Repeatedly applies any formula whose inputs are known
-   until target is found or no progress is possible.
-   ========================= */
 
 function computeTarget() {
   const target = document.getElementById("targetVariable").value;
@@ -575,7 +595,7 @@ function computeTarget() {
   if (known[target] !== undefined) {
     renderResult(target, known[target], [{
       title: "Already known",
-      latex: `The target quantity \\(${VARIABLES[target].label}\\) was already provided as input: \\[ ${VARIABLES[target].label} \\approx ${formatNum(known[target])}. \\]`
+      latex: `The target quantity was already provided as input.`
     }]);
     return;
   }
@@ -628,8 +648,11 @@ function computeTarget() {
 }
 
 function renderResult(target, value, steps) {
-  document.getElementById("calcResult").innerHTML =
-    `${VARIABLES[target].label}: \\( ${formatNum(value)} \\)`;
+  const resultText = PERCENT_VARIABLES.has(target)
+    ? `${VARIABLES[target].label}: \\( ${formatPercent(value)} \\)`
+    : `${VARIABLES[target].label}: \\( ${formatNum(value)} \\)`;
+
+  document.getElementById("calcResult").innerHTML = resultText;
 
   const stepsContainer = document.getElementById("calcSteps");
   stepsContainer.innerHTML = "";
@@ -654,10 +677,6 @@ function renderResult(target, value, steps) {
     MathJax.typesetPromise();
   }
 }
-
-/* =========================
-   INIT
-   ========================= */
 
 populateTargetSelect();
 resetCalculator();
