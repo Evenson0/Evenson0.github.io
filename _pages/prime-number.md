@@ -67,12 +67,16 @@ permalink: /tools/prime-number/
     transform: translateY(-1px);
   }
 
-  .tool-btn {
+  .tool-btn,
+  .tool-btn:hover,
+  .tool-btn:focus,
+  .tool-btn:active,
+  .tool-btn:visited {
     position: relative;
     padding: 10px 16px;
     border-radius: 12px;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     background: rgba(127,127,127,0.08);
     border: 1px solid rgba(127,127,127,0.28);
@@ -84,6 +88,22 @@ permalink: /tools/prime-number/
       color 0.22s ease;
     overflow: hidden;
     backdrop-filter: blur(6px);
+  }
+
+  .tool-nav-box a,
+  .tool-nav-box a:hover,
+  .tool-nav-box a:focus,
+  .tool-nav-box a:active,
+  .tool-nav-box a:visited {
+    text-decoration: none !important;
+  }
+
+  .tool-shell a.tool-btn,
+  .tool-shell a.tool-btn:hover,
+  .tool-shell a.tool-btn:focus,
+  .tool-shell a.tool-btn:active,
+  .tool-shell a.tool-btn:visited {
+    text-decoration: none !important;
   }
 
   .tool-btn::before {
@@ -122,7 +142,7 @@ permalink: /tools/prime-number/
 
   .tool-btn-primary {
     background: linear-gradient(135deg, #111827, #1f2937);
-    color: white;
+    color: white !important;
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   }
