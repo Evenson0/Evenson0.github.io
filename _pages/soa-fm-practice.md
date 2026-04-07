@@ -3,17 +3,128 @@ title: "SOA FM Practice"
 permalink: /tools/soa-fm-practice/
 ---
 
+<style>
+  .fm-btn {
+    position: relative;
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    background: rgba(127,127,127,0.08);
+    border: 1px solid rgba(127,127,127,0.28);
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      border-color 0.22s ease,
+      background 0.22s ease,
+      color 0.22s ease;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+  }
+
+  .fm-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.00) 35%,
+      rgba(255,255,255,0.22) 50%,
+      rgba(255,255,255,0.00) 65%,
+      transparent 100%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.55s ease;
+    pointer-events: none;
+  }
+
+  .fm-btn:hover {
+    transform: translateY(-2px) scale(1.01);
+    border-color: rgba(59,130,246,0.55);
+    background: rgba(59,130,246,0.10);
+    box-shadow:
+      0 0 0 1px rgba(59,130,246,0.12),
+      0 8px 24px rgba(59,130,246,0.18);
+  }
+
+  .fm-btn:hover::before {
+    transform: translateX(130%);
+  }
+
+  .fm-btn:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  .fm-btn-primary {
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  }
+
+  .fm-btn-primary:hover {
+    border-color: rgba(96,165,250,0.65);
+    box-shadow:
+      0 0 0 1px rgba(96,165,250,0.16),
+      0 10px 28px rgba(37,99,235,0.28);
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  }
+
+  .fm-btn-nav {
+    background: rgba(127,127,127,0.06);
+  }
+
+  .fm-btn-back {
+    background: rgba(37,99,235,0.12);
+    border: 1px solid rgba(147,197,253,0.7);
+    font-weight: 600;
+  }
+
+  .fm-btn-back:hover {
+    background: rgba(37,99,235,0.18);
+    box-shadow:
+      0 0 0 1px rgba(147,197,253,0.20),
+      0 8px 24px rgba(37,99,235,0.20);
+  }
+
+  .fm-choice {
+    display: block;
+    padding: 12px 14px;
+    border: 1px solid rgba(127,127,127,0.25);
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease,
+      background 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+
+  .fm-choice:hover {
+    transform: translateY(-1px);
+    border-color: rgba(59,130,246,0.45);
+    background: rgba(59,130,246,0.06);
+    box-shadow: 0 6px 18px rgba(59,130,246,0.10);
+  }
+
+  .fm-choice input {
+    margin-right: 10px;
+  }
+</style>
+
 <div style="max-width: 850px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(127,127,127,0.22); border-radius: 16px; background: inherit; color: inherit;">
 
-<h1>SOA FM Practice</h1>
+  <h1>SOA FM Practice</h1>
 
-<p>
-  A collection of financial mathematics exercises designed in the spirit of SOA Exam FM, with a new problem selected at random each time the page is loaded.
-</p>
+  <p>
+    A collection of financial mathematics exercises designed in the spirit of SOA Exam FM, with a new problem selected at random each time the page is loaded.
+  </p>
 
-<p>
-  Each exercise comes with multiple-choice options and a fully worked solution for review and self-study.
-</p>
+  <p>
+    Each exercise comes with multiple-choice options and a fully worked solution for review and self-study.
+  </p>
 
   <hr style="border:none; border-top:1px solid rgba(120,120,120,0.35); margin:2rem 0;">
 
@@ -24,24 +135,15 @@ permalink: /tools/soa-fm-practice/
   <div id="choicesContainer" style="display:grid; gap:12px; margin-top:1rem;"></div>
 
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:1.25rem;">
-    <button
-      onclick="checkAnswer()"
-      style="padding:10px 16px; border:none; border-radius:10px; background:#111827; color:white; cursor:pointer;"
-    >
+    <button onclick="checkAnswer()" class="fm-btn fm-btn-primary">
       Check Answer
     </button>
 
-    <button
-      onclick="toggleSolution()"
-      style="padding:10px 16px; border:1px solid rgba(127,127,127,0.3); border-radius:10px; background:rgba(127,127,127,0.08); color:inherit; cursor:pointer;"
-    >
+    <button onclick="toggleSolution()" class="fm-btn">
       Show Solution
     </button>
 
-    <button
-      onclick="loadRandomProblem()"
-      style="padding:10px 16px; border:1px solid rgba(127,127,127,0.3); border-radius:10px; background:rgba(127,127,127,0.08); color:inherit; cursor:pointer;"
-    >
+    <button onclick="loadRandomProblem()" class="fm-btn">
       New Problem
     </button>
   </div>
@@ -68,13 +170,13 @@ permalink: /tools/soa-fm-practice/
 
   <div style="margin-top:2rem; padding:1rem; border:1px solid rgba(120,120,120,0.22); border-radius:16px; background:rgba(127,127,127,0.05);">
     <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:14px;">
-      <a href="/tools/goldbach/" style="padding:10px 18px; border:1px solid rgba(127,127,127,0.25); border-radius:12px; text-decoration:none; color:inherit; background:rgba(127,127,127,0.06);">
+      <a href="/tools/goldbach/" class="fm-btn fm-btn-nav">
         ← Previous
       </a>
-      <a href="/tools/" style="padding:10px 18px; border:1px solid #93c5fd; border-radius:12px; text-decoration:none; color:inherit; background:rgba(37,99,235,0.12); font-weight:600;">
+      <a href="/tools/" class="fm-btn fm-btn-back">
         Back to Tools
       </a>
-      <a href="/tools/financial-math-calculator/" style="padding:10px 18px; border:1px solid rgba(127,127,127,0.25); border-radius:12px; text-decoration:none; color:inherit; background:rgba(127,127,127,0.06);">
+      <a href="/tools/financial-math-calculator/" class="fm-btn fm-btn-nav">
         Next →
       </a>
     </div>
@@ -105,7 +207,7 @@ function loadRandomProblem() {
   currentProblem = problems[randomIndex];
 
   document.getElementById('problemTitle').innerText = currentProblem.title;
-  document.getElementById('problemStatement').innerText = currentProblem.statement;
+  document.getElementById('problemStatement').innerHTML = currentProblem.statement;
 
   const choicesContainer = document.getElementById('choicesContainer');
   choicesContainer.innerHTML = '';
@@ -114,14 +216,10 @@ function loadRandomProblem() {
     const letter = String.fromCharCode(65 + index);
 
     const label = document.createElement('label');
-    label.style.display = 'block';
-    label.style.padding = '12px 14px';
-    label.style.border = '1px solid rgba(127,127,127,0.25)';
-    label.style.borderRadius = '12px';
-    label.style.cursor = 'pointer';
+    label.className = 'fm-choice';
 
     label.innerHTML = `
-      <input type="radio" name="answer" value="${index}" style="margin-right:10px;">
+      <input type="radio" name="answer" value="${index}">
       ${letter}. ${choice}
     `;
 
@@ -132,7 +230,7 @@ function loadRandomProblem() {
   document.getElementById('solutionBox').style.display = 'none';
 
   renderSolution();
-  
+
   if (window.MathJax && MathJax.typesetPromise) {
     MathJax.typesetPromise();
   }
@@ -168,12 +266,16 @@ function renderSolution() {
 
   currentProblem.solution_steps.forEach(step => {
     const p = document.createElement('p');
-    p.textContent = step;
+    p.innerHTML = step;
     solutionSteps.appendChild(p);
   });
 
-  document.getElementById('generalizationText').textContent = currentProblem.generalization;
-  document.getElementById('answerText').textContent = currentProblem.answer_text;
+  document.getElementById('generalizationText').innerHTML = currentProblem.generalization || '';
+  document.getElementById('answerText').innerHTML = currentProblem.answer_text;
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise();
+  }
 }
 
 function toggleSolution() {
