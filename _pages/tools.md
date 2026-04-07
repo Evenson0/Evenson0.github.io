@@ -53,7 +53,7 @@ I build interactive tools to explore, model, and visualize ideas in mathematics,
     <div style="border:1px solid rgba(127,127,127,0.22); border-radius:16px; padding:20px; background:rgba(127,127,127,0.06); height:100%;">
       <h3 style="margin-top:0; margin-bottom:10px; color:inherit;">Financial Mathematics Calculator</h3>
       <p style="margin:0; color:inherit; opacity:0.8; line-height:1.6;">
-        Choose the quantity you want to find, enter the known variables, and obtain the corresponding financial mathematics solution.
+        Choose what you want to calculate, provide the known inputs, and obtain the corresponding financial mathematics solution.
       </p>
       <p style="margin:14px 0 0 0; color:inherit; opacity:0.7;">Open tool →</p>
     </div>
