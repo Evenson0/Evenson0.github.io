@@ -5,7 +5,7 @@ permalink: /tools/financial-math-calculator/
 
 <style>
   .fmc-shell {
-    max-width: 920px;
+    max-width: 980px;
     margin: 2rem auto;
     padding: 2rem;
     border: 1px solid rgba(127,127,127,0.20);
@@ -27,11 +27,22 @@ permalink: /tools/financial-math-calculator/
     margin: 2rem 0;
   }
 
+  .fmc-lead {
+    line-height: 1.8;
+    opacity: 0.9;
+  }
+
+  .fmc-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: end;
+  }
+
   .fmc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 14px;
-    margin-top: 1rem;
   }
 
   .fmc-field {
@@ -47,6 +58,7 @@ permalink: /tools/financial-math-calculator/
 
   .fmc-input,
   .fmc-select {
+    width: 100%;
     padding: 10px 12px;
     color: inherit;
     background: rgba(127,127,127,0.08);
@@ -138,11 +150,24 @@ permalink: /tools/financial-math-calculator/
     background: linear-gradient(135deg, #0f172a, #1d4ed8);
   }
 
-  .fmc-actions {
+  .fmc-params {
     display: flex;
+    flex-direction: column;
     gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .fmc-param-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.4fr) minmax(160px, 1fr) auto;
+    gap: 12px;
+    align-items: end;
+  }
+
+  @media (max-width: 720px) {
+    .fmc-param-row {
+      grid-template-columns: 1fr;
+    }
   }
 
   .fmc-box {
@@ -167,7 +192,20 @@ permalink: /tools/financial-math-calculator/
   .fmc-result-value {
     font-size: 1.25rem;
     font-weight: 700;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .fmc-step {
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(127,127,127,0.18);
+    border-radius: 12px;
+    background: rgba(127,127,127,0.04);
+    margin-top: 0.8rem;
+  }
+
+  .fmc-step-title {
+    font-weight: 700;
+    margin-bottom: 0.35rem;
   }
 
   .fmc-nav-box {
@@ -198,48 +236,61 @@ permalink: /tools/financial-math-calculator/
       0 0 0 1px rgba(147,197,253,0.20),
       0 8px 24px rgba(37,99,235,0.20);
   }
+
+  .fmc-muted {
+    opacity: 0.72;
+  }
 </style>
 
 <div class="fmc-shell">
 
   <h1>Financial Mathematics Calculator</h1>
 
-  <p>
-    Select the quantity you want to compute, enter the known values, and obtain the corresponding result.
+  <p class="fmc-lead">
+    Choose the quantity you want to compute, add the parameters you know, and let the calculator determine the result through the appropriate sequence of formulas.
   </p>
 
-  <p>
-    This calculator is designed for core topics in interest theory and financial mathematics.
+  <p class="fmc-muted">
+    The structure below is modular, so additional variables and formulas can be added gradually as the tool evolves.
   </p>
 
   <hr class="fmc-rule">
 
-  <div class="fmc-field">
-    <label for="calcType">What do you want to calculate?</label>
-    <select id="calcType" class="fmc-select" onchange="renderInputs()">
-      <option value="pv">Present Value</option>
-      <option value="fv">Future Value</option>
-      <option value="ear">Effective Annual Rate</option>
-      <option value="nominal">Nominal Rate Convertible m Times</option>
-      <option value="delta">Force of Interest</option>
-      <option value="annuity-acc">Accumulated Value of an Annuity-Immediate</option>
-      <option value="annuity-payment">Payment of an Annuity-Immediate</option>
-    </select>
+  <div class="fmc-grid">
+    <div class="fmc-field">
+      <label for="targetVariable">What do you want to calculate?</label>
+      <select id="targetVariable" class="fmc-select"></select>
+    </div>
   </div>
 
-  <div id="dynamicInputs" class="fmc-grid"></div>
+  <div class="fmc-box">
+    <h3 style="margin-top:0;">Known parameters</h3>
+    <p class="fmc-muted">
+      Add the data you know. For each row, choose the parameter and enter its value.
+    </p>
 
-  <div class="fmc-actions">
-    <button onclick="computeResult()" class="fmc-btn fmc-btn-primary">Compute</button>
-    <button onclick="clearCalculator()" class="fmc-btn">Clear</button>
+    <div id="parameterRows" class="fmc-params"></div>
+
+    <div class="fmc-row" style="margin-top:1rem;">
+      <button onclick="addParameterRow()" class="fmc-btn">Add Parameter</button>
+    </div>
+  </div>
+
+  <div class="fmc-row" style="margin-top:1.25rem;">
+    <button onclick="computeTarget()" class="fmc-btn fmc-btn-primary">Compute</button>
+    <button onclick="resetCalculator()" class="fmc-btn">Clear</button>
   </div>
 
   <div id="calcMessage" style="margin-top:1rem;"></div>
 
   <div id="calcResultBox" class="fmc-box" style="display:none;">
     <h3 style="margin-top:0;">Result</h3>
-    <div id="calcFormula"></div>
     <div id="calcResult" class="fmc-result-value"></div>
+
+    <hr class="fmc-rule">
+
+    <h3>Computation path</h3>
+    <div id="calcSteps"></div>
   </div>
 
   <hr class="fmc-rule">
@@ -255,71 +306,233 @@ permalink: /tools/financial-math-calculator/
 </div>
 
 <script>
-function makeField(id, label, placeholder) {
-  return `
+/* =========================
+   VARIABLE DEFINITIONS
+   ========================= */
+
+const VARIABLES = {
+  pv: { label: "Present Value (PV)" },
+  fv: { label: "Future Value (FV)" },
+  i: { label: "Effective annual rate i" },
+  d: { label: "Effective discount rate d" },
+  delta: { label: "Force of interest δ" },
+  j: { label: "Nominal annual rate j^(m)" },
+  m: { label: "Conversion frequency m" },
+  n: { label: "Number of periods n" },
+  payment: { label: "Periodic payment R" },
+  acc: { label: "Accumulated value of annuity AV" },
+  annuityPV: { label: "Present value of annuity PV_annuity" }
+};
+
+/* =========================
+   FORMULA LIBRARY
+   Each formula computes exactly one output.
+   inputs = required known quantities
+   compute(inputs) returns numeric result
+   latex(inputs, result) returns explanation
+   ========================= */
+
+const FORMULAS = [
+  {
+    output: "pv",
+    inputs: ["fv", "i", "n"],
+    name: "Present value from future value",
+    compute: ({ fv, i, n }) => fv / Math.pow(1 + i, n),
+    latex: ({ fv, i, n }, result) =>
+      `Using \\[ PV = \\frac{FV}{(1+i)^n} \\]
+       with \\(FV=${formatNum(fv)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       we obtain \\[ PV \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "fv",
+    inputs: ["pv", "i", "n"],
+    name: "Future value from present value",
+    compute: ({ pv, i, n }) => pv * Math.pow(1 + i, n),
+    latex: ({ pv, i, n }, result) =>
+      `Using \\[ FV = PV(1+i)^n \\]
+       with \\(PV=${formatNum(pv)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       we obtain \\[ FV \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "i",
+    inputs: ["j", "m"],
+    name: "Effective annual rate from nominal rate",
+    compute: ({ j, m }) => Math.pow(1 + j / m, m) - 1,
+    latex: ({ j, m }, result) =>
+      `Using \\[ i = \\left(1+\\frac{j}{m}\\right)^m - 1 \\]
+       with \\(j=${formatNum(j)}\\), \\(m=${formatNum(m)}\\),
+       we obtain \\[ i \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "j",
+    inputs: ["i", "m"],
+    name: "Nominal rate from effective annual rate",
+    compute: ({ i, m }) => m * (Math.pow(1 + i, 1 / m) - 1),
+    latex: ({ i, m }, result) =>
+      `Using \\[ j = m\\big((1+i)^{1/m} - 1\\big) \\]
+       with \\(i=${formatNum(i)}\\), \\(m=${formatNum(m)}\\),
+       we obtain \\[ j \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "delta",
+    inputs: ["i"],
+    name: "Force of interest from effective annual rate",
+    compute: ({ i }) => Math.log(1 + i),
+    latex: ({ i }, result) =>
+      `Using \\[ \\delta = \\ln(1+i) \\]
+       with \\(i=${formatNum(i)}\\),
+       we obtain \\[ \\delta \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "i",
+    inputs: ["delta"],
+    name: "Effective annual rate from force of interest",
+    compute: ({ delta }) => Math.exp(delta) - 1,
+    latex: ({ delta }, result) =>
+      `Using \\[ i = e^{\\delta} - 1 \\]
+       with \\(\\delta=${formatNum(delta)}\\),
+       we obtain \\[ i \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "d",
+    inputs: ["i"],
+    name: "Discount rate from effective annual rate",
+    compute: ({ i }) => i / (1 + i),
+    latex: ({ i }, result) =>
+      `Using \\[ d = \\frac{i}{1+i} \\]
+       with \\(i=${formatNum(i)}\\),
+       we obtain \\[ d \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "i",
+    inputs: ["d"],
+    name: "Effective annual rate from discount rate",
+    compute: ({ d }) => d / (1 - d),
+    latex: ({ d }, result) =>
+      `Using \\[ i = \\frac{d}{1-d} \\]
+       with \\(d=${formatNum(d)}\\),
+       we obtain \\[ i \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "acc",
+    inputs: ["payment", "i", "n"],
+    name: "Accumulated value of annuity-immediate",
+    compute: ({ payment, i, n }) => {
+      const s = (Math.pow(1 + i, n) - 1) / i;
+      return payment * s;
+    },
+    latex: ({ payment, i, n }, result) =>
+      `Using \\[ s_{\\overline{n}|} = \\frac{(1+i)^n-1}{i}, \\qquad AV = R\\,s_{\\overline{n}|} \\]
+       with \\(R=${formatNum(payment)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       we obtain \\[ AV \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "payment",
+    inputs: ["acc", "i", "n"],
+    name: "Annuity payment from accumulated value",
+    compute: ({ acc, i, n }) => {
+      const s = (Math.pow(1 + i, n) - 1) / i;
+      return acc / s;
+    },
+    latex: ({ acc, i, n }, result) =>
+      `Using \\[ s_{\\overline{n}|} = \\frac{(1+i)^n-1}{i}, \\qquad R = \\frac{AV}{s_{\\overline{n}|}} \\]
+       with \\(AV=${formatNum(acc)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       we obtain \\[ R \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "annuityPV",
+    inputs: ["payment", "i", "n"],
+    name: "Present value of annuity-immediate",
+    compute: ({ payment, i, n }) => {
+      const a = (1 - Math.pow(1 + i, -n)) / i;
+      return payment * a;
+    },
+    latex: ({ payment, i, n }, result) =>
+      `Using \\[ a_{\\overline{n}|} = \\frac{1-(1+i)^{-n}}{i}, \\qquad PV_{annuity}=R\\,a_{\\overline{n}|} \\]
+       with \\(R=${formatNum(payment)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       we obtain \\[ PV_{annuity} \\approx ${formatNum(result)}. \\]`
+  },
+  {
+    output: "payment",
+    inputs: ["annuityPV", "i", "n"],
+    name: "Annuity payment from present value",
+    compute: ({ annuityPV, i, n }) => {
+      const a = (1 - Math.pow(1 + i, -n)) / i;
+      return annuityPV / a;
+    },
+    latex: ({ annuityPV, i, n }, result) =>
+      `Using \\[ a_{\\overline{n}|} = \\frac{1-(1+i)^{-n}}{i}, \\qquad R=\\frac{PV_{annuity}}{a_{\\overline{n}|}} \\]
+       with \\(PV_{annuity}=${formatNum(annuityPV)}\\), \\(i=${formatNum(i)}\\), \\(n=${formatNum(n)}\\),
+       we obtain \\[ R \\approx ${formatNum(result)}. \\]`
+  }
+];
+
+/* =========================
+   UI HELPERS
+   ========================= */
+
+let parameterCounter = 0;
+
+function formatNum(x) {
+  if (!Number.isFinite(x)) return String(x);
+  return Number(x).toFixed(6).replace(/\.?0+$/, "");
+}
+
+function variableOptionsHTML(selected = "") {
+  return Object.entries(VARIABLES)
+    .map(([key, meta]) => `<option value="${key}" ${key === selected ? "selected" : ""}>${meta.label}</option>`)
+    .join("");
+}
+
+function populateTargetSelect() {
+  const target = document.getElementById("targetVariable");
+  target.innerHTML = Object.entries(VARIABLES)
+    .map(([key, meta]) => `<option value="${key}">${meta.label}</option>`)
+    .join("");
+}
+
+function addParameterRow(selectedVar = "pv", value = "") {
+  parameterCounter += 1;
+  const rowId = `param-row-${parameterCounter}`;
+
+  const row = document.createElement("div");
+  row.className = "fmc-param-row";
+  row.id = rowId;
+
+  row.innerHTML = `
     <div class="fmc-field">
-      <label for="${id}">${label}</label>
-      <input id="${id}" type="number" step="any" placeholder="${placeholder}" class="fmc-input">
+      <label>Parameter</label>
+      <select class="fmc-select fmc-param-name">
+        ${variableOptionsHTML(selectedVar)}
+      </select>
+    </div>
+
+    <div class="fmc-field">
+      <label>Value</label>
+      <input type="number" step="any" class="fmc-input fmc-param-value" value="${value}">
+    </div>
+
+    <div>
+      <button type="button" class="fmc-btn" onclick="removeParameterRow('${rowId}')">Remove</button>
     </div>
   `;
+
+  document.getElementById("parameterRows").appendChild(row);
 }
 
-function renderInputs() {
-  const type = document.getElementById("calcType").value;
-  const container = document.getElementById("dynamicInputs");
+function removeParameterRow(rowId) {
+  const row = document.getElementById(rowId);
+  if (row) row.remove();
+}
+
+function resetCalculator() {
   document.getElementById("calcMessage").innerHTML = "";
   document.getElementById("calcResultBox").style.display = "none";
-
-  let html = "";
-
-  if (type === "pv") {
-    html += makeField("fv", "Future Value", "e.g. 1000");
-    html += makeField("i", "Effective annual rate i", "e.g. 0.05");
-    html += makeField("n", "Number of periods n", "e.g. 5");
-  }
-
-  if (type === "fv") {
-    html += makeField("pv", "Present Value", "e.g. 1000");
-    html += makeField("i", "Effective annual rate i", "e.g. 0.05");
-    html += makeField("n", "Number of periods n", "e.g. 5");
-  }
-
-  if (type === "ear") {
-    html += makeField("j", "Nominal annual rate j", "e.g. 0.06");
-    html += makeField("m", "Conversion frequency m", "e.g. 12");
-  }
-
-  if (type === "nominal") {
-    html += makeField("i", "Effective annual rate i", "e.g. 0.061678");
-    html += makeField("m", "Conversion frequency m", "e.g. 12");
-  }
-
-  if (type === "delta") {
-    html += makeField("i", "Effective annual rate i", "e.g. 0.05");
-  }
-
-  if (type === "annuity-acc") {
-    html += makeField("payment", "Periodic payment", "e.g. 100");
-    html += makeField("i", "Effective annual rate i", "e.g. 0.05");
-    html += makeField("n", "Number of payments n", "e.g. 10");
-  }
-
-  if (type === "annuity-payment") {
-    html += makeField("acc", "Accumulated value", "e.g. 1257.79");
-    html += makeField("i", "Effective annual rate i", "e.g. 0.05");
-    html += makeField("n", "Number of payments n", "e.g. 10");
-  }
-
-  container.innerHTML = html;
-}
-
-function getNumber(id) {
-  const el = document.getElementById(id);
-  if (!el) return null;
-  const value = el.value.trim();
-  if (value === "") return null;
-  const num = Number(value);
-  return Number.isFinite(num) ? num : null;
+  document.getElementById("calcSteps").innerHTML = "";
+  document.getElementById("parameterRows").innerHTML = "";
+  addParameterRow("pv", "");
+  addParameterRow("i", "");
+  addParameterRow("n", "");
 }
 
 function showError(message) {
@@ -328,10 +541,113 @@ function showError(message) {
     `<div class="fmc-alert fmc-alert-error">${message}</div>`;
 }
 
-function showResult(formula, resultText) {
+function collectKnownValues() {
+  const known = {};
+  const rows = document.querySelectorAll(".fmc-param-row");
+
+  for (const row of rows) {
+    const name = row.querySelector(".fmc-param-name").value;
+    const raw = row.querySelector(".fmc-param-value").value.trim();
+    if (raw === "") continue;
+
+    const num = Number(raw);
+    if (!Number.isFinite(num)) continue;
+
+    known[name] = num;
+  }
+  return known;
+}
+
+/* =========================
+   SOLVER
+   Repeatedly applies any formula whose inputs are known
+   until target is found or no progress is possible.
+   ========================= */
+
+function computeTarget() {
+  const target = document.getElementById("targetVariable").value;
+  const known = collectKnownValues();
+
   document.getElementById("calcMessage").innerHTML = "";
-  document.getElementById("calcFormula").innerHTML = formula;
-  document.getElementById("calcResult").innerHTML = resultText;
+  document.getElementById("calcSteps").innerHTML = "";
+  document.getElementById("calcResultBox").style.display = "none";
+
+  if (known[target] !== undefined) {
+    renderResult(target, known[target], [{
+      title: "Already known",
+      latex: `The target quantity \\(${VARIABLES[target].label}\\) was already provided as input: \\[ ${VARIABLES[target].label} \\approx ${formatNum(known[target])}. \\]`
+    }]);
+    return;
+  }
+
+  const derived = { ...known };
+  const usedSteps = [];
+  const usedFormulaKeys = new Set();
+
+  let progress = true;
+
+  while (progress && derived[target] === undefined) {
+    progress = false;
+
+    for (const formula of FORMULAS) {
+      const formulaKey = `${formula.output}|${formula.inputs.join(",")}`;
+
+      if (derived[formula.output] !== undefined) continue;
+      if (usedFormulaKeys.has(formulaKey)) continue;
+
+      const allInputsKnown = formula.inputs.every(v => derived[v] !== undefined);
+      if (!allInputsKnown) continue;
+
+      const inputObj = {};
+      formula.inputs.forEach(v => {
+        inputObj[v] = derived[v];
+      });
+
+      const result = formula.compute(inputObj);
+
+      if (!Number.isFinite(result)) continue;
+
+      derived[formula.output] = result;
+      usedFormulaKeys.add(formulaKey);
+      usedSteps.push({
+        title: formula.name,
+        latex: formula.latex(inputObj, result)
+      });
+      progress = true;
+
+      if (formula.output === target) break;
+    }
+  }
+
+  if (derived[target] === undefined) {
+    showError("The calculator could not determine the requested quantity from the parameters currently provided. Try adding more known values.");
+    return;
+  }
+
+  renderResult(target, derived[target], usedSteps);
+}
+
+function renderResult(target, value, steps) {
+  document.getElementById("calcResult").innerHTML =
+    `${VARIABLES[target].label}: \\( ${formatNum(value)} \\)`;
+
+  const stepsContainer = document.getElementById("calcSteps");
+  stepsContainer.innerHTML = "";
+
+  if (steps.length === 0) {
+    stepsContainer.innerHTML = `<div class="fmc-step"><div class="fmc-step-title">No intermediate step</div><div>The value was already known from the provided inputs.</div></div>`;
+  } else {
+    steps.forEach((step, index) => {
+      const block = document.createElement("div");
+      block.className = "fmc-step";
+      block.innerHTML = `
+        <div class="fmc-step-title">Step ${index + 1}. ${step.title}</div>
+        <div>${step.latex}</div>
+      `;
+      stepsContainer.appendChild(block);
+    });
+  }
+
   document.getElementById("calcResultBox").style.display = "block";
 
   if (window.MathJax && MathJax.typesetPromise) {
@@ -339,97 +655,10 @@ function showResult(formula, resultText) {
   }
 }
 
-function computeResult() {
-  const type = document.getElementById("calcType").value;
+/* =========================
+   INIT
+   ========================= */
 
-  if (type === "pv") {
-    const fv = getNumber("fv");
-    const i = getNumber("i");
-    const n = getNumber("n");
-    if (fv === null || i === null || n === null) return showError("Please fill in all required inputs.");
-    const pv = fv / Math.pow(1 + i, n);
-    showResult(
-      `Using \\[ PV = \\frac{FV}{(1+i)^n} \\]`,
-      `\\( PV \\approx ${pv.toFixed(6)} \\)`
-    );
-  }
-
-  if (type === "fv") {
-    const pv = getNumber("pv");
-    const i = getNumber("i");
-    const n = getNumber("n");
-    if (pv === null || i === null || n === null) return showError("Please fill in all required inputs.");
-    const fv = pv * Math.pow(1 + i, n);
-    showResult(
-      `Using \\[ FV = PV(1+i)^n \\]`,
-      `\\( FV \\approx ${fv.toFixed(6)} \\)`
-    );
-  }
-
-  if (type === "ear") {
-    const j = getNumber("j");
-    const m = getNumber("m");
-    if (j === null || m === null) return showError("Please fill in all required inputs.");
-    const i = Math.pow(1 + j / m, m) - 1;
-    showResult(
-      `Using \\[ i = \\left(1+\\frac{j}{m}\\right)^m - 1 \\]`,
-      `\\( i \\approx ${i.toFixed(6)} \\)`
-    );
-  }
-
-  if (type === "nominal") {
-    const i = getNumber("i");
-    const m = getNumber("m");
-    if (i === null || m === null) return showError("Please fill in all required inputs.");
-    const j = m * (Math.pow(1 + i, 1 / m) - 1);
-    showResult(
-      `Using \\[ j = m\\left((1+i)^{1/m} - 1\\right) \\]`,
-      `\\( j \\approx ${j.toFixed(6)} \\)`
-    );
-  }
-
-  if (type === "delta") {
-    const i = getNumber("i");
-    if (i === null) return showError("Please fill in all required inputs.");
-    const delta = Math.log(1 + i);
-    showResult(
-      `Using \\[ \\delta = \\ln(1+i) \\]`,
-      `\\( \\delta \\approx ${delta.toFixed(6)} \\)`
-    );
-  }
-
-  if (type === "annuity-acc") {
-    const payment = getNumber("payment");
-    const i = getNumber("i");
-    const n = getNumber("n");
-    if (payment === null || i === null || n === null) return showError("Please fill in all required inputs.");
-    const sAngleN = (Math.pow(1 + i, n) - 1) / i;
-    const acc = payment * sAngleN;
-    showResult(
-      `Using \\[ s_{\\overline{n}|} = \\frac{(1+i)^n - 1}{i}, \\qquad AV = R\\, s_{\\overline{n}|} \\]`,
-      `\\( AV \\approx ${acc.toFixed(6)} \\)`
-    );
-  }
-
-  if (type === "annuity-payment") {
-    const acc = getNumber("acc");
-    const i = getNumber("i");
-    const n = getNumber("n");
-    if (acc === null || i === null || n === null) return showError("Please fill in all required inputs.");
-    const sAngleN = (Math.pow(1 + i, n) - 1) / i;
-    const payment = acc / sAngleN;
-    showResult(
-      `Using \\[ s_{\\overline{n}|} = \\frac{(1+i)^n - 1}{i}, \\qquad R = \\frac{AV}{s_{\\overline{n}|}} \\]`,
-      `\\( R \\approx ${payment.toFixed(6)} \\)`
-    );
-  }
-}
-
-function clearCalculator() {
-  renderInputs();
-  document.getElementById("calcMessage").innerHTML = "";
-  document.getElementById("calcResultBox").style.display = "none";
-}
-
-renderInputs();
+populateTargetSelect();
+resetCalculator();
 </script>
