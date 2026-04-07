@@ -3,21 +3,21 @@
     "id": 1,
     "topic": "simple interest",
     "title": "Exercise 1",
-    "statement": "You are given an accumulation function a(t) = 1 + 0.1t. An amount of 1000 is invested at time 0. Determine the amount of interest earned during year 8.",
+    "statement": "You are given an accumulation function \\( a(t) = 1 + 0.1t \\). An amount of \\( 1000 \\) is invested at time \\( 0 \\). Determine the amount of interest earned during year \\( 8 \\).",
     "choices": [
-      "80",
-      "90",
-      "100",
-      "110"
+      "\\( 80 \\)",
+      "\\( 90 \\)",
+      "\\( 100 \\)",
+      "\\( 110 \\)"
     ],
     "correct": 2,
     "solution_steps": [
-      "Since A(t) = 1000 a(t), we have A(t) = 1000(1 + 0.1t).",
-      "Compute A(8) = 1000(1 + 0.1 × 8) = 1000(1.8) = 1800.",
-      "Compute A(7) = 1000(1 + 0.1 × 7) = 1000(1.7) = 1700.",
-      "The interest earned during year 8 is I8 = A(8) - A(7) = 1800 - 1700 = 100."
+      "Since \\( A(t) = 1000\\,a(t) \\), we have \\( A(t) = 1000(1 + 0.1t) \\).",
+      "Compute \\( A(8) = 1000(1 + 0.1 \\cdot 8) = 1000(1.8) = 1800 \\).",
+      "Compute \\( A(7) = 1000(1 + 0.1 \\cdot 7) = 1000(1.7) = 1700 \\).",
+      "The interest earned during year \\( 8 \\) is \\( I_8 = A(8) - A(7) = 1800 - 1700 = 100 \\)."
     ],
-    "generalization": "For year n, the interest earned is In = A(n) - A(n-1) = 1000(1 + 0.1n) - 1000(1 + 0.1(n-1)) = 100.",
-    "answer_text": "The amount of interest earned during year 8 is 100."
+    "generalization": "For year \\( n \\), the interest earned is \\( I_n = A(n) - A(n-1) = 1000(1 + 0.1n) - 1000(1 + 0.1(n-1)) = 100 \\).",
+    "answer_text": "The amount of interest earned during year \\( 8 \\) is \\( 100 \\)."
   }
 ]
