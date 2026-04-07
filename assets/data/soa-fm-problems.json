@@ -42,5 +42,26 @@
     ],
     "generalization": "Once the accumulation function \\( a(t) \\) is identified, the accumulated value at time \\( t \\) of an amount \\( P \\) invested at time \\( 0 \\) is \\( P\\,a(t) \\).",
     "answer_text": "The accumulated value at time \\( 15 \\) is \\( \\boxed{1625} \\)."
-  }
+  },
+  {
+  "id": 3,
+  "topic": "effective rates",
+  "title": "Exercise 3",
+  "statement": "An investment of \\( 1000 \\) is made into a fund at time \\( t = 0 \\). The fund develops the following balances over the next four years: \\[ \\begin{array}{c|ccccc} t & 0 & 1 & 2 & 3 & 4 \\\\ \\hline A(t) & 1000 & 1060 & 1113 & 1146 & 1181 \\end{array} \\] Find \\( i_1 \\) and \\( i_3 \\), the effective rates of interest for years one and three respectively.",
+  "choices": [
+    "\\( i_1 = 5\\%,\\ i_3 = 3.00\\% \\)",
+    "\\( i_1 = 6\\%,\\ i_3 = 2.96\\% \\)",
+    "\\( i_1 = 6\\%,\\ i_3 = 3.13\\% \\)",
+    "\\( i_1 = 6.3\\%,\\ i_3 = 2.96\\% \\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "The effective rate of interest for year \\( n \\) is given by \\( i_n = \\dfrac{A(n)-A(n-1)}{A(n-1)} \\).",
+    "For year one, \\( i_1 = \\dfrac{1060 - 1000}{1000} = \\dfrac{60}{1000} = 0.06 = 6\\% \\).",
+    "For year three, \\( i_3 = \\dfrac{1146 - 1113}{1113} = \\dfrac{33}{1113} \\approx 0.02965 \\).",
+    "Thus, \\( i_3 \\approx 2.96\\% \\)."
+  ],
+  "generalization": "If the accumulated values \\( A(0), A(1), \\dots \\) are known, then the effective rate for year \\( n \\) is \\( i_n = \\dfrac{A(n)-A(n-1)}{A(n-1)} \\).",
+  "answer_text": "The effective rates are \\( i_1 = 6\\% \\) and \\( i_3 \\approx 2.96\\% \\)."
+}
 ]
