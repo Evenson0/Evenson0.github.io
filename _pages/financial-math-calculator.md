@@ -348,14 +348,12 @@ permalink: /tools/financial-math-calculator/
 
 <script>
 const PERCENT_VARIABLES = new Set([
-  "i", "i1", "i2", "i3", "iNew",
-  "d", "delta", "j", "rateChange"
+  "i", "i1", "i2", "i3", "iNew", "d", "delta", "j", "rateChange"
 ]);
 
 const VARIABLES = {
   pv: { label: "Present Value (PV)", eg: "e.g. 1000" },
   fv: { label: "Future Value (FV)", eg: "e.g. 1500" },
-
   i: { label: "Effective annual rate i (%)", eg: "e.g. 5 for 5%" },
 
   i1: { label: "Annual effective rate for year 1 (%)", eg: "e.g. 12.5" },
@@ -519,7 +517,6 @@ const FORMULAS = [
        we obtain \\[ R \\approx ${formatNum(result)}. \\]`
   },
 
-  // Varying annual rates
   {
     output: "i2",
     inputs: ["i1", "rateChange"],
@@ -719,7 +716,6 @@ function resetCalculator() {
   document.getElementById("calcResultBox").style.display = "none";
   document.getElementById("calcSteps").innerHTML = "";
   document.getElementById("parameterRows").innerHTML = "";
-
   addParameterRow("pv", "");
   addParameterRow("i", "");
   addParameterRow("n", "");
