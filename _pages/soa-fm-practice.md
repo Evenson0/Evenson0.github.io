@@ -139,6 +139,14 @@ permalink: /tools/soa-fm-practice/
   .fm-choice input {
     margin-right: 10px;
   }
+
+  .fm-counter {
+    margin-top: -0.35rem;
+    margin-bottom: 1rem;
+    opacity: 0.75;
+    font-size: 0.96rem;
+    font-weight: 600;
+  }
 </style>
 
 <div style="max-width: 850px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(127,127,127,0.22); border-radius: 16px; background: inherit; color: inherit;">
@@ -156,6 +164,8 @@ permalink: /tools/soa-fm-practice/
   <hr style="border:none; border-top:1px solid rgba(120,120,120,0.35); margin:2rem 0;">
 
   <h2 id="problemTitle">Loading problem...</h2>
+
+  <div id="problemCounter" class="fm-counter">Problem 0 / 0</div>
 
   <p id="problemStatement"></p>
 
@@ -214,11 +224,19 @@ permalink: /tools/soa-fm-practice/
 <script>
 let problems = [];
 let currentProblem = null;
+let seenProblemIds = new Set();
+
+function updateProblemCounter() {
+  const total = problems.length;
+  const seen = seenProblemIds.size;
+  document.getElementById('problemCounter').innerText = `Problem ${seen} / ${total}`;
+}
 
 async function loadProblems() {
   try {
     const response = await fetch('/assets/data/soa-fm-problems.json');
     problems = await response.json();
+    updateProblemCounter();
     loadRandomProblem();
   } catch (error) {
     document.getElementById('problemTitle').innerText = 'Error';
@@ -227,11 +245,28 @@ async function loadProblems() {
   }
 }
 
+function getRandomProblemIndexExcludingCurrent() {
+  if (problems.length <= 1 || !currentProblem) {
+    return Math.floor(Math.random() * problems.length);
+  }
+
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * problems.length);
+  } while (problems[randomIndex].id === currentProblem.id);
+
+  return randomIndex;
+}
+
 function loadRandomProblem() {
   if (!problems.length) return;
 
-  const randomIndex = Math.floor(Math.random() * problems.length);
+  const randomIndex = getRandomProblemIndexExcludingCurrent();
   currentProblem = problems[randomIndex];
+
+  if (currentProblem && currentProblem.id !== undefined && currentProblem.id !== null) {
+    seenProblemIds.add(String(currentProblem.id));
+  }
 
   document.getElementById('problemTitle').innerText = currentProblem.title;
   document.getElementById('problemStatement').innerHTML = currentProblem.statement;
@@ -257,6 +292,7 @@ function loadRandomProblem() {
   document.getElementById('solutionBox').style.display = 'none';
 
   renderSolution();
+  updateProblemCounter();
 
   if (window.MathJax && MathJax.typesetPromise) {
     MathJax.typesetPromise();
