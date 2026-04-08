@@ -222,7 +222,7 @@ permalink: /tools/financial-math-calculator/
   }
 
   .fmc-result-value {
-  font-size: 1.17em;
+  font-size: 1.05em;
   font-weight: 600;
   line-height: 1.4;
   margin-top: 0.35rem;
