@@ -165,8 +165,6 @@ permalink: /tools/soa-fm-practice/
 
   <h2 id="problemTitle">Loading problem...</h2>
 
-  <div id="problemCounter" class="fm-counter">Problem 0 / 0</div>
-
   <p id="problemStatement"></p>
 
   <div id="choicesContainer" style="display:grid; gap:12px; margin-top:1rem;"></div>
@@ -202,6 +200,7 @@ permalink: /tools/soa-fm-practice/
       <span id="answerText"></span>
     </div>
   </div>
+  <div id="problemCounter" class="fm-counter">Problem 0 / 0</div>
 
   <hr style="border:none; border-top:1px solid rgba(120,120,120,0.35); margin:2rem 0;">
 
