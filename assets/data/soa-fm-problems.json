@@ -63,5 +63,79 @@
   ],
   "generalization": "If the accumulated values \\( A(0), A(1), \\dots \\) are known, then the effective rate for year \\( n \\) is \\( i_n = \\dfrac{A(n)-A(n-1)}{A(n-1)} \\).",
   "answer_text": "The effective rates are \\( i_1 = 6\\% \\) and \\( i_3 \\approx 2.96\\% \\)."
+},
+{
+  "id": 4,
+  "topic": "effective rates",
+  "title": "Exercise 4",
+  "statement": "Gertrude deposits \\( 10{,}000 \\) in a bank. During the first year, the bank credits an annual effective rate of interest \\( i \\). During the second year, the bank credits an annual effective rate of interest \\( i - 5\\% \\). At the end of two years, she has \\( 12{,}093.75 \\) in the bank.\n\nWhat would Gertrude have in the bank at the end of three years, if the annual effective rate of interest were \\( i + 9\\% \\) for each of the three years?",
+  "choices": [
+    "\\( 16{,}942.41 \\)",
+    "\\( 17{,}942.41 \\)",
+    "\\( 18{,}209.38 \\)",
+    "\\( 19{,}102.50 \\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "Set up the two-year accumulation equation: \\( 10000(1+i)(1+i-0.05)=12093.75 \\).",
+    "Divide by \\( 10000 \\): \\( (1+i)(0.95+i)=1.209375 \\).",
+    "Expand to get \\( i^2 + 1.95i + 0.95 = 1.209375 \\), so \\( i^2 + 1.95i - 0.259375 = 0 \\).",
+    "Solve the quadratic equation. The valid solution is \\( i = 0.125 = 12.5\\% \\).",
+    "The new annual effective rate for each of the three years is \\( i+9\\% = 12.5\\%+9\\% = 21.5\\% \\).",
+    "Accumulate for three years: \\( 10000(1.215)^3 = 17942.40875 \\).",
+    "Therefore, the amount in the bank at the end of three years is \\( \\boxed{17{,}942.41} \\)."
+  ],
+  "generalization": "When annual effective rates vary by year, accumulate by multiplying one annual factor for each year. If rates are linked algebraically, first solve for the unknown rate, then apply the required accumulation factors.",
+  "answer_text": "The amount in the bank at the end of three years is \\( \\boxed{17{,}942.41} \\)."
+},
+{
+  "id": 5,
+  "topic": "effective discount",
+  "title": "Exercise 5",
+  "statement": "A deposit of \\( X \\) is made into a fund which pays an annual effective interest rate of \\( 6\\% \\) for \\( 10 \\) years.\n\nAt the same time, \\( X/2 \\) is deposited into another fund which pays an annual effective rate of discount \\( d \\) for \\( 10 \\) years.\n\nThe amounts of interest earned over the \\( 10 \\) years are equal for both funds.\n\nCalculate \\( d \\).",
+  "choices": [
+    "\\( 5.66\\% \\)",
+    "\\( 7.42\\% \\)",
+    "\\( 9.05\\% \\)",
+    "\\( 10.31\\% \\)"
+  ],
+  "correct": 2,
+  "solution_steps": [
+    "The accumulated value of the first fund after 10 years is \\( X(1.06)^{10} \\), so the interest earned is \\( X\\big((1.06)^{10}-1\\big) \\).",
+    "For an annual effective discount rate \\( d \\), the annual accumulation factor is \\( \\dfrac{1}{1-d} \\).",
+    "Thus the accumulated value of the second fund after 10 years is \\( \\dfrac{X}{2}\\left(\\dfrac{1}{1-d}\\right)^{10} \\), so the interest earned is \\( \\dfrac{X}{2}\\left[\\left(\\dfrac{1}{1-d}\\right)^{10}-1\\right] \\).",
+    "Set the interests equal: \\( X\\big((1.06)^{10}-1\\big)=\\dfrac{X}{2}\\left[\\left(\\dfrac{1}{1-d}\\right)^{10}-1\\right] \\).",
+    "Cancel \\( X \\) and multiply by 2: \\( 2\\big((1.06)^{10}-1\\big)=\\left(\\dfrac{1}{1-d}\\right)^{10}-1 \\).",
+    "So \\( \\left(\\dfrac{1}{1-d}\\right)^{10}=2(1.06)^{10}-1 \\approx 2.5816954 \\).",
+    "Take the 10th root: \\( \\dfrac{1}{1-d} \\approx (2.5816954)^{1/10} \\approx 1.09945 \\).",
+    "Hence \\( 1-d \\approx 0.90951 \\), so \\( d \\approx 0.09049 = 9.05\\% \\)."
+  ],
+  "generalization": "For an annual effective discount rate \\( d \\), the annual accumulation factor is \\( \\dfrac{1}{1-d} \\). When comparing interest earned on two funds, write each interest amount as accumulated value minus principal, then solve the resulting equation.",
+  "answer_text": "The annual effective discount rate is \\( \\boxed{9.05\\%} \\)."
+},
+{
+  "id": 6,
+  "topic": "present value",
+  "title": "Exercise 6",
+  "statement": "[SOA 16; SOA-IT.020] David can receive one of the following two payment streams:\n\ni. \\( 100 \\) at time \\( 0 \\), \\( 200 \\) at time \\( n \\) years, and \\( 300 \\) at time \\( 2n \\) years\n\nii. \\( 600 \\) at time \\( 10 \\) years\n\nAt an annual effective interest rate of \\( i \\), the present values of the two streams are equal.\n\nGiven \\( v^n = 0.76 \\), calculate \\( i \\).",
+  "choices": [
+    "\\( 2.80\\% \\)",
+    "\\( 3.50\\% \\)",
+    "\\( 4.16\\% \\)",
+    "\\( 5.02\\% \\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "Write the present value equation: \\( 100 + 200v^n + 300v^{2n} = 600v^{10} \\).",
+    "Since \\( v^n = 0.76 \\), we have \\( v^{2n} = (0.76)^2 = 0.5776 \\).",
+    "Substitute into the left-hand side: \\( 100 + 200(0.76) + 300(0.5776) = 100 + 152 + 173.28 = 425.28 \\).",
+    "Therefore \\( 600v^{10} = 425.28 \\), so \\( v^{10} = \\dfrac{425.28}{600} = 0.7088 \\).",
+    "Using \\( v = \\dfrac{1}{1+i} \\), we get \\( v^{10} = (1+i)^{-10} \\).",
+    "Thus \\( (1+i)^{-10} = 0.7088 \\), so \\( 1+i = (0.7088)^{-1/10} \\).",
+    "Hence \\( i = (0.7088)^{-1/10} - 1 \\approx 0.03502 \\).",
+    "Therefore, \\( i \\approx 3.50\\% \\)."
+  ],
+  "generalization": "When \\( v^n \\) is known, higher powers such as \\( v^{2n} \\) can be obtained directly. Then reduce the present value equation to a single equation in \\( v^m \\), and finally solve for \\( i \\) using \\( v = \\dfrac{1}{1+i} \\).",
+  "answer_text": "The annual effective interest rate is \\( \\boxed{3.50\\%} \\)."
 }
 ]
