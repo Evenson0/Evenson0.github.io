@@ -12,8 +12,8 @@ tags:
 
 In 1931, a twenty-five-year-old mathematician published in *Monatshefte für Mathematik und Physik* an article entitled *Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I*. It contained two theorems that permanently altered our understanding of the foundations of mathematics. Gödel showed that in every sufficiently strong axiomatic system, there are true mathematical statements that cannot be proved within the system itself. His work shattered the hope of a complete and self-contained formal foundation for mathematics.
 
-<div style="text-align:center; margin:40px 0 50px 0;">
-  <img src="/images/posts/godel/article.png" alt="Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I (1931)" style="width:700px; max-width:100%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
+<div style="text-align:center; margin:32px 0 40px 0;">
+  <img src="/images/posts/godel/article.png" alt="Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I (1931)" style="width:480px; max-width:90%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
 </div>
 
 ## Introduction
@@ -40,8 +40,8 @@ So the foundational enterprise was an act of repair. Mathematicians wanted a lan
 
 Gödel’s work emerged from within this movement, but it ended by showing that the formalist dream could not be completed in the way Hilbert had hoped.
 
-<div style="text-align:center; margin:40px 0 50px 0;">
-  <img src="/images/posts/godel/godel.jpeg" alt="Portrait of Young Kurt Gödel" style="width:700px; max-width:100%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
+<div style="text-align:center; margin:32px 0 40px 0;">
+  <img src="/images/posts/godel/godel.jpeg" alt="Portrait of Young Kurt Gödel" style="width:420px; max-width:85%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
 </div>
 
 ## Formal systems
@@ -168,8 +168,8 @@ This does not mean that no consistency proof is ever possible. A stronger theory
 
 This is what made Gödel’s second theorem such a decisive blow to Hilbert’s original program. The dream had not merely been to formalize mathematics, but also to secure it once and for all by proving its consistency using finitistic means. Gödel showed that this cannot be done in the hoped-for way.
 
-<div style="text-align:center; margin:40px 0 50px 0;">
-  <img src="/images/posts/godel/kurtgodel.jpg" alt="Portrait of Kurt Gödel" style="width:700px; max-width:100%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
+<div style="text-align:center; margin:32px 0 40px 0;">
+  <img src="/images/posts/godel/kurtgodel.jpg" alt="Portrait of Kurt Gödel" style="width:420px; max-width:85%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
 </div>
 
 
@@ -186,8 +186,8 @@ That is why Gödel’s work remains so powerful. It did not simply solve a techn
 After leaving Vienna and settling permanently in Princeton in 1940, Gödel did not simply abandon mathematics. He continued to produce important work, especially in logic, set theory, and even relativity, where he found his famous rotating-universe solution to Einstein’s field equations. Yet in his later years his published mathematical work became rarer, and his attention turned increasingly toward philosophy. At the Institute for Advanced Study he developed a deep friendship with Albert Einstein, and the two men were often seen walking together to and from the Institute in Princeton. Gödel also devoted serious thought to metaphysics and theology, and he became known, posthumously, for a formal ontological argument for the existence of God written in the language of modal logic.
 
 
-<div style="text-align:center; margin:40px 0 50px 0;">
-  <img src="/images/posts/godel/godel-einstein.jpg" alt="Kurt Gödel and Albert Einstein" style="width:700px; max-width:100%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
+<div style="text-align:center; margin:32px 0 40px 0;">
+  <img src="/images/posts/godel/godel-einstein.jpg" alt="Kurt Gödel and Albert Einstein" style="width:520px; max-width:90%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
 </div>
 
 ---
