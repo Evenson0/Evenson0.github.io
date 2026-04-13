@@ -17,11 +17,11 @@ In this post I solve three short problems in the spirit of mathematical competit
 
 ## Problem
 
-In a **round-robin tournament** with $$n$$ players $$P_1, P_2, \ldots, P_n$$, each player plays exactly one match against every other player.
+In a round-robin tournament with $$n$$ players $$P_1, P_2, \ldots, P_n$$, each player plays exactly one match against every other player.
 
-There are **no ties**, so every match results in one win and one loss.
+There are no ties, so every match results in one win and one loss.
 
-Let $$W_k$$ denote the number of **wins** of player $$P_k$$, and let $$L_k$$ denote the number of **losses** of player $$P_k$$.
+Let $$W_k$$ denote the number of **wins** of player $$P_k$$, and let $$L_k$$ denote the number of losses of player $$P_k$$.
 
 Show that
 
@@ -63,7 +63,7 @@ $$
 \sum_{k=1}^{n} W_k = \sum_{k=1}^{n} L_k.
 $$
 
-This equality is immediate: in every match exactly **one player wins and one player loses**, so each victory corresponds to exactly one loss.
+This equality is immediate: in every match exactly one player wins and one player loses, so each victory corresponds to exactly one loss.
 
 Hence,
 
@@ -161,7 +161,7 @@ $$
 
 ## Problem
 
-Find the smallest positive integer $$n$$ such that **every digit of $$15n$$** is either $$8$$ or $$0$$.
+Find the smallest positive integer $$n$$ such that every digit of $$15n$$ is either $$8$$ or $$0$$.
 
 ---
 
@@ -175,8 +175,8 @@ $$
 
 Since $$N$$ is divisible by $$3$$ and $$5$$, two conditions must hold:
 
-1. The **sum of the digits of $$N$$** must be divisible by $$3$$.
-2. The **last digit of $$N$$** must be $$0$$ or $$5$$.
+1. The sum of the digits of $$N$$ must be divisible by $$3$$.
+2. The last digit of $$N$$ must be $$0$$ or $$5$$.
 
 However, the digits of $$N$$ are restricted to $$0$$ and $$8$$. Therefore the last digit cannot be $$5$$, so it must be
 
