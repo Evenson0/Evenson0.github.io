@@ -20,7 +20,7 @@ In this post I solve three short problems in the spirit of mathematical competit
 
 Consider the following game.
 
-On a table there are **100 tokens**. Two players take turns removing tokens from the table. At each turn, a player may remove **5, 6, 7, 8, 9, or 10 tokens**, at their choice.
+On a table there are 100 tokens. Two players take turns removing tokens from the table. At each turn, a player may remove 5, 6, 7, 8, 9, or 10 tokens, at their choice.
 
 The player who removes the last token wins.
 
@@ -38,7 +38,7 @@ The idea is to control the total number of tokens removed in each pair of moves.
 
 ### First move
 
-The first player begins by removing **10 tokens**, leaving
+The first player begins by removing 10 tokens, leaving
 
 $$
 100 - 10 = 90
@@ -72,7 +72,7 @@ $$
 
 ### Why this works
 
-After the first move, **90 tokens remain**, and
+After the first move, 90 tokens remain, and
 
 $$
 90 = 6 \times 15.
@@ -95,7 +95,7 @@ The first player wins by following this strategy:
 1. Remove 10 tokens on the first move.
 2. If the opponent removes $$n$$ tokens (with $$5 \le n \le 10$$), remove $$15-n$$ tokens.
 
-This ensures that the total removed in each pair of turns is always **15**, forcing the game to end with the first player taking the final token.
+This ensures that the total removed in each pair of turns is always 15, forcing the game to end with the first player taking the final token.
 
 <hr style="border:none; border-top:2px solid rgba(120,120,120,0.7); margin:50px 0; width:100%;">
 
