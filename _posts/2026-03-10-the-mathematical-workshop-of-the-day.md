@@ -287,7 +287,15 @@ $$
 
 <hr style="border:none; border-top:2px solid rgba(120,120,120,0.7); margin:50px 0; width:100%;">
 
-Find all integer solutions $$(a,b,c)\in\mathbb{Z}^3$$ satisfying $$a^2 + b^2 + c^2 = a^2 b^2.$$
+## Problem
+
+Find all integer solutions $$(a,b,c)\in\mathbb{Z}^3$$ satisfying
+
+$$
+a^2 + b^2 + c^2 = a^2 b^2.
+$$
+
+---
 
 ## Solution
 
@@ -299,25 +307,15 @@ $$
 
 Assume that $$(a,b,c)$$ is a solution and that at least one of $$a,b,c$$ is non-zero.
 
-Let $$2^k$$ be the highest power of $$2$$ dividing **all three** integers $$a,b,c$$. Write
+Let $$2^k$$ be the highest power of $$2$$ dividing all three integers $$a,b,c$$. Write
 
 $$
 a = 2^k a_1, \qquad b = 2^k b_1, \qquad c = 2^k c_1,
 $$
 
-where $$a_1,b_1,c_1$$ are integers and **not all even** (so at least one of them is odd).
+where $$a_1,b_1,c_1$$ are integers and not all even.
 
-<div style="border-left:4px solid #3b82f6; padding:14px 18px; margin:22px 0; border-radius:4px;">
-
-<strong>Remark.</strong> Since $$2^k$$ is defined as the largest power of $$2$$ dividing all three integers $$a,b,c$$, the integers $$a_1,b_1,c_1$$ cannot all be even. Indeed, if they were all even, we could write $$a_1=2a_2$$, $$b_1=2b_2$$, $$c_1=2c_2$$, which would imply
-
-$$
-a=2^{k+1}a_2,\qquad b=2^{k+1}b_2,\qquad c=2^{k+1}c_2.
-$$
-
-But then $$2^{k+1}$$ would divide $$a,b,c$$, contradicting the maximality of $$k$$. Therefore at least one of $$a_1,b_1,c_1$$ must be odd.
-
-</div>
+> Remark. Since $$2^k$$ is the largest power of $$2$$ dividing all three integers $$a,b,c$$, the integers $$a_1,b_1,c_1$$ cannot all be even. Otherwise we could factor out another $$2$$ from each of them, contradicting the maximality of $$k$$.
 
 Substituting into the equation gives
 
@@ -343,8 +341,6 @@ a_1^2 + b_1^2 + c_1^2
 2^{2k} a_1^2 b_1^2. \tag{1}
 $$
 
-### Step 1 — Work modulo 4
-
 Squares are congruent to $$0$$ or $$1$$ modulo $$4$$.
 
 Since at least one of $$a_1,b_1,c_1$$ is odd, the left-hand side of (1) is congruent to
@@ -353,22 +349,15 @@ $$
 1,2,\text{ or }3 \pmod{4}.
 $$
 
-<div style="border-left:4px solid #3b82f6; padding:14px 18px; margin:22px 0; border-radius:4px;">
+> Remark. An odd integer has square congruent to $$1 \pmod{4}$$, while an even integer has square congruent to $$0 \pmod{4}$$. Since at least one of $$a_1,b_1,c_1$$ is odd, the sum $$a_1^2+b_1^2+c_1^2$$ cannot be congruent to $$0 \pmod{4}$$.
 
-<strong>Remark.</strong> If an integer is odd, its square is congruent to $$1 \pmod{4}$$, while the square of an even integer is congruent to $$0 \pmod{4}$$. Since at least one of $$a_1,b_1,c_1$$ is odd, at least one of the squares $$a_1^2,b_1^2,c_1^2$$ is $$1 \pmod{4}$$. Consequently the sum $$a_1^2+b_1^2+c_1^2$$ cannot be $$0 \pmod{4}$$; it must be congruent to $$1,2,$$ or $$3 \pmod{4}$$.
-
-</div>
-
-Now consider the right-hand side.
-
-If $$k \ge 1$$ then $$2^{2k}$$ is divisible by $$4$$, so
+If $$k \ge 1$$ then $$2^{2k}$$ is divisible by $$4$$, so the right-hand side satisfies
 
 $$
 2^{2k} a_1^2 b_1^2 \equiv 0 \pmod{4}.
 $$
 
-But the left-hand side cannot be $$0 \pmod{4}$$, giving a contradiction.  
-Therefore
+This is impossible. Therefore
 
 $$
 k = 0.
@@ -380,15 +369,7 @@ $$
 a_1^2 + b_1^2 + c_1^2 = a_1^2 b_1^2. \tag{2}
 $$
 
-### Step 2 — Force $$a_1$$ and $$b_1$$ to be odd
-
-If either $$a_1$$ or $$b_1$$ were even, then $$a_1^2 b_1^2$$ would be divisible by $$4$$, so the right-hand side of (2) would be
-
-$$
-0 \pmod{4}.
-$$
-
-But the left-hand side contains at least one odd square, so it is congruent to
+If either $$a_1$$ or $$b_1$$ were even, then the right-hand side of (2) would be divisible by $$4$$. But the left-hand side contains at least one odd square, so it is congruent to
 
 $$
 1,2,\text{ or }3 \pmod{4},
@@ -396,49 +377,34 @@ $$
 
 which is impossible.
 
-Thus both $$a_1$$ and $$b_1$$ must be **odd**, and therefore
+Thus $$a_1$$ and $$b_1$$ must both be odd. It follows that
+
+$$
+a_1^2 \equiv b_1^2 \equiv 1 \pmod{4},
+$$
+
+so
+
+$$
+a_1^2 + b_1^2 + c_1^2 \equiv 2 + c_1^2 \pmod{4}.
+$$
+
+If $$c_1$$ is even, then the left-hand side is congruent to $$2 \pmod{4}$$.
+
+If $$c_1$$ is odd, then the left-hand side is congruent to $$3 \pmod{4}$$.
+
+In both cases, the left-hand side is not congruent to $$1 \pmod{4}$$, whereas the right-hand side of (2) is congruent to
 
 $$
 a_1^2 b_1^2 \equiv 1 \pmod{4}.
 $$
 
-### Step 3 — Analyze $$c_1$$
-
-Since $$a_1$$ and $$b_1$$ are odd,
-
-$$
-a_1^2 \equiv b_1^2 \equiv 1 \pmod{4}.
-$$
-
-Hence
-
-$$
-a_1^2 + b_1^2 + c_1^2
-\equiv
-1 + 1 + c_1^2
-\equiv
-2 + c_1^2 \pmod{4}.
-$$
-
-If $$c_1$$ is even, then $$c_1^2 \equiv 0$$ and
-
-$$
-a_1^2 + b_1^2 + c_1^2 \equiv 2 \pmod{4}.
-$$
-
-If $$c_1$$ is odd, then $$c_1^2 \equiv 1$$ and
-
-$$
-a_1^2 + b_1^2 + c_1^2 \equiv 3 \pmod{4}.
-$$
-
-In both cases the left-hand side is $$2$$ or $$3 \pmod{4}$$, whereas the right-hand side is $$1 \pmod{4}$$.  
 This contradiction shows that our assumption was false.
 
 Therefore the only integer solution is
 
 $$
-\boxed{(a,b,c) = (0,0,0)}.
+\boxed{(0,0,0)}.
 $$
 
 ---
