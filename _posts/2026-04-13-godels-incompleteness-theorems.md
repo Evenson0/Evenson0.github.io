@@ -12,6 +12,7 @@ tags:
 
 In 1931, a twenty-five-year-old mathematician published in *Monatshefte für Mathematik und Physik* an article entitled *Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I*. It contained two theorems that permanently altered our understanding of the foundations of mathematics. Gödel showed that in every sufficiently strong axiomatic system, there are true mathematical statements that cannot be proved within the system itself. His work shattered the hope of a complete and self-contained formal foundation for mathematics.
 
+
 <div style="text-align:center; margin:32px 0 40px 0;">
   <img src="/images/posts/godel/article.png" alt="Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I (1931)" style="width:480px; max-width:90%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
 </div>
