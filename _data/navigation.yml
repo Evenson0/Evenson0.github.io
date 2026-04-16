@@ -22,6 +22,9 @@ main:
         
   - title: "Blog"
     url: /blog/
+
+  - title: "Workshop"
+    url: /workshop/
     
   - title: "CV"
     url: /cv/
