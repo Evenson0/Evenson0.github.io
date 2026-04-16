@@ -1,14 +1,15 @@
 ---
-title: "The Mathematical Workshop of the Day"
+title: "The Mathematical Workshop #1"
 date: 2026-03-06
-permalink: /posts/2026/03/06/the/mathematical/workshop/of/the/day
+permalink: /workshop/1/
 tags:
   - combinatorics
   - tournaments
   - olympiad mathematics
-  - algebraic
+  - algebra
   - polynomials
   - divisibility
+series: mathematical-workshop
 ---
 
 In this post I solve three short problems in the spirit of mathematical competitions such as the Putnam or various Olympiads. Each one is elementary, but hides a nice idea, a combinatorial observation, a clever polynomial trick, and a simple divisibility argument.
