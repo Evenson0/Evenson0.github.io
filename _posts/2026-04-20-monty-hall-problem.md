@@ -15,7 +15,7 @@ That is one of the reasons this novel has never really left me.
 
 One of its most memorable mathematical passages is about a game show puzzle. Three doors, two goats, one car, a host, and a decision. A very small problem, yet one that became famous because it reveals how unreliable intuition can be.
 
-That problem is the **Monty Hall problem**.
+That problem is the Monty Hall problem.
 
 <div style="text-align:center; margin:28px 0 36px 0;">
   <img src="/images/posts/christopher.jpg" alt="Mark Haddon's novel" style="width:360px; max-width:82%; display:block; margin:auto; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.10);">
@@ -29,7 +29,7 @@ He even numbers the chapters of his book using prime numbers instead of ordinary
 
 That detail mattered to me when I first read the novel, and it matters even more to me now. There are moments in life when one does not want interpretation or ambiguity. One wants something that can be followed step by step. Christopher turns to mathematics for that reason. I think many people who truly love mathematics understand this instinct.
 
-## Sherlock Holmes, Conan Doyle, and the pleasure of clues
+## Sherlock Holmes and Conan Doyle
 
 Christopher loves *The Hound of the Baskervilles*. I understand that completely. It was also one of my own first encounters with Arthur Conan Doyle, and I have remained fascinated by Sherlock Holmes ever since.
 
@@ -61,7 +61,7 @@ The version most people know became famous through Marilyn vos Savant’s *Ask M
 
 A reader sent in a puzzle: there are three doors, one car, two goats; you choose one door; the host, who knows where the car is, opens another door and reveals a goat; then he offers you the chance to stay or switch.
 
-Marilyn’s answer was simple: **switch**.
+Marilyn’s answer was simple: switch.
 
 She was right.
 
@@ -78,7 +78,7 @@ You are facing **three doors**.
 
 You choose one door.
 
-The host, who knows where the car is, opens one of the two doors you did **not** choose and shows you a goat.
+The host, who knows where the car is, opens one of the two doors you did not choose and shows you a goat.
 
 Then you are offered a choice:
 
@@ -89,7 +89,7 @@ What should you do?
 
 ## The answer
 
-You should **switch**.
+**You should switch**.
 
 If you stay with your first choice, your chance of winning the car is
 
