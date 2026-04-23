@@ -5,7 +5,7 @@ permalink: /list-100/
 
 <style>
   .list100-shell {
-    max-width: 900px;
+    max-width: 920px;
     margin: 2rem auto;
     padding: 2rem;
     border: 1px solid rgba(127,127,127,0.18);
@@ -76,43 +76,108 @@ permalink: /list-100/
   }
 
   .list100-list {
+    list-style: none;
     margin: 0;
-    padding-left: 1.5rem;
-    line-height: 1.95;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
   }
 
   .list100-list li {
-    margin-bottom: 0.35rem;
-    padding-left: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(127,127,127,0.16);
+    border-radius: 16px;
+    background: rgba(127,127,127,0.04);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    line-height: 1.65;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .list100-list li:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.07);
+    border-color: rgba(59,130,246,0.20);
+  }
+
+  .list100-list li::before {
+    content: "✗";
+    flex: 0 0 auto;
+    width: 1.4rem;
+    text-align: center;
+    font-weight: 700;
+    opacity: 0.85;
   }
 
   .list100-done {
+    border-color: rgba(34,197,94,0.18) !important;
+    background: linear-gradient(
+      180deg,
+      rgba(34,197,94,0.06),
+      rgba(34,197,94,0.025)
+    ) !important;
     font-weight: 600;
+  }
+
+  .list100-done::before {
+    content: "✓" !important;
+    color: #16a34a;
+    opacity: 1;
   }
 
   .list100-muted {
     opacity: 0.72;
+    font-size: 0.95em;
   }
 
   .list100-list a,
   .list100-list a:visited {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-    text-decoration-color: rgba(59, 130, 246, 0.55);
-    font-weight: 500;
-    transition: text-decoration-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.16rem 0.62rem;
+    margin: 0 0.08rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #1d4ed8;
+    background: rgba(37,99,235,0.10);
+    border: 1px solid rgba(37,99,235,0.18);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.10);
+    font-weight: 600;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+
+  .list100-list a::after {
+    content: "↗";
+    font-size: 0.88em;
+    line-height: 1;
+    opacity: 0.85;
   }
 
   .list100-list a:hover,
   .list100-list a:focus {
-    color: #2563eb;
-    text-decoration-color: rgba(37, 99, 235, 0.95);
+    color: #ffffff;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-color: rgba(37,99,235,0.35);
+    box-shadow: 0 10px 22px rgba(37,99,235,0.22);
+    transform: translateY(-1px);
   }
 
   .list100-list a:active {
-    opacity: 0.85;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 700px) {
+    .list100-shell {
+      padding: 1.2rem;
+    }
+
+    .list100-list li {
+      align-items: flex-start;
+      padding: 0.9rem 0.9rem;
+    }
   }
 </style>
 
@@ -126,8 +191,8 @@ permalink: /list-100/
   </div>
 
   <p class="list100-intro">
-  After my mother’s death, I understood more deeply how short, fragile, and brutal life can be. This list is my way of refusing to drift through it, and of pursuing, deliberately, the things that feel rare, beautiful, and truly worth living for.
-</p>
+    After my mother’s death, I understood more deeply how short, fragile, and brutal life can be. This list is my way of refusing to drift through it, and of pursuing, deliberately, the things that feel rare, beautiful, and truly worth living for.
+  </p>
 
   <div class="list100-progress-wrap">
     <div class="list100-progress">
@@ -141,41 +206,41 @@ permalink: /list-100/
   <h2 class="list100-subtitle">Things I want to do before I die</h2>
 
   <ol class="list100-list">
-    <li class="list100-done">✓ Graduate with a Bachelor’s degree in Actuarial Science</li>
-    <li class="list100-done">✓ Start working as an actuarial analyst (P&amp;C / IARD)</li>
-    <li class="list100-done">✓ Build my personal blog</li>
-    <li>✗ Run a marathon</li>
-    <li>✗ Launch a magazine</li>
-    <li>✗ <a href="/talks/">Give public talks on mathematics and actuarial science</a></li>
-    <li>✗ <a href="/memories/canada/">Visit every province and territory in Canada</a></li>
-    <li>✗ Become a boxing coach</li>
-    <li>✗ Work in a bookstore or a library</li>
-    <li>✗ <a href="/memories/">Visit 100 countries</a> <span class="list100-muted">(~3% done)</span></li>
-    <li class="list100-done">✓ <a href="/memories/new-york/">Visit New York City</a> <span class="list100-muted">(the most beautiful city in the world)</span></li>
-    <li>✗ Design and publish a game</li>
-    <li>✗ <a href="/memories/nahanni/">See Nahanni and Virginia Falls</a></li>
-    <li>✗ <a href="/memories/yukon-aurora/">See the Northern Lights in the Yukon</a></li>
-    <li>✗ Support education in the world</li>
-    <li>✗ Start a scholarship to support brave young kids</li>
-    <li>✗ Interview some of the greatest mathematicians of our time</li>
-    <li>✗ <a href="/memories/grand-canyon/">See the Grand Canyon at sunrise</a></li>
-    <li>✗ <a href="/memories/petra/">See Petra with my own eyes</a></li>
-    <li>✗ Write a paper in actuarial science</li>
-    <li>✗ Read 1000 books (<a href="https://www.goodreads.com/user/show/193296272-evenson-auguste">10% done</a>)</li>
-    <li>✗ <a href="/memories/canada/">Visit every province and territory in Canada</a></li>
-    <li>✗ <a href="/memories/canada-hikes/">Go on unforgettable hikes in Canada</a></li>
-    <li>✗ <a href="/memories/northern-lights/">See the Northern Lights in Canada</a></li>
-    <li>✗ Become ACAS</li>
-    <li>✗ <a href="/memories/machu-picchu/">Reach Machu Picchu</a></li>
-    <li>✗ <a href="/memories/galapagos/">See the Galápagos Islands</a></li>
-    <li>✗ Become FCAS</li>
-    <li>✗ Go on a trip overseas with my whole family</li>
-    <li>✗ Be a writer</li>    
-    <li>✗ <a href="/memories/torres-del-paine/">Trek through Torres del Paine</a></li>
-    <li>✗ Complete a Master’s degree</li>
-    <li>✗ Work internationally (US or Europe)</li>
-    <li>✗ Pursue a career in politics</li>
-    <li>✗ Complete a PhD</li>
+    <li class="list100-done">Graduate with a Bachelor’s degree in Actuarial Science</li>
+    <li class="list100-done">Start working as an actuarial analyst (P&amp;C / IARD)</li>
+    <li class="list100-done">Build my personal blog</li>
+    <li>Run a marathon</li>
+    <li>Launch a magazine</li>
+    <li><a href="/talk#s/">Give public talks on mathematics and actuarial science</a></li>
+    <li><a href="/memories/canada/">Visit every province and territory in Canada</a></li>
+    <li>Become a boxing coach</li>
+    <li>Work in a bookstore or a library</li>
+    <li><a href="/memories/">Visit 100 countries</a> <span class="list100-muted">(~3% done)</span></li>
+    <li class="list100-done"><a href="/memories/new-york/">Visit New York City</a> <span class="list100-muted">(the most beautiful city in the world)</span></li>
+    <li>Design and publish a game</li>
+    <li><a href="/memories/nahanni/">See Nahanni and Virginia Falls</a></li>
+    <li><a href="/memories/yukon-aurora/">See the Northern Lights in the Yukon</a></li>
+    <li>Support education in the world</li>
+    <li>Start a scholarship to support brave young kids</li>
+    <li>Interview some of the greatest mathematicians of our time</li>
+    <li><a href="/memories/grand-canyon/">See the Grand Canyon at sunrise</a></li>
+    <li><a href="/memories/petra/">See Petra with my own eyes</a></li>
+    <li>Write a paper in actuarial science</li>
+    <li>Read 1000 books (<a href="https://www.goodreads.com/user/show/193296272-evenson-auguste">10% done</a>)</li>
+    <li><a href="/memories/canada/">Visit every province and territory in Canada</a></li>
+    <li><a href="/memories/canada-hikes/">Go on unforgettable hikes in Canada</a></li>
+    <li><a href="/memories/northern-lights/">See the Northern Lights in Canada</a></li>
+    <li>Become ACAS</li>
+    <li><a href="/memories/machu-picchu/">Reach Machu Picchu</a></li>
+    <li><a href="/memories/galapagos/">See the Galápagos Islands</a></li>
+    <li>Become FCAS</li>
+    <li>Go on a trip overseas with my whole family</li>
+    <li>Be a writer</li>
+    <li><a href="/memories/torres-del-paine/">Trek through Torres del Paine</a></li>
+    <li>Complete a Master’s degree</li>
+    <li>Work internationally (US or Europe)</li>
+    <li>Pursue a career in politics</li>
+    <li>Complete a PhD</li>
   </ol>
 
 </div>
