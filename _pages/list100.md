@@ -95,16 +95,24 @@ permalink: /list-100/
   }
 
   .list100-list a,
-  .list100-list a:hover,
-  .list100-list a:focus,
-  .list100-list a:active,
   .list100-list a:visited {
-    text-decoration: none !important;
     color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: rgba(59, 130, 246, 0.55);
+    font-weight: 500;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
   }
 
-  .list100-list a:hover {
-    opacity: 0.8;
+  .list100-list a:hover,
+  .list100-list a:focus {
+    color: #2563eb;
+    text-decoration-color: rgba(37, 99, 235, 0.95);
+  }
+
+  .list100-list a:active {
+    opacity: 0.85;
   }
 </style>
 
