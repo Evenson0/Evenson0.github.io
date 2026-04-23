@@ -114,6 +114,15 @@ author_profile: true
     height: 560px;
   }
 
+  #memories-globe {
+    position: relative;
+  }
+
+  #memories-globe canvas {
+    display: block;
+    margin: 0 auto;
+  }
+
   .memories-legend {
     display: flex;
     justify-content: center;
@@ -378,12 +387,12 @@ author_profile: true
 </div>
 
 <script
-  src="https://unpkg.com/three"
+  src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"
   crossorigin=""
 ></script>
 
 <script
-  src="https://unpkg.com/globe.gl"
+  src="https://cdn.jsdelivr.net/npm/globe.gl"
   crossorigin=""
 ></script>
 
@@ -606,6 +615,7 @@ author_profile: true
   ];
 
   let currentFilter = "all";
+  let currentView = "map";
   let globeInstance = null;
 
   const grid = document.getElementById("memories-grid");
@@ -613,6 +623,7 @@ author_profile: true
   const viewButtons = document.querySelectorAll(".memories-view-btn");
   const mapWrap = document.getElementById("memories-map-wrap");
   const globeWrap = document.getElementById("memories-globe-wrap");
+  const globeEl = document.getElementById("memories-globe");
 
   function getStatusClass(status) {
     if (status === "lived") return "memory-status-lived";
@@ -688,8 +699,7 @@ author_profile: true
         ${item.duration ? `<strong>Duration:</strong> ${item.duration}<br>` : ""}
         ${item.difficulty ? `<strong>Difficulty:</strong> ${item.difficulty}<br>` : ""}
         ${item.address ? `<strong>Start:</strong> ${item.address}<br><br>` : "<br>"}
-        ${item.excerpt}<br><br>
-        <span style="color:#60a5fa; font-weight:600;">Click to open</span>
+        ${item.excerpt}
       </div>
     `;
   }
@@ -755,12 +765,12 @@ author_profile: true
   function initGlobe() {
     if (globeInstance) return;
 
-    globeInstance = Globe()(document.getElementById("memories-globe"))
+    globeInstance = Globe()(globeEl)
       .globeImageUrl("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
       .backgroundColor("rgba(0,0,0,0)")
-      .pointColor(d => getMarkerColor(d.status))
       .pointLat(d => d.lat)
       .pointLng(d => d.lng)
+      .pointColor(d => getMarkerColor(d.status))
       .pointRadius(d => d.category === "hike" ? 0.22 : 0.18)
       .pointAltitude(d => d.category === "hike" ? 0.12 : 0.1)
       .pointLabel(d => buildGlobeLabel(d))
@@ -770,6 +780,23 @@ author_profile: true
 
     globeInstance.controls().autoRotate = true;
     globeInstance.controls().autoRotateSpeed = 0.35;
+  }
+
+  function syncGlobeSizeAndView(transitionMs = 0) {
+    if (!globeInstance) return;
+
+    const rect = globeEl.getBoundingClientRect();
+    const width = Math.max(320, Math.floor(rect.width));
+    const height = Math.max(420, Math.floor(rect.height));
+
+    globeInstance
+      .width(width)
+      .height(height)
+      .globeOffset([0, 0])
+      .pointOfView(
+        { lat: 38, lng: -95, altitude: 1.9 },
+        transitionMs
+      );
   }
 
   function renderGlobe(items) {
@@ -790,6 +817,12 @@ author_profile: true
       filterButtons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
       renderAll(button.dataset.filter);
+
+      if (currentView === "globe" && globeInstance) {
+        requestAnimationFrame(() => {
+          syncGlobeSizeAndView(400);
+        });
+      }
     });
   });
 
@@ -798,20 +831,37 @@ author_profile: true
       viewButtons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
 
-      const view = button.dataset.view;
+      currentView = button.dataset.view;
 
-      if (view === "map") {
+      if (currentView === "map") {
         mapWrap.style.display = "";
         globeWrap.style.display = "none";
-        setTimeout(() => map.invalidateSize(), 100);
+
+        setTimeout(() => {
+          map.invalidateSize();
+        }, 100);
       } else {
         mapWrap.style.display = "none";
         globeWrap.style.display = "";
+
         initGlobe();
         renderGlobe(getFilteredItems(currentFilter));
-        setTimeout(() => window.dispatchEvent(new Event("resize")), 100);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            syncGlobeSizeAndView(700);
+          });
+        });
       }
     });
+  });
+
+  window.addEventListener("resize", () => {
+    if (currentView === "map") {
+      map.invalidateSize();
+    } else if (currentView === "globe" && globeInstance) {
+      syncGlobeSizeAndView(0);
+    }
   });
 
   renderAll("all");
