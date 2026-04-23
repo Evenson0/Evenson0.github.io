@@ -15,12 +15,6 @@ permalink: /list-100/
     --l100-done-text: #166534;
     --l100-done-marker: #16a34a;
     --l100-link-text: #1d4ed8;
-    --l100-link-bg: rgba(37,99,235,0.08);
-    --l100-link-border: rgba(37,99,235,0.16);
-    --l100-link-hover-text: #ffffff;
-    --l100-link-hover-bg-1: #2563eb;
-    --l100-link-hover-bg-2: #1d4ed8;
-    --l100-link-shadow: rgba(37,99,235,0.18);
     --l100-progress-bg: rgba(127,127,127,0.05);
     --l100-item-border: rgba(127,127,127,0.12);
 
@@ -92,12 +86,12 @@ permalink: /list-100/
 
   .list100-list {
     margin: 0;
-    padding-left: 2.4rem;
+    padding-left: 1.65rem;
     line-height: 1.9;
   }
 
   .list100-list li {
-    padding: 0.72rem 0 0.88rem 0.2rem;
+    padding: 0.58rem 0 0.68rem 0.05rem;
     border-bottom: 1px solid var(--l100-item-border);
   }
 
@@ -126,41 +120,34 @@ permalink: /list-100/
 
   .list100-list a,
   .list100-list a:visited {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.32rem;
-    padding: 0.14rem 0.62rem;
-    border-radius: 999px;
-    text-decoration: none;
     color: var(--l100-link-text);
-    background: var(--l100-link-bg);
-    border: 1px solid var(--l100-link-border);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+    text-decoration-color: color-mix(in srgb, var(--l100-link-text) 35%, transparent);
     font-weight: 600;
     transition:
-      background 0.2s ease,
       color 0.2s ease,
-      border-color 0.2s ease,
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
+      text-decoration-color 0.2s ease,
+      opacity 0.2s ease;
   }
 
   .list100-list a::after {
     content: "↗";
-    font-size: 0.86em;
-    opacity: 0.8;
+    font-size: 0.82em;
+    margin-left: 0.18rem;
+    opacity: 0.75;
   }
 
   .list100-list a:hover,
   .list100-list a:focus {
-    color: var(--l100-link-hover-text);
-    background: linear-gradient(135deg, var(--l100-link-hover-bg-1), var(--l100-link-hover-bg-2));
-    border-color: transparent;
-    box-shadow: 0 8px 18px var(--l100-link-shadow);
-    transform: translateY(-1px);
+    color: var(--l100-link-text);
+    text-decoration-color: color-mix(in srgb, var(--l100-link-text) 85%, transparent);
+    opacity: 0.92;
   }
 
   .list100-list a:active {
-    transform: translateY(0);
+    opacity: 0.8;
   }
 
   @media (max-width: 700px) {
@@ -169,15 +156,14 @@ permalink: /list-100/
     }
 
     .list100-list {
-      padding-left: 2rem;
+      padding-left: 1.4rem;
     }
 
     .list100-list li {
-      padding: 0.65rem 0 0.8rem 0.1rem;
+      padding: 0.52rem 0 0.62rem 0.02rem;
     }
   }
 
-  /* Dark mode: browser preference */
   @media (prefers-color-scheme: dark) {
     .list100-shell {
       --l100-bg-1: rgba(255,255,255,0.045);
@@ -188,18 +174,11 @@ permalink: /list-100/
       --l100-done-text: #86efac;
       --l100-done-marker: #4ade80;
       --l100-link-text: #bfdbfe;
-      --l100-link-bg: rgba(59,130,246,0.16);
-      --l100-link-border: rgba(96,165,250,0.24);
-      --l100-link-hover-text: #f8fbff;
-      --l100-link-hover-bg-1: #3b82f6;
-      --l100-link-hover-bg-2: #2563eb;
-      --l100-link-shadow: rgba(37,99,235,0.30);
       --l100-progress-bg: rgba(255,255,255,0.035);
       --l100-item-border: rgba(255,255,255,0.10);
     }
   }
 
-  /* Dark mode: site/theme toggles */
   html.dark .list100-shell,
   body.dark .list100-shell,
   [data-theme="dark"] .list100-shell,
@@ -212,12 +191,6 @@ permalink: /list-100/
     --l100-done-text: #86efac;
     --l100-done-marker: #4ade80;
     --l100-link-text: #bfdbfe;
-    --l100-link-bg: rgba(59,130,246,0.16);
-    --l100-link-border: rgba(96,165,250,0.24);
-    --l100-link-hover-text: #f8fbff;
-    --l100-link-hover-bg-1: #3b82f6;
-    --l100-link-hover-bg-2: #2563eb;
-    --l100-link-shadow: rgba(37,99,235,0.30);
     --l100-progress-bg: rgba(255,255,255,0.035);
     --l100-item-border: rgba(255,255,255,0.10);
   }
@@ -253,7 +226,7 @@ permalink: /list-100/
     <li class="list100-done">✓ Build my personal blog</li>
     <li>✗ Run a marathon</li>
     <li>✗ Launch a magazine</li>
-    <li>✗ <a href="/talk#s/">Give public talks on mathematics and actuarial science</a></li>
+    <li>✗ <a href="/talks/">Give public talks on mathematics and actuarial science</a></li>
     <li>✗ <a href="/memories">Visit every province and territory in Canada</a></li>
     <li>✗ Become a boxing coach</li>
     <li>✗ Work in a bookstore or a library</li>
