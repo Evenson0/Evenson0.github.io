@@ -16,6 +16,6 @@ excerpt: "The most beautiful city in the world."
   <img src="/images/memories/new-york.jpg" alt="New York City" style="width:1000px; max-width:100%; display:block; margin:auto; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.18);">
 </div>
 
-New York felt less like a city than like a monument made of motion, steel, and light.
+New York
 
 ## Why it mattered
