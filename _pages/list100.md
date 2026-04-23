@@ -100,6 +100,11 @@ permalink: /list-100/
   .list100-list a:active,
   .list100-list a:visited {
     text-decoration: none !important;
+    color: inherit;
+  }
+
+  .list100-list a:hover {
+    opacity: 0.8;
   }
 </style>
 
@@ -113,13 +118,13 @@ permalink: /list-100/
   </div>
 
   <p class="list100-intro">
-    After looking at the life calendar, I realized how limited time really is. This list is my attempt to live a life I can be fully satisfied with, by turning intentions into concrete actions.
-  </p>
+  After my mother’s death, I understood more deeply how short, fragile, and brutal life can be. This list is my way of refusing to drift through it, and of pursuing, deliberately, the things that feel rare, beautiful, and truly worth living for.
+</p>
 
   <div class="list100-progress-wrap">
     <div class="list100-progress">
       <strong>Progress</strong>
-      <span>March 20, 2026 · 3/100</span>
+      <span>April 23, 2026 · 3/100</span>
     </div>
   </div>
 
@@ -130,24 +135,35 @@ permalink: /list-100/
   <ol class="list100-list">
     <li class="list100-done">✓ Graduate with a Bachelor’s degree in Actuarial Science</li>
     <li class="list100-done">✓ Start working as an actuarial analyst (P&amp;C / IARD)</li>
+    <li class="list100-done">✓ Build my personal blog</li>
     <li>✗ Run a marathon</li>
     <li>✗ Launch a magazine</li>
+    <li>✗ <a href="/talks/">Give public talks on mathematics and actuarial science</a></li>
+    <li>✗ <a href="/memories/canada/">Visit every province and territory in Canada</a></li>
     <li>✗ Become a boxing coach</li>
     <li>✗ Work in a bookstore or a library</li>
     <li>✗ Visit 100 countries <span class="list100-muted">(~3% done)</span></li>
     <li>✗ Design and publish a game</li>
-    <li>✗ Support education in Haiti</li>
+    <li>✗ <a href="/memories/nahanni/">See Nahanni and Virginia Falls</a></li>
+    <li>✗ <a href="/memories/yukon-aurora/">See the Northern Lights in the Yukon</a></li>
+    <li>✗ Support education in the world</li>
     <li>✗ Start a scholarship to support brave young kids</li>
     <li>✗ Interview some of the greatest mathematicians of our time</li>
+    <li>✗ <a href="/memories/grand-canyon/">See the Grand Canyon at sunrise</a></li>
+    <li>✗ <a href="/memories/petra/">See Petra with my own eyes</a></li>
     <li>✗ Write a paper in actuarial science</li>
-    <li>✗ Read 1000 books (<a href="https://www.goodreads.com/user/show/193296272-evenson-auguste">% done</a>)</li>
-    <li>✗ Explore all of Canada</li>
+    <li>✗ Read 1000 books (<a href="https://www.goodreads.com/user/show/193296272-evenson-auguste">10% done</a>)</li>
+    <li>✗ <a href="/memories/canada/">Visit every province and territory in Canada</a></li>
+    <li>✗ <a href="/memories/canada-hikes/">Go on unforgettable hikes in Canada</a></li>
+    <li>✗ <a href="/memories/northern-lights/">See the Northern Lights in Canada</a></li>
     <li>✗ Become ACAS</li>
+    <li>✗ <a href="/memories/machu-picchu/">Reach Machu Picchu</a></li>
+    <li>✗ <a href="/memories/galapagos/">See the Galápagos Islands</a></li>
     <li>✗ Become FCAS</li>
     <li>✗ Go on a trip overseas with my whole family</li>
-    <li>✗ Be a writer</li>
+    <li>✗ Be a writer</li>    
+    <li>✗ <a href="/memories/torres-del-paine/">Trek through Torres del Paine</a></li>
     <li>✗ Complete a Master’s degree</li>
-    <li class="list100-done">✓ Build my personal blog</li>
     <li>✗ Work internationally (US or Europe)</li>
     <li>✗ Pursue a career in politics</li>
     <li>✗ Complete a PhD</li>
