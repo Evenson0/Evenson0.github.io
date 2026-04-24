@@ -73,13 +73,6 @@ $$
 \boxed{x^4-14x^2+9}.
 $$
 
----
-
-## Remark
-
-The idea is to eliminate the radicals step by step until we obtain a polynomial equation with integer coefficients.
-
-
 
 <hr style="border:none; border-top:2px solid rgba(120,120,120,0.7); margin:50px 0; width:100%;">
 
@@ -242,13 +235,6 @@ Therefore,
 $$
 \boxed{k=86}.
 $$
-
----
-
-## Remark
-
-The key move is to group the four roots into two pairs. Once one product is known, Vieta's formulas determine the missing quantities.
-
 
 
 <hr style="border:none; border-top:2px solid rgba(120,120,120,0.7); margin:50px 0; width:100%;">
@@ -438,13 +424,6 @@ $$
 \boxed{5}.
 $$
 
----
-
-## Remark
-
-The whole problem collapses once we recognize Sophie Germain's identity.
-
-
 
 <hr style="border:none; border-top:2px solid rgba(120,120,120,0.7); margin:50px 0; width:100%;">
 
@@ -561,12 +540,6 @@ Since $$f$$ has no real roots and tends to $$+\infty$$ at both ends, it cannot b
 $$
 \boxed{f(x)>0 \text{ for all real numbers } x.}
 $$
-
----
-
-## Remark
-
-The contradiction comes from forcing a negative interval between two simple roots, then using Rolle's theorem to find a point where the derivative vanishes.
 
 
 
