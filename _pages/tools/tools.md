@@ -357,6 +357,16 @@ tool_theme: atlas
       </div>
     </a>
 
+        <a href="{{ '/tools/soa-p-practice/' | relative_url }}" class="lab-card-link">
+      <div class="lab-card">
+        <h3>SOA P Practice</h3>
+        <p class="lab-card-desc">
+          Practice probability with multiple-choice questions, worked solutions,
+          and independent progress tracking.
+        </p>
+      </div>
+    </a>
+
     <a href="/tools/financial-math-calculator/" class="lab-card-link">
       <div class="lab-card">
         <h3>Financial Mathematics Calculator</h3>
