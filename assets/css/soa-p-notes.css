@@ -1,0 +1,219 @@
+.p-notes {
+  --p-border: rgba(127, 127, 127, 0.22);
+  --p-background: rgba(127, 127, 127, 0.045);
+  --p-blue: #1d4ed8;
+  --p-blue-soft: rgba(37, 99, 235, 0.075);
+  --p-green: #166534;
+  --p-green-soft: rgba(21, 128, 61, 0.075);
+  --p-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+html[data-theme="dark"] .p-notes {
+  --p-blue: #93c5fd;
+  --p-blue-soft: rgba(96, 165, 250, 0.10);
+  --p-green: #86efac;
+  --p-green-soft: rgba(74, 222, 128, 0.08);
+}
+
+.p-notes .p-hero {
+  padding: 1.5rem;
+  border: 1px solid var(--p-border);
+  border-radius: 20px;
+  background: var(--p-background);
+  margin-bottom: 1.5rem;
+}
+
+.p-notes .p-hero h2 {
+  margin-top: 0;
+}
+
+.p-notes .p-hero p:last-child {
+  margin-bottom: 0;
+}
+
+.p-notes .p-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.p-notes a.p-btn,
+.p-notes a.p-btn:visited {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--p-border);
+  border-radius: 12px;
+  background: var(--p-blue-soft);
+  color: var(--p-blue);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.p-notes a.p-btn-secondary,
+.p-notes a.p-btn-secondary:visited {
+  background: var(--p-green-soft);
+  color: var(--p-green);
+}
+
+.p-notes a.p-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--p-shadow);
+}
+
+.p-notes a:focus-visible,
+.p-notes summary:focus-visible {
+  outline: 3px solid var(--p-blue);
+  outline-offset: 4px;
+}
+
+.p-notes .p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+}
+
+.p-notes .p-card {
+  padding: 1.2rem;
+  border: 1px solid var(--p-border);
+  border-radius: 18px;
+  background: var(--p-background);
+  box-shadow: var(--p-shadow);
+}
+
+.p-notes .p-card h3 {
+  margin-top: 0.6rem;
+}
+
+.p-notes .p-card p:last-child {
+  margin-bottom: 0;
+}
+
+.p-notes .p-tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--p-blue-soft);
+  color: var(--p-blue);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.p-notes .p-section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.p-notes .p-note {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid var(--p-green);
+  border-radius: 10px;
+  background: var(--p-green-soft);
+}
+
+.p-notes .p-note p:first-child {
+  margin-top: 0;
+}
+
+.p-notes .p-note p:last-child {
+  margin-bottom: 0;
+}
+
+.p-notes .p-formula-box {
+  margin: 1.2rem 0;
+  padding: 1.2rem;
+  border: 1px solid var(--p-border);
+  border-left: 4px solid var(--p-blue);
+  border-radius: 16px;
+  background: var(--p-background);
+  box-shadow: var(--p-shadow);
+  scroll-margin-top: 2rem;
+}
+
+.p-notes .p-formula-box h3 {
+  margin-top: 0.6rem;
+}
+
+.p-notes .p-equation {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: var(--p-blue-soft);
+  overflow-x: auto;
+}
+
+.p-notes .p-math {
+  overflow-x: auto;
+}
+
+.p-notes .p-proof {
+  margin-top: 1rem;
+  border: 1px solid var(--p-border);
+  border-radius: 12px;
+}
+
+.p-notes .p-proof summary {
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  color: var(--p-blue);
+  font-weight: 700;
+}
+
+.p-notes .p-proof-content {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--p-border);
+}
+
+.p-notes .p-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.p-notes table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.p-notes th,
+.p-notes td {
+  padding: 0.85rem;
+  border: 1px solid var(--p-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.p-notes th {
+  background: var(--p-blue-soft);
+}
+
+.p-notes caption {
+  text-align: left;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .p-notes .p-hero,
+  .p-notes .p-formula-box,
+  .p-notes .p-card {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-notes a.p-btn {
+    transition: none;
+  }
+
+  .p-notes a.p-btn:hover {
+    transform: none;
+  }
+}
