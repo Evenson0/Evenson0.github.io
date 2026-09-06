@@ -166,5 +166,217 @@
     ],
     "generalization": "The smallest possible union probability is \\(\\max\\{P(A),P(B)\\}\\). It is attained when the smaller-probability event is contained in the larger one. In general, \\(\\max\\{P(A),P(B)\\}\\leq P(A\\cup B)\\leq\\min\\{1,P(A)+P(B)\\}\\).",
     "answer_text": "B. \\(0.4\\)"
-  }
+  },
+  {
+  "id": 8,
+  "topic": "Union and Set Difference",
+  "title": "Exercise 8",
+  "statement": "An analysis of an insurance company's policyholders finds the following:\n\ni. Twice as many policyholders buy auto insurance as buy home insurance.\nii. 70% of policyholders buy either auto insurance or home insurance.\niii. 20% of policyholders buy both auto insurance and home insurance.\n\nWhat fraction of policyholders buy home insurance but not auto insurance?",
+  "choices": [
+    "\\(10.0\\%\\)",
+    "\\(20.0\\%\\)",
+    "\\(23.3\\%\\)",
+    "\\(25.0\\%\\)",
+    "\\(30.0\\%\\)"
+  ],
+  "correct": 0,
+  "solution_steps": [
+    "Let \\(A\\) denote buying auto insurance and \\(H\\) buying home insurance. We are given \\(P(A)=2P(H)\\), \\(P(A\\cup H)=0.7\\), and \\(P(A\\cap H)=0.2\\).",
+    "Here, 'either auto insurance or home insurance' describes the inclusive union, which includes policyholders who buy both.",
+    "Apply the addition rule: \\(P(A\\cup H)=P(A)+P(H)-P(A\\cap H)\\).",
+    "Substituting gives \\(0.7=2P(H)+P(H)-0.2\\), so \\(3P(H)=0.9\\) and \\(P(H)=0.3\\).",
+    "Home insurance but not auto insurance is the event \\(H\\cap A^c\\). Its probability is \\(P(H\\cap A^c)=P(H)-P(A\\cap H)=0.3-0.2=0.1\\).",
+    "Therefore, the required fraction is \\(10.0\\%\\)."
+  ],
+  "generalization": "If \\(P(A)=kP(B)\\), \\(P(A\\cup B)=u\\), and \\(P(A\\cap B)=q\\), then \\(P(B)=(u+q)/(k+1)\\). The probability of B only is \\(P(B\\cap A^c)=P(B)-q\\).",
+  "answer_text": "A. \\(10.0\\%\\)"
+},
+{
+  "id": 9,
+  "topic": "Complements and Set Partitions",
+  "title": "Exercise 9",
+  "statement": "You are given that \\(P(A\\cap B^c)=0.3\\) and \\(P((A\\cup B)^c)=0.4\\). What is \\(P(B)\\)?",
+  "choices": [
+    "\\(0.2\\)",
+    "\\(0.3\\)",
+    "\\(0.5\\)",
+    "\\(0.6\\)",
+    "\\(0.7\\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "By De Morgan's law, \\((A\\cup B)^c=A^c\\cap B^c\\). Hence, \\(P(A^c\\cap B^c)=0.4\\).",
+    "Partition \\(B^c\\) according to whether A occurs: \\(B^c=(A\\cap B^c)\\cup(A^c\\cap B^c)\\).",
+    "These two regions are disjoint, so \\(P(B^c)=P(A\\cap B^c)+P(A^c\\cap B^c)=0.3+0.4=0.7\\).",
+    "Using the complement rule gives \\(P(B)=1-P(B^c)=1-0.7=0.3\\)."
+  ],
+  "generalization": "Any event B can be partitioned using another event A: \\(P(B)=P(A\\cap B)+P(A^c\\cap B)\\). Similarly, \\(P(B)=1-P(A\\cap B^c)-P(A^c\\cap B^c)\\).",
+  "answer_text": "B. \\(0.3\\)"
+},
+{
+  "id": 10,
+  "topic": "Inclusion-Exclusion and Counting",
+  "title": "Exercise 10",
+  "statement": "[SOA 5; F00.03] An auto insurance company has 10,000 policyholders. Each policyholder is classified as:\n\ni. young or old;\nii. male or female; and\niii. married or single.\n\nOf these policyholders, 3,000 are young, 4,600 are male, and 7,000 are married. The policyholders can also be classified as 1,320 young males, 3,010 married males, and 1,400 young married persons. Finally, 600 of the policyholders are young married males.\n\nHow many of the company's policyholders are young, female, and single?",
+  "choices": [
+    "\\(280\\)",
+    "\\(423\\)",
+    "\\(486\\)",
+    "\\(880\\)",
+    "\\(896\\)"
+  ],
+  "correct": 3,
+  "solution_steps": [
+    "Let Y denote young policyholders, M male policyholders, and R married policyholders. We seek the number in \\(Y\\cap M^c\\cap R^c\\).",
+    "There are 3,000 young policyholders, of whom 1,320 are male. Therefore, there are \\(3000-1320=1680\\) young female policyholders.",
+    "There are 1,400 young married policyholders, of whom 600 are male. Therefore, there are \\(1400-600=800\\) young married female policyholders.",
+    "Subtract young married females from all young females: \\(1680-800=880\\).",
+    "Equivalently, inclusion-exclusion within Y gives \\(|Y\\cap M^c\\cap R^c|=|Y|-|Y\\cap M|-|Y\\cap R|+|Y\\cap M\\cap R|\\).",
+    "Substituting gives \\(3000-1320-1400+600=880\\). The overall counts of male and married policyholders are not needed."
+  ],
+  "generalization": "To count members of A who belong to neither B nor C, use \\(|A\\cap B^c\\cap C^c|=|A|-|A\\cap B|-|A\\cap C|+|A\\cap B\\cap C|\\). Add back the triple intersection because it was subtracted twice.",
+  "answer_text": "D. \\(880\\)"
+},
+{
+  "id": 11,
+  "topic": "Inclusion-Exclusion and Complements",
+  "title": "Exercise 11",
+  "statement": "[SOA 100] A survey of 100 TV watchers revealed that over the last year:\n\ni. 34 watched CBS.\nii. 15 watched NBC.\niii. 10 watched ABC.\niv. 7 watched CBS and NBC.\nv. 6 watched CBS and ABC.\nvi. 5 watched NBC and ABC.\nvii. 4 watched CBS, NBC, and ABC.\nviii. 18 watched HGTV and of these, none watched CBS, NBC, or ABC.\n\nCalculate how many of the 100 TV watchers did not watch any of the four channels (CBS, NBC, ABC, or HGTV).",
+  "choices": [
+    "\\(1\\)",
+    "\\(37\\)",
+    "\\(45\\)",
+    "\\(55\\)",
+    "\\(82\\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "Let C, N, A, and H denote the sets of viewers who watched CBS, NBC, ABC, and HGTV, respectively.",
+    "Use inclusion-exclusion for the first three channels: \\(|C\\cup N\\cup A|=|C|+|N|+|A|-|C\\cap N|-|C\\cap A|-|N\\cap A|+|C\\cap N\\cap A|\\).",
+    "Substituting gives \\(|C\\cup N\\cup A|=34+15+10-7-6-5+4=45\\).",
+    "The pairwise intersection counts include the viewers who watched all three channels. The triple intersection must therefore be added back once.",
+    "None of the 18 HGTV viewers watched any of the other three channels, so \\(|C\\cup N\\cup A\\cup H|=45+18=63\\).",
+    "The number who watched none of the four channels is \\(100-63=37\\)."
+  ],
+  "generalization": "For three events, \\(P(A\\cup B\\cup C)=P(A)+P(B)+P(C)-P(A\\cap B)-P(A\\cap C)-P(B\\cap C)+P(A\\cap B\\cap C)\\). The same identity holds for finite set counts. To find how many belong to none of the sets, subtract the union count from the total.",
+  "answer_text": "B. \\(37\\)"
+},
+{
+  "id": 12,
+  "topic": "Set Difference with Three Events",
+  "title": "Exercise 12",
+  "statement": "Suppose that A, B, and C are events such that:\n\ni. \\(P(A)=0.6\\) and \\(P(B)=P(C)=0.5\\).\nii. \\(P(A\\cap B)=P(A\\cap C)=0.3\\), but \\(P(B\\cap C)=0.2\\).\niii. \\(P(A\\cap B\\cap C)=0.1\\).\n\nFind \\(P(A^c\\cap B^c\\cap C)\\).",
+  "choices": [
+    "\\(0.0\\)",
+    "\\(0.1\\)",
+    "\\(0.2\\)",
+    "\\(0.3\\)",
+    "\\(0.4\\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "The event \\(A^c\\cap B^c\\cap C\\) means that C occurs while neither A nor B occurs. This is the C-only region.",
+    "Start with all of C, subtract its overlap with A and its overlap with B, then add back the triple intersection.",
+    "Thus, \\(P(A^c\\cap B^c\\cap C)=P(C)-P(A\\cap C)-P(B\\cap C)+P(A\\cap B\\cap C)\\).",
+    "Substituting gives \\(0.5-0.3-0.2+0.1=0.1\\).",
+    "The triple intersection is added back because it belongs to both subtracted intersections and would otherwise be removed twice."
+  ],
+  "generalization": "For any three events, \\(P(C\\cap A^c\\cap B^c)=P(C)-P(C\\cap A)-P(C\\cap B)+P(A\\cap B\\cap C)\\). This is inclusion-exclusion applied within C.",
+  "answer_text": "B. \\(0.1\\)"
+},
+{
+  "id": 13,
+  "topic": "De Morgan's Laws",
+  "title": "Exercise 13",
+  "statement": "[Course 110; F86.11] Let \\(P(A\\cap B)=0.2\\), \\(P(A)=0.6\\), and \\(P(B)=0.5\\). Find \\(P(A^c\\cup B^c)\\).",
+  "choices": [
+    "\\(0.1\\)",
+    "\\(0.3\\)",
+    "\\(0.7\\)",
+    "\\(0.8\\)",
+    "\\(0.9\\)"
+  ],
+  "correct": 3,
+  "solution_steps": [
+    "By De Morgan's law, \\(A^c\\cup B^c=(A\\cap B)^c\\).",
+    "This event includes every outcome except those in which both A and B occur.",
+    "Apply the complement rule: \\(P(A^c\\cup B^c)=1-P(A\\cap B)\\).",
+    "Therefore, \\(P(A^c\\cup B^c)=1-0.2=0.8\\). The individual probabilities of A and B are not needed."
+  ],
+  "generalization": "De Morgan's laws give \\(A^c\\cup B^c=(A\\cap B)^c\\) and \\(A^c\\cap B^c=(A\\cup B)^c\\). Consequently, 'not both' has probability \\(1-P(A\\cap B)\\), while 'neither' has probability \\(1-P(A\\cup B)\\).",
+  "answer_text": "D. \\(0.8\\)"
+},
+{
+  "id": 14,
+  "topic": "Conditional Probability",
+  "title": "Exercise 14",
+  "statement": "Let X be the sum of the roll of two fair six-sided dice. Find \\(P(X=8\\mid X=7\\text{ or }X=8)\\).",
+  "choices": [
+    "\\(1/9\\)",
+    "\\(5/36\\)",
+    "\\(2/5\\)",
+    "\\(4/11\\)",
+    "\\(5/11\\)"
+  ],
+  "correct": 4,
+  "solution_steps": [
+    "The two dice are rolled independently, giving 36 equally likely ordered outcomes.",
+    "A sum of 7 occurs in six outcomes: \\((1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\). Hence, \\(P(X=7)=6/36\\).",
+    "A sum of 8 occurs in five outcomes: \\((2,6),(3,5),(4,4),(5,3),(6,2)\\). Hence, \\(P(X=8)=5/36\\).",
+    "The events \\(X=7\\) and \\(X=8\\) are mutually exclusive, so \\(P(X=7\\text{ or }X=8)=11/36\\).",
+    "Since \\(\\{X=8\\}\\subseteq\\{X=7\\text{ or }X=8\\}\\), conditional probability gives \\(P(X=8\\mid X=7\\text{ or }X=8)=\\dfrac{5/36}{11/36}=\\dfrac{5}{11}\\).",
+    "The two possible sums are not equally likely. Conditioning restricts the sample space to 11 equally likely ordered outcomes, five of which have sum 8."
+  ],
+  "generalization": "If \\(A\\subseteq B\\) and \\(P(B)>0\\), then \\(P(A\\mid B)=P(A)/P(B)\\). In a finite equally likely sample space, conditional probability can be computed by counting favorable outcomes within the conditioning event.",
+  "answer_text": "E. \\(\\dfrac{5}{11}\\)"
+},
+{
+  "id": 15,
+  "topic": "Conditional Probability and Set Partitions",
+  "title": "Exercise 15",
+  "statement": "[SOA 9; S03.05] An insurance company examines its pool of auto insurance customers and gathers the following information:\n\ni. All customers insure at least one car.\nii. 70% of customers insure more than one car.\niii. 20% of the customers insure a sports car.\niv. Of those customers who insure more than one car, 15% insure a sports car.\n\nCalculate the probability that a randomly selected customer insures exactly one car and that car is not a sports car.",
+  "choices": [
+    "\\(0.13\\)",
+    "\\(0.21\\)",
+    "\\(0.24\\)",
+    "\\(0.25\\)",
+    "\\(0.30\\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "Let M denote insuring more than one car and S denote insuring a sports car. We are given \\(P(M)=0.7\\), \\(P(S)=0.2\\), and \\(P(S\\mid M)=0.15\\).",
+    "Because every customer insures at least one car, \\(M^c\\) means insuring exactly one car. Thus, \\(P(M^c)=1-0.7=0.3\\).",
+    "Convert the conditional probability into a joint probability: \\(P(M\\cap S)=P(M)P(S\\mid M)=0.7(0.15)=0.105\\).",
+    "Partition sports-car customers by number of cars: \\(P(M^c\\cap S)=P(S)-P(M\\cap S)=0.2-0.105=0.095\\).",
+    "Among the customers who insure exactly one car, remove those whose car is a sports car: \\(P(M^c\\cap S^c)=0.3-0.095=0.205\\).",
+    "The exact probability is \\(0.205\\), or \\(20.5\\%\\). Rounded to two decimal places, it is \\(0.21\\), corresponding to choice B."
+  ],
+  "generalization": "Given \\(P(A)\\), \\(P(B)\\), and \\(P(B\\mid A)\\), first compute \\(P(A\\cap B)=P(A)P(B\\mid A)\\). Then \\(P(A^c\\cap B^c)=1-P(A)-P(B)+P(A)P(B\\mid A)\\). A conditional percentage must be multiplied by the probability of its conditioning group.",
+  "answer_text": "B. \\(0.21\\) (exact probability: \\(0.205\\))"
+},
+{
+  "id": 16,
+  "topic": "Independent Events",
+  "title": "Exercise 16",
+  "statement": "[SOA 10; F00.30] An actuary studying the insurance preferences of automobile owners makes the following conclusions:\n\ni. An automobile owner is twice as likely to purchase collision coverage as disability coverage.\nii. The event that an automobile owner purchases collision coverage is independent of the event that he or she purchases disability coverage.\niii. The probability that an automobile owner purchases both collision and disability coverages is 0.15.\n\nWhat is the probability that an automobile owner purchases neither collision nor disability coverage?",
+  "choices": [
+    "\\(0.18\\)",
+    "\\(0.33\\)",
+    "\\(0.48\\)",
+    "\\(0.67\\)",
+    "\\(0.82\\)"
+  ],
+  "correct": 1,
+  "solution_steps": [
+    "Let C denote purchasing collision coverage and D purchasing disability coverage. Write \\(P(D)=d\\), so \\(P(C)=2d\\).",
+    "By independence, \\(P(C\\cap D)=P(C)P(D)=2d^2\\). The given intersection probability implies \\(2d^2=0.15\\).",
+    "Since d is a probability, take the nonnegative root: \\(d=\\sqrt{0.15/2}=\\sqrt{0.075}\\approx0.273861\\).",
+    "Therefore, \\(P(C)=2\\sqrt{0.075}\\approx0.547723\\).",
+    "The probability of neither coverage is \\(P(C^c\\cap D^c)=1-P(C\\cup D)=1-P(C)-P(D)+P(C\\cap D)\\).",
+    "Substituting without intermediate rounding gives \\(P(C^c\\cap D^c)=1.15-3\\sqrt{0.075}\\approx0.328416\\).",
+    "Rounded to two decimal places, the required probability is \\(0.33\\). As a check, independence also gives \\(P(C^c\\cap D^c)=(1-P(C))(1-P(D))\\)."
+  ],
+  "generalization": "If A and B are independent, \\(P(A)=kP(B)\\) with \\(k>0\\), and \\(P(A\\cap B)=q\\), then \\(P(B)=\\sqrt{q/k}\\) and \\(P(A)=\\sqrt{kq}\\), provided these values are valid probabilities. Their complements are also independent, so \\(P(A^c\\cap B^c)=(1-P(A))(1-P(B))\\).",
+  "answer_text": "B. \\(0.33\\)"
+}
 ]
