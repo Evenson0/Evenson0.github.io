@@ -1,1 +1,170 @@
-
+[
+  {
+    "id": 1,
+    "topic": "Symmetric Difference",
+    "title": "Exercise 1",
+    "statement": "Suppose that 40% of customers buy fire insurance, 30% buy theft insurance, and 20% buy both fire and theft insurance. What percentage of customers buy either fire insurance or theft insurance, but not both?",
+    "choices": [
+      "\\(10\\%\\)",
+      "\\(20\\%\\)",
+      "\\(30\\%\\)",
+      "\\(40\\%\\)",
+      "\\(50\\%\\)"
+    ],
+    "correct": 2,
+    "solution_steps": [
+      "Let \\(F\\) denote the event that a customer buys fire insurance and \\(T\\) the event that a customer buys theft insurance.",
+      "We are given \\(P(F)=0.4\\), \\(P(T)=0.3\\), and \\(P(F\\cap T)=0.2\\).",
+      "The probability of buying fire insurance only is \\(P(F\\cap T^c)=P(F)-P(F\\cap T)=0.4-0.2=0.2\\).",
+      "The probability of buying theft insurance only is \\(P(F^c\\cap T)=P(T)-P(F\\cap T)=0.3-0.2=0.1\\).",
+      "These two events are mutually exclusive, so their probabilities add: \\(0.2+0.1=0.3\\).",
+      "Therefore, \\(30\\%\\) of customers buy exactly one of the two types of insurance."
+    ],
+    "generalization": "The event that exactly one of two events occurs is their symmetric difference, \\(A\\triangle B\\). Its probability is \\(P(A\\triangle B)=P(A)+P(B)-2P(A\\cap B)\\). Subtracting the intersection twice removes both copies included in \\(P(A)+P(B)\\).",
+    "answer_text": "C. \\(30\\%\\)"
+  },
+  {
+    "id": 2,
+    "topic": "Symmetric Difference",
+    "title": "Exercise 2",
+    "statement": "An integer is randomly chosen from \\(\\{1,2,3,\\ldots,25\\}\\), with each integer equally likely. What is the probability that it is even or divisible by 5, but not both?",
+    "choices": [
+      "\\(10/25\\)",
+      "\\(12/25\\)",
+      "\\(13/25\\)",
+      "\\(15/25\\)",
+      "\\(17/25\\)"
+    ],
+    "correct": 2,
+    "solution_steps": [
+      "Let \\(E\\) be the event that the chosen integer is even and \\(D\\) the event that it is divisible by 5.",
+      "There are 12 even integers: \\(2,4,6,\\ldots,24\\). Thus, \\(P(E)=12/25\\).",
+      "There are 5 integers divisible by 5: \\(5,10,15,20,25\\). Thus, \\(P(D)=5/25\\).",
+      "An integer satisfying both conditions must be divisible by 10. The only such integers are 10 and 20, so \\(P(E\\cap D)=2/25\\).",
+      "The probability of satisfying exactly one condition is \\(P(E\\triangle D)=P(E)+P(D)-2P(E\\cap D)\\).",
+      "Therefore, \\(P(E\\triangle D)=\\dfrac{12+5-2(2)}{25}=\\dfrac{13}{25}\\)."
+    ],
+    "generalization": "For a uniformly selected integer from \\(\\{1,\\ldots,n\\}\\), the probability of being divisible by \\(a\\) or \\(b\\), but not both, is \\(\\dfrac{\\lfloor n/a\\rfloor+\\lfloor n/b\\rfloor-2\\lfloor n/\\operatorname{lcm}(a,b)\\rfloor}{n}\\). The common multiples are counted using the least common multiple.",
+    "answer_text": "C. \\(\\dfrac{13}{25}\\)"
+  },
+  {
+    "id": 3,
+    "topic": "Bounds on Union Probabilities",
+    "title": "Exercise 3",
+    "statement": "If \\(P(A)=0.3\\) and \\(P(B)=0.4\\), what is the maximum possible value of \\(P(A\\cup B)\\)?",
+    "choices": [
+      "\\(0.3\\)",
+      "\\(0.4\\)",
+      "\\(0.5\\)",
+      "\\(0.6\\)",
+      "\\(0.7\\)"
+    ],
+    "correct": 4,
+    "solution_steps": [
+      "Use the addition rule: \\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\).",
+      "Substituting the given probabilities gives \\(P(A\\cup B)=0.7-P(A\\cap B)\\).",
+      "To maximize the union probability, minimize the intersection probability.",
+      "Since \\(P(A\\cap B)\\geq 0\\), we have \\(P(A\\cup B)\\leq 0.7\\).",
+      "This bound is attainable when \\(A\\) and \\(B\\) are mutually exclusive: assign probability 0.3 to \\(A\\), 0.4 to \\(B\\), and 0.3 to neither event.",
+      "Therefore, the maximum possible value is \\(0.7\\)."
+    ],
+    "generalization": "For two events with given marginal probabilities, \\(\\max\\{P(A),P(B)\\}\\leq P(A\\cup B)\\leq\\min\\{1,P(A)+P(B)\\}\\). The maximum union probability is obtained by minimizing the overlap. If \\(P(A)+P(B)\\leq 1\\), mutually exclusive events attain the maximum.",
+    "answer_text": "E. \\(0.7\\)"
+  },
+  {
+    "id": 4,
+    "topic": "Symmetric Difference",
+    "title": "Exercise 4",
+    "statement": "[SOA/CAS 1999 Practice Exam #1] A marketing survey indicates that 60% of the population owns an automobile, 30% owns a house, and 20% owns both an automobile and a house.\n\nCalculate the probability that a person chosen at random owns an automobile or a house, but not both.",
+    "choices": [
+      "\\(0.4\\)",
+      "\\(0.5\\)",
+      "\\(0.6\\)",
+      "\\(0.7\\)",
+      "\\(0.9\\)"
+    ],
+    "correct": 1,
+    "solution_steps": [
+      "Let \\(A\\) denote automobile ownership and \\(H\\) house ownership.",
+      "We are given \\(P(A)=0.6\\), \\(P(H)=0.3\\), and \\(P(A\\cap H)=0.2\\).",
+      "The probability of owning an automobile but no house is \\(P(A\\cap H^c)=0.6-0.2=0.4\\).",
+      "The probability of owning a house but no automobile is \\(P(A^c\\cap H)=0.3-0.2=0.1\\).",
+      "Add these mutually exclusive possibilities: \\(P(A\\triangle H)=0.4+0.1=0.5\\).",
+      "Equivalently, \\(P(A\\triangle H)=0.6+0.3-2(0.2)=0.5\\)."
+    ],
+    "generalization": "Distinguish 'at least one' from 'exactly one.' For two events, \\(P(\\text{at least one})=P(A)+P(B)-P(A\\cap B)\\), whereas \\(P(\\text{exactly one})=P(A)+P(B)-2P(A\\cap B)\\).",
+    "answer_text": "B. \\(0.5\\)"
+  },
+  {
+    "id": 5,
+    "topic": "Bounds on Intersection Probabilities",
+    "title": "Exercise 5",
+    "statement": "If \\(P(A)=0.7\\) and \\(P(B)=0.6\\), what is the minimum possible value of \\(P(A\\cap B)\\)?",
+    "choices": [
+      "\\(0.3\\)",
+      "\\(0.4\\)",
+      "\\(0.5\\)",
+      "\\(0.6\\)",
+      "\\(0.7\\)"
+    ],
+    "correct": 0,
+    "solution_steps": [
+      "Rearrange the addition rule: \\(P(A\\cap B)=P(A)+P(B)-P(A\\cup B)\\).",
+      "Substituting gives \\(P(A\\cap B)=1.3-P(A\\cup B)\\).",
+      "Every probability is at most 1, so \\(P(A\\cup B)\\leq 1\\). Consequently, \\(P(A\\cap B)\\geq 1.3-1=0.3\\).",
+      "To verify that this bound is attainable, assign probabilities \\(P(A\\cap B)=0.3\\), \\(P(A\\cap B^c)=0.4\\), \\(P(A^c\\cap B)=0.3\\), and \\(P(A^c\\cap B^c)=0\\).",
+      "These four probabilities are nonnegative and sum to 1. They also give \\(P(A)=0.3+0.4=0.7\\) and \\(P(B)=0.3+0.3=0.6\\).",
+      "Therefore, the minimum possible intersection probability is \\(0.3\\)."
+    ],
+    "generalization": "For any two events, \\(\\max\\{0,P(A)+P(B)-1\\}\\leq P(A\\cap B)\\leq\\min\\{P(A),P(B)\\}\\). When the marginal probabilities sum to more than 1, an overlap of at least \\(P(A)+P(B)-1\\) is unavoidable. Independence must not be assumed unless stated.",
+    "answer_text": "A. \\(0.3\\)"
+  },
+  {
+    "id": 6,
+    "topic": "Bounds on Intersection Probabilities",
+    "title": "Exercise 6",
+    "statement": "If \\(P(A)=0.7\\) and \\(P(B)=0.6\\), what is the maximum possible value of \\(P(A\\cap B)\\)?",
+    "choices": [
+      "\\(0.3\\)",
+      "\\(0.4\\)",
+      "\\(0.5\\)",
+      "\\(0.6\\)",
+      "\\(0.7\\)"
+    ],
+    "correct": 3,
+    "solution_steps": [
+      "The intersection is contained in each event: \\(A\\cap B\\subseteq A\\) and \\(A\\cap B\\subseteq B\\).",
+      "Therefore, \\(P(A\\cap B)\\leq P(A)=0.7\\) and \\(P(A\\cap B)\\leq P(B)=0.6\\).",
+      "The tighter bound is \\(P(A\\cap B)\\leq\\min\\{0.7,0.6\\}=0.6\\).",
+      "This upper bound is attainable when \\(B\\subseteq A\\). In this case, \\(A\\cap B=B\\), so the intersection probability is 0.6.",
+      "For example, assign probability 0.6 to both events, 0.1 to \\(A\\) only, 0 to \\(B\\) only, and 0.3 to neither event.",
+      "Therefore, the maximum possible intersection probability is \\(0.6\\)."
+    ],
+    "generalization": "The largest possible intersection probability is \\(\\min\\{P(A),P(B)\\}\\). It is attained when the event with the smaller probability is contained in the other event. The product \\(P(A)P(B)\\) applies under independence, which is a separate assumption.",
+    "answer_text": "D. \\(0.6\\)"
+  },
+  {
+    "id": 7,
+    "topic": "Bounds on Union Probabilities",
+    "title": "Exercise 7",
+    "statement": "If \\(P(A)=0.3\\) and \\(P(B)=0.4\\), what is the minimum possible value of \\(P(A\\cup B)\\)?",
+    "choices": [
+      "\\(0.3\\)",
+      "\\(0.4\\)",
+      "\\(0.5\\)",
+      "\\(0.6\\)",
+      "\\(0.7\\)"
+    ],
+    "correct": 1,
+    "solution_steps": [
+      "The union contains both events, so \\(P(A\\cup B)\\geq P(A)\\) and \\(P(A\\cup B)\\geq P(B)\\).",
+      "Therefore, \\(P(A\\cup B)\\geq\\max\\{0.3,0.4\\}=0.4\\).",
+      "Equivalently, the addition rule gives \\(P(A\\cup B)=0.7-P(A\\cap B)\\). Minimizing the union requires maximizing the intersection.",
+      "The maximum possible intersection probability is \\(\\min\\{0.3,0.4\\}=0.3\\), giving \\(P(A\\cup B)=0.7-0.3=0.4\\).",
+      "This bound is attainable when \\(A\\subseteq B\\). Then \\(A\\cup B=B\\), whose probability is 0.4.",
+      "Therefore, the minimum possible union probability is \\(0.4\\)."
+    ],
+    "generalization": "The smallest possible union probability is \\(\\max\\{P(A),P(B)\\}\\). It is attained when the smaller-probability event is contained in the larger one. In general, \\(\\max\\{P(A),P(B)\\}\\leq P(A\\cup B)\\leq\\min\\{1,P(A)+P(B)\\}\\).",
+    "answer_text": "B. \\(0.4\\)"
+  }
+]
