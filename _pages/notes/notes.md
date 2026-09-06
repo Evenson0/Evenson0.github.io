@@ -174,6 +174,43 @@ author_profile: true
       </div>
     </div>
 
+
+
+        <div class="note-card">
+      <div class="note-tag">Actuarial Science</div>
+
+      <h3>SOA P Exam Notes</h3>
+
+      <p>
+        Personal probability notes for SOA Exam P, with worked
+        examples, a practice tool, and Formula Boxes explaining
+        key results and problem-solving methods.
+      </p>
+
+      <div class="note-links">
+        <a
+          class="note-btn"
+          href="{{ '/notes/soa-p/' | relative_url }}">
+          Open page
+        </a>
+
+        <a
+          class="note-btn"
+          href="{{ '/notes/soa-p/formula-boxes/' | relative_url }}">
+          Formula Boxes
+        </a>
+
+        <a
+          class="note-btn"
+          href="{{ '/tools/soa-p-practice/' | relative_url }}">
+          Practice
+        </a>
+      </div>
+    </div>
+
+
+    
+
   </div>
 
 </div>
