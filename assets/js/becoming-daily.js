@@ -93,12 +93,6 @@
       week:
         'Semaine',
 
-      today:
-        "Aujourd'hui",
-
-      physical:
-        'Physique',
-
       becoming:
         'Becoming',
 
@@ -108,23 +102,8 @@
       noTasks:
         'Aucune tâche supplémentaire prévue.',
 
-      routine:
-        'Routine quotidienne',
-
-      training:
-        'Musculation',
-
-      openImage:
-        "Ouvrir l'affiche",
-
-      schedule:
-        'Programme',
-
-      distribution:
-        'Répartition',
-
-      recovery:
-        'Récupération'
+      completed:
+        'accomplies'
     },
 
     en: {
@@ -149,12 +128,6 @@
       week:
         'Week',
 
-      today:
-        'Today',
-
-      physical:
-        'Physical',
-
       becoming:
         'Becoming',
 
@@ -164,23 +137,8 @@
       noTasks:
         'No additional tasks planned.',
 
-      routine:
-        'Daily routine',
-
-      training:
-        'Strength training',
-
-      openImage:
-        'Open poster',
-
-      schedule:
-        'Schedule',
-
-      distribution:
-        'Distribution',
-
-      recovery:
-        'Recovery'
+      completed:
+        'completed'
     }
   };
 
@@ -248,9 +206,7 @@
         now.getDate()
       ).padStart(2, '0');
 
-    return (
-      `${year}-${month}-${day}`
-    );
+    return `${year}-${month}-${day}`;
   };
 
   const today =
@@ -417,9 +373,10 @@
         domain: 'physical',
         time:
           card.duration ||
-          card.meta ||
-          card.meta_fr ||
-          '',
+          localize(
+            card,
+            'meta'
+          ),
         text:
           localize(
             card,
@@ -475,57 +432,27 @@
       };
     };
 
-  const renderTask = task => {
-    const row =
-      el(
-        'div',
-        `becoming-daily-task${
-          task.baseline
-            ? ' is-baseline'
-            : ''
-        }`
-      );
-
-    const meta =
-      el(
-        'small',
-        'becoming-daily-task__meta'
-      );
-
-    meta.textContent =
-      [
-        domainTitle(
-          task.domain
-        ),
-        task.time
-      ]
-        .filter(Boolean)
-        .join(' · ');
-
+  const taskStorageKey = (
+    date,
+    index,
+    task
+  ) => {
     const text =
-      el(
-        'strong',
-        'becoming-daily-task__text',
-        language === 'fr'
-          ? (
-              task.text_fr ||
-              task.text ||
-              ''
-            )
-          : (
-              task.text ||
-              task.text_fr ||
-              ''
-            )
-      );
+      task.text ||
+      task.text_fr ||
+      '';
 
-    row.append(
-      meta,
-      text
+    return (
+      `becoming.daily.${date}.` +
+      `${index}.` +
+      encodeURIComponent(text)
     );
-
-    return row;
   };
+
+  const isTaskDone = key =>
+    localStorage.getItem(
+      key
+    ) === '1';
 
   const renderDaily = () => {
     language =
@@ -675,27 +602,21 @@
           String(isSelected)
         );
 
-        const name =
+        button.append(
           el(
             'strong',
             '',
             localizedWeekday(
               day.date
             )
-          );
-
-        const date =
+          ),
           el(
             'small',
             '',
             formatDate(
               day.date
             )
-          );
-
-        button.append(
-          name,
-          date
+          )
         );
 
         button.addEventListener(
@@ -729,7 +650,7 @@
         'becoming-day-detail__head'
       );
 
-    const dayTitle =
+    head.append(
       el(
         'h3',
         '',
@@ -744,20 +665,14 @@
               day.title_fr ||
               ''
             )
-      );
-
-    const dayDate =
+      ),
       el(
         'span',
         '',
         formatDate(
           day.date
         )
-      );
-
-    head.append(
-      dayTitle,
-      dayDate
+      )
     );
 
     detail.append(head);
@@ -796,19 +711,148 @@
       return;
     }
 
+    const progress =
+      el(
+        'p',
+        'becoming-day-progress'
+      );
+
     const stack =
       el(
         'div',
         'becoming-daily-task-stack'
       );
 
-    tasks.forEach(task =>
-      stack.append(
-        renderTask(task)
-      )
+    const updateProgress = () => {
+      const done =
+        stack.querySelectorAll(
+          'input:checked'
+        ).length;
+
+      progress.textContent =
+        `${done} / ${tasks.length} ` +
+        copy[language].completed;
+    };
+
+    tasks.forEach(
+      (task, index) => {
+        const key =
+          taskStorageKey(
+            day.date,
+            index,
+            task
+          );
+
+        const row =
+          el(
+            'label',
+            `becoming-daily-task${
+              task.baseline
+                ? ' is-baseline'
+                : ''
+            }`
+          );
+
+        const checkbox =
+          document.createElement(
+            'input'
+          );
+
+        checkbox.type =
+          'checkbox';
+
+        checkbox.checked =
+          isTaskDone(key);
+
+        row.classList.toggle(
+          'is-done',
+          checkbox.checked
+        );
+
+        const body =
+          el(
+            'span',
+            'becoming-daily-task__body'
+          );
+
+        const meta =
+          el(
+            'small',
+            'becoming-daily-task__meta'
+          );
+
+        meta.textContent =
+          [
+            domainTitle(
+              task.domain
+            ),
+            task.time
+          ]
+            .filter(Boolean)
+            .join(' · ');
+
+        const text =
+          el(
+            'strong',
+            'becoming-daily-task__text',
+            language === 'fr'
+              ? (
+                  task.text_fr ||
+                  task.text ||
+                  ''
+                )
+              : (
+                  task.text ||
+                  task.text_fr ||
+                  ''
+                )
+          );
+
+        body.append(
+          meta,
+          text
+        );
+
+        row.append(
+          checkbox,
+          body
+        );
+
+        checkbox.addEventListener(
+          'change',
+          () => {
+            if (
+              checkbox.checked
+            ) {
+              localStorage.setItem(
+                key,
+                '1'
+              );
+            } else {
+              localStorage.removeItem(
+                key
+              );
+            }
+
+            row.classList.toggle(
+              'is-done',
+              checkbox.checked
+            );
+
+            updateProgress();
+          }
+        );
+
+        stack.append(row);
+      }
     );
 
-    detail.append(stack);
+    detail.append(
+      progress,
+      stack
+    );
+
+    updateProgress();
   };
 
   const renderProtocol =
@@ -1046,7 +1090,7 @@
                   'becoming-protocol-session'
                 );
 
-              const summary =
+              details.append(
                 el(
                   'summary',
                   '',
@@ -1054,10 +1098,7 @@
                     session,
                     'title'
                   )
-                );
-
-              details.append(
-                summary
+                )
               );
 
               if (
@@ -1080,9 +1121,7 @@
                     }
                   );
 
-                details.append(
-                  list
-                );
+                details.append(list);
               }
 
               schedule.append(
@@ -1095,9 +1134,7 @@
           );
         }
 
-        target.append(
-          article
-        );
+        target.append(article);
       });
     };
 
