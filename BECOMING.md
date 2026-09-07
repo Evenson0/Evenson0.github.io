@@ -1,148 +1,847 @@
 # Becoming
 
-`/becoming` is a long-term, evidence-based progression system. It answers three questions: what am I trying to become, what must I prove, and what should I work on this week? Git-tracked YAML and Markdown are the record; JavaScript only renders and navigates it.
+`/becoming/` is a long-term, evidence-based progression system.
+
+It connects three levels of planning:
+
+1. what should I do today?
+2. what should I accomplish this week?
+3. where does this work lead over the long term?
+
+The Roadmap gives direction. The weekly files define priorities. The daily plan turns those priorities into concrete actions.
+
+Git-tracked YAML and Markdown remain the source of truth. JavaScript renders and navigates the data, but it does not define the progression model.
+
+Before changing Becoming, read `BECOMING_HANDOFF.md` first.
+
+---
+
+## Core principles
+
+Becoming is not a generic habit tracker.
+
+Daily routines may be tracked, but they serve larger trajectories in actuarial work, research, mathematics, writing, English, physical development, career, capital, and software building.
+
+Important rules:
+
+- Do not mark an important milestone complete without real evidence.
+- Do not infer exam results, publications, contributions, certifications, or other achievements.
+- Plans are not accomplishments.
+- A checked daily task does not automatically complete a Roadmap node.
+- Do not change the architecture simply to modernize it.
+- A valid maintenance review may conclude that no important change is needed.
+
+The general rule is:
+
+> No evidence -> no permanent unlock.
+
+---
+
+## Visible pages
+
+Becoming has two main visible pages:
+
+```text
+/becoming/
+/becoming/roadmap/
+```
+
+### `/becoming/`
+
+The weekly page contains:
+
+- the current cycle;
+- week navigation;
+- weekly objectives;
+- a daily plan for the selected week;
+- locally checkable daily tasks;
+- the current permanent physical protocol.
+
+### `/becoming/roadmap/`
+
+The Roadmap contains:
+
+- progression domains;
+- nodes and milestones;
+- prerequisites;
+- statuses;
+- completion criteria;
+- unlock relationships;
+- long-term achievements.
+
+The Roadmap is not a daily task list.
+
+---
 
 ## Architecture
 
-- `_pages/becoming.md` controls publication and the `/becoming/` permalink.
-- `_data/becoming/domains.yml` registers domains and their ACTIVE / MAINTENANCE / DORMANT strategy.
-- `_data/becoming/trees/*.yml` defines nodes. Rendering is generic; a new tree does not require HTML or JavaScript changes.
-- `_data/becoming/achievements.yml` contains rare cross-tree achievements.
-- `_data/becoming/current.yml` is the small current-week command-center record.
-- `_becoming/weeks/*.md` is the chronological weekly journal collection.
-- `_includes/becoming/app.html`, `assets/css/becoming.scss`, and `assets/js/becoming.js` render the interface.
-- `scripts/validate_becoming.rb` validates IDs, fields, prerequisites, cycles, statuses, progress, and weekly records.
-- `scripts/new_becoming_week.py` creates the current ISO-week review without overwriting one.
+### Domains
 
-The page uses the site's existing Jekyll build, typography, theme variables, masthead, footer, and `relative_url` handling. Its graph is dependency-free SVG; the complete HTML list is the mobile and screen-reader representation.
+Registered in:
 
-## Weekly workflow
+```text
+_data/becoming/domains.yml
+```
 
-1. During Cycle 01, edit the already-created `week-01.md` through `week-12.md`. For a later missing week, run `python3 scripts/new_becoming_week.py`; it creates the next Sunday–Saturday record.
-2. Edit the created `_becoming/weeks/YYYY-Www.md`: choose a few concrete quests, record evidence, and answer only the useful reflection prompts.
-3. Keep the short overview synchronized in `_data/becoming/current.yml`.
-4. Change a node's explicit `status` only when needed. Availability and locking normally follow prerequisites automatically.
-5. Run `ruby scripts/validate_becoming.rb` and preview with `bundle exec jekyll serve --unpublished`.
+Current domains include:
 
-The planning principle is approximately three major ACTIVE domains, not a technical limit.
+```text
+research
+actuarial
+mathematics
+lean
+writing
+career
+building
+english
+capital
+physical
+```
 
-## Node schema
+A domain may be active, in maintenance, or dormant. The system is intentionally designed so that not every domain must be actively pursued at the same time.
 
-Only `id`, `title`, and `type` are required. Common optional fields are:
+---
+
+### Progression trees
+
+Each domain has a tree in:
+
+```text
+_data/becoming/trees/
+```
+
+Important examples:
+
+```text
+_data/becoming/trees/actuarial.yml
+_data/becoming/trees/research.yml
+_data/becoming/trees/physical.yml
+_data/becoming/trees/english.yml
+_data/becoming/trees/lean.yml
+```
+
+A typical node may contain:
 
 ```yaml
-- id: research-example
-  title: Example investigation
-  short_title: Example
-  type: project
+- id: example-node
+  title: Example Node
+  title_fr: Exemple
+  type: skill
   status: in_progress
-  priority: high
-  description: What completion means.
-  why: Why this work matters.
-  requires: [research-foundations]
+  requires:
+    - prerequisite-node
+  description: What this node represents.
+  description_fr: Ce que représente ce nœud.
   unlock_requirements:
-    - Reproducible result
-    - Technical note
-  progress: { mode: count, current: 2, target: 5, unit: results }
-  target_date: 2027-03
-  started_at: 2026-08-27
-  completed_at:
-  next_actions: [Run the robustness check]
-  evidence: []
-  resources: []
-  tags: [interpretability]
-  notes:
+    - Concrete completion condition
 ```
 
-Valid statuses are `locked`, `available`, `in_progress`, `maintenance`, `completed`, `paused`, and `dormant`. Avoid explicit `locked`/`available` where dependency computation can decide. A completed node requires `completed_at`.
+Only use explicit states when they represent real workflow state. Availability and locking should normally follow prerequisites.
 
-## Unlock logic
+---
 
-`requires` contains node IDs and may cross trees. A node with no prerequisites is available unless explicitly set otherwise. A node becomes available only when every prerequisite is completed. Explicit workflow states (`in_progress`, `maintenance`, `paused`, `dormant`) are respected. `completed` is never inferred: it requires an intentional record and completion date. This enforces “No evidence → no unlock.”
+## Node status and unlock logic
 
-Example completion:
+Supported statuses include:
+
+```text
+locked
+available
+in_progress
+awaiting_result
+maintenance
+completed
+paused
+dormant
+planned
+```
+
+`requires` contains node IDs and may reference nodes in other trees.
+
+General behavior:
+
+- A node with no prerequisites is available unless explicitly placed in another workflow state.
+- A node with prerequisites becomes available only when all required nodes are completed.
+- `completed` is intentional and should not be inferred from a daily checkbox.
+- A completed node should have a valid `completed_at` date when the schema requires it.
+- `in_progress`, `maintenance`, `paused`, `dormant`, and `awaiting_result` are explicit workflow states.
+
+---
+
+## Cycles
+
+Cycles are defined in:
+
+```text
+_data/becoming/cycles.yml
+```
+
+The current cycle is:
+
+```text
+foundations-01
+```
+
+Current dates:
+
+```text
+2026-09-06 -> 2026-11-28
+```
+
+Its principal active domains are:
+
+```text
+actuarial
+research
+physical
+```
+
+Other domains may remain in maintenance.
+
+A twelve-week cycle is a planning window, not the lifetime of Becoming.
+
+At the end of a cycle:
+
+1. review what actually happened;
+2. identify what worked and what failed;
+3. decide the next priorities;
+4. create or update the next cycle;
+5. update `current_cycle`;
+6. then create the next weekly records.
+
+Do not mechanically extend `foundations-01` beyond its end date.
+
+---
+
+## Weekly files
+
+Weekly records live in:
+
+```text
+_becoming/weeks/
+```
+
+The current cycle uses:
+
+```text
+week-01.md
+...
+week-12.md
+```
+
+Each week runs exactly Sunday through Saturday.
+
+General front matter:
 
 ```yaml
-- id: actuarial-fm
-  title: Exam 2 / Financial Mathematics
-  type: exam
-  status: completed
-  completed_at: 2026-10-31
-  evidence:
-    - type: exam_result
-      title: Official FM result
-      date: 2026-10-31
-      visibility: private
+---
+title:
+title_fr:
+
+cycle:
+cycle_week:
+
+start_date:
+end_date:
+
+status:
+
+active:
+maintenance:
+
+quests:
+
+days:
+
+completed:
+---
 ```
 
-For private evidence, put the status and evidence override in `private.yml`, not the tracked tree.
+The weekly file contains both strategic objectives and the daily execution plan.
 
-## Evidence
+Do not create seven separate files for seven days.
 
-Evidence belongs on the node it supports:
+---
+
+## Weekly objectives
+
+`quests:` contains the main weekly objectives.
+
+Example:
 
 ```yaml
-evidence:
-  - type: repository
-    title: Reproducible interpretability study
-    date: 2026-09-12
-    url: https://github.com/example/project
-    visibility: public
-  - type: external_review
-    title: Reviewer report
-    date: 2026-10-02
-    visibility: private
+quests:
+
+  - domain: actuarial
+    node: actuarial-example
+    task: Complete one substantial actuarial objective.
+    task_fr: Compléter un objectif actuariel substantiel.
+
+    completion:
+      - First concrete criterion
+      - Second concrete criterion
 ```
 
-Research outputs should distinguish `draft`, `working_paper`, `preprint`, `submitted`, `accepted`, `published`, and `peer_reviewed`. Do not call a draft published.
+A quest should be connected to a valid node whenever it represents Roadmap progress.
 
-## Add a research paper
+Keep weekly objectives concrete. Prefer actions, quantities, deliverables, or clearly defined study outcomes over grandiose labels.
 
-Add a node to `_data/becoming/trees/research.yml`, connect it with `requires`, define quality criteria, and attach the canonical output as evidence. Future research topics should remain “topic to emerge” until prior work produces a serious question.
+---
 
-## Add a node or tree
+## Daily plan
 
-To add a node, append it to the relevant tree file and run validation. To add a tree:
+Each weekly file includes a `days:` list.
 
-1. Add its registry entry to `domains.yml`.
-2. Create `_data/becoming/trees/<id>.yml` with `tree: <id>` and a `nodes` list.
-3. Run validation. No rendering edit is required.
+Example:
 
-Nodes can be archived without deletion by using `status: dormant` and an `archived` tag or note. Target dates and branches are ordinary editable data.
+```yaml
+days:
 
-## Privacy
+  - date: 2026-10-04
+    weekday: sunday
+    title: Example Day
+    title_fr: Journée exemple
 
-An unlinked or `noindex` page is not private. This repository may be public.
+    tasks:
 
-Copy `_data/becoming/private.example.yml` to `_data/becoming/private.yml`. The destination is ignored by Git and is merged into the browser data only in local builds. Put exact assets, body measurements, private reflections, sensitive career notes, and private evidence there. Never deploy a build created with that local file present: generated HTML would contain its data. Jekyll offers no authentication or server-side privacy.
+      - domain: actuarial
+        node: actuarial-example
+        time: 90 min
+        text: Complete a focused problem set.
+        text_fr: Compléter une série ciblée d'exercices.
+```
 
-Check before publishing:
+Each week should contain exactly seven dates matching the Sunday-to-Saturday range.
+
+Daily tasks may contain:
+
+```yaml
+domain:
+node:
+time:
+text:
+text_fr:
+```
+
+Tasks may also be general Becoming actions without a domain or node when appropriate, such as the weekly review.
+
+---
+
+## Daily interface
+
+The daily interface is implemented by:
+
+```text
+_includes/becoming/daily.html
+assets/js/becoming-daily.js
+assets/css/becoming-daily.scss
+```
+
+It uses:
+
+```text
+site.becoming
+site.data.becoming.domains
+site.data.becoming.physical_protocol
+```
+
+The daily section follows the week selected in the main weekly interface.
+
+It must not maintain an independent week selection model.
+
+---
+
+## Daily checkboxes
+
+Daily tasks are checkable in the browser.
+
+Completion state is stored locally with `localStorage`.
+
+The daily system uses keys based on the date and task identity.
+
+This local state means only:
+
+> this daily action was checked as done in this browser.
+
+It does not:
+
+- edit GitHub;
+- change the YAML source;
+- complete a Roadmap node;
+- prove that a permanent milestone was achieved.
+
+This distinction must remain intact.
+
+---
+
+## Physical protocol
+
+The permanent physical baseline is defined separately in:
+
+```text
+_data/becoming/physical_protocol.yml
+```
+
+This avoids repeating the same permanent routine inside every day of every weekly file.
+
+The current protocol contains:
+
+```text
+morning
+strength
+movement
+evening
+```
+
+The daily baseline includes the morning routine, daily movement, and evening routine.
+
+The strength session is selected according to the weekday.
+
+The current strength program is based on:
+
+```text
+Arnold Volume Training - Variation 2
+```
+
+The protocol is the current operating system, not a permanent law. Change it when evidence suggests the system should change, not merely to create novelty.
+
+Current protocol images are stored in:
+
+```text
+assets/images/becoming/physical/routine-du-matin.png
+assets/images/becoming/physical/routine-du-soir.png
+```
+
+---
+
+## Current actuarial planning logic
+
+The current cycle has two actuarial phases.
+
+### Phase 1 - Exam P primary
+
+Exam P is scheduled for:
+
+```text
+2026-11-07
+```
+
+Before that date:
+
+- Exam P is the primary actuarial objective;
+- FM remains in light maintenance;
+- P practice becomes increasingly mixed and timed;
+- the error log and exam strategy become more important near the exam;
+- the final P week does not include a normal FM study load.
+
+### Phase 2 - FM primary
+
+After Exam P:
+
+- record a short post-exam review;
+- stop active P preparation;
+- complete a fresh FM diagnostic;
+- classify weaknesses and errors;
+- make FM the primary actuarial objective.
+
+FM is planned for December 2026.
+
+Do not invent an exact appointment date until it is confirmed.
+
+The FM tree currently includes work on:
+
+```text
+diagnostic
+study system and calculator workflow
+interest rates
+annuities
+loans
+bonds
+general cash flows
+duration and immunization
+error log
+mixed practice
+timed practice
+readiness
+attempt
+credential
+```
+
+---
+
+## Current research direction
+
+The active research program is centered on P&C pricing.
+
+The current progression includes:
+
+```text
+GLM foundations
+GLM workflow
+model form
+refinement
+validation
+reproduction
+flexible alternatives
+ANAM
+interpretability
+fairness and calibration
+research-question formulation
+```
+
+The source is primarily:
+
+```text
+_data/becoming/trees/research.yml
+```
+
+Research should not become a reading checklist.
+
+Serious reading should progressively lead to some combination of:
+
+- understanding;
+- structured notes;
+- reproduction;
+- criticism;
+- comparison;
+- experiment;
+- code;
+- research questions;
+- synthesis;
+- project;
+- article.
+
+Future major research questions should emerge from previous work instead of being invented years in advance.
+
+---
+
+## Language support
+
+The interface supports:
+
+```text
+FR
+EN
+```
+
+The shared language preference is stored under:
+
+```text
+becoming.language
+```
+
+Common bilingual fields include:
+
+```yaml
+title / title_fr
+description / description_fr
+task / task_fr
+text / text_fr
+```
+
+The main interface and daily interface must stay synchronized.
+
+Official bibliographic titles may remain in their original language.
+
+---
+
+## Current-week pointers
+
+The small current-state record is:
+
+```text
+_data/becoming/current.yml
+```
+
+It should remain a concise pointer to the current cycle and current areas of focus.
+
+Do not duplicate the entire weekly plan inside `current.yml`.
+
+The detailed plan belongs in `_becoming/weeks/`.
+
+---
+
+## Main rendering files
+
+### Pages
+
+```text
+_pages/becoming.md
+_pages/becoming-roadmap.md
+```
+
+### Includes
+
+```text
+_includes/becoming/app.html
+_includes/becoming/daily.html
+```
+
+### JavaScript
+
+```text
+assets/js/becoming.js
+assets/js/becoming-daily.js
+```
+
+### CSS
+
+```text
+assets/css/becoming.scss
+assets/css/becoming-daily.scss
+```
+
+### Data
+
+```text
+_data/becoming/domains.yml
+_data/becoming/cycles.yml
+_data/becoming/current.yml
+_data/becoming/achievements.yml
+_data/becoming/physical_protocol.yml
+_data/becoming/trees/
+```
+
+### Weekly records
+
+```text
+_becoming/weeks/
+```
+
+### Maintenance scripts
+
+```text
+scripts/new_becoming_week.py
+scripts/validate_becoming.rb
+```
+
+---
+
+## Creating future weeks
+
+Run:
 
 ```bash
-git check-ignore _data/becoming/private.yml
-git status --short
+python3 scripts/new_becoming_week.py
 ```
 
-## Publication
+The generator creates the next week inside the current cycle and includes seven day records.
 
-The page is initially absent from normal builds because `_pages/becoming.md` has `published: false`; it is also absent from navigation and has `noindex`. For local preview use `--unpublished`.
+Use dry-run when useful:
 
-To publish later:
+```bash
+python3 scripts/new_becoming_week.py --dry-run
+```
 
-1. Ensure `_data/becoming/private.yml` is absent from the deployment environment.
-2. Set `published: true` in `_pages/becoming.md`.
-3. Set `enabled: true` and, when indexing is wanted, `noindex: false` in `_data/becoming/settings.yml`.
-4. Optionally add `/becoming/` to `_data/navigation.yml`.
-5. Build and validate before pushing.
+The generator should refuse to create a week that extends beyond the current cycle.
 
-Remember that all committed source data remains visible on GitHub even if the page is unpublished.
+When the cycle is over, define the next cycle before generating another week.
 
-## Validation and preview
+---
+
+## Weekly review
+
+Each weekly file ends with:
+
+```markdown
+## Weekly Review
+
+### Progress
+
+### Bottleneck
+
+### Discovery
+
+### Adjustment
+
+### Roadmap Change
+```
+
+Use this review to decide whether:
+
+- the workload was realistic;
+- priorities should move;
+- an assumption was wrong;
+- a task should be postponed;
+- a node status should change;
+- the Roadmap genuinely needs adjustment.
+
+Do not change the Roadmap every week merely to create visible movement.
+
+---
+
+## Validation
+
+Run:
 
 ```bash
 ruby scripts/validate_becoming.rb
-bundle exec jekyll build --unpublished
-bundle exec jekyll serve --unpublished
 ```
 
-The credential source date is stored with the Actuarial tree. Recheck the official CAS pathway when requirements change. Lean contribution notes link to current mathlib guidance; understand all submitted formalizations and follow the community's current AI disclosure rules.
+The validator checks the Becoming data model, including:
+
+- domains;
+- tree IDs;
+- duplicate node IDs;
+- statuses;
+- prerequisites;
+- dependency cycles;
+- cycle dates;
+- weekly dates;
+- active and maintenance node references;
+- quest references;
+- daily plans;
+- exactly seven days per week;
+- weekday/date consistency;
+- daily node and domain references;
+- continuity between weeks;
+- cycle boundaries;
+- physical protocol references.
+
+Also validate JavaScript syntax when JavaScript changes:
+
+```bash
+node --check assets/js/becoming.js
+node --check assets/js/becoming-daily.js
+```
+
+A successful Jekyll build is necessary but does not prove that browser interactions work correctly.
+
+---
+
+## Browser verification
+
+After interface changes, verify `/becoming/` manually:
+
+- correct selected week;
+- week navigation;
+- weekly titles and dates;
+- quests;
+- daily day navigation;
+- daily tasks;
+- checkbox behavior;
+- checkbox persistence after refresh;
+- physical protocol;
+- physical images;
+- FR / EN synchronization;
+- mobile layout.
+
+Verify `/becoming/roadmap/`:
+
+- domain selection;
+- node rendering;
+- states;
+- prerequisites;
+- detail panel;
+- FR / EN;
+- mobile layout.
+
+---
+
+## Privacy
+
+The repository may be public.
+
+An unpublished page is not private.
+
+Do not commit unnecessary private information such as:
+
+- detailed current personal measurements;
+- exact private financial values;
+- private journals;
+- confidential exam information;
+- private career notes;
+- other sensitive records.
+
+A public progression structure does not require every current measurement to be public.
+
+Never invent missing private data.
+
+---
+
+## Visual direction
+
+The intended feel is:
+
+- academic laboratory;
+- serious strategy interface;
+- personal progression map;
+- modern but not gimmicky;
+- dense but readable;
+- mobile-friendly.
+
+Avoid:
+
+- artificial XP;
+- confetti;
+- mascots;
+- sounds;
+- pointless badges;
+- excessive animation;
+- infantilizing gamification.
+
+Preserve:
+
+- strong information hierarchy;
+- restrained motion;
+- dark-mode support;
+- `prefers-reduced-motion`;
+- good touch interaction;
+- clear distinction between daily action and long-term progression.
+
+---
+
+## Anti-churn rule
+
+Before changing Becoming, ask:
+
+1. What concrete problem exists?
+2. Does this change solve it?
+3. Is there already a mechanism that solves it?
+4. Will the system become clearer or merely different?
+5. How many additional files must change only to support this idea?
+
+If there is no strong reason to change something, leave it alone.
+
+---
+
+## Recommended maintenance workflow
+
+1. Read `BECOMING_HANDOFF.md`.
+2. Read this file.
+3. Inspect the actual current implementation.
+4. Identify real problems.
+5. Change the smallest reasonable number of files.
+6. Run validation.
+7. Check the deployed site.
+8. Document structural changes.
+
+For GitHub Web editing, complete-file replacements are often safer than fragmented patches.
+
+Do not modify the repository automatically unless explicitly asked.
+
+---
+
+## Current state summary
+
+Becoming currently includes:
+
+- a long-term Roadmap;
+- one active twelve-week cycle;
+- twelve weekly records;
+- a seven-day plan inside each week;
+- browser-checkable daily tasks;
+- a separate permanent physical protocol;
+- a P-to-FM actuarial transition;
+- an active P&C pricing research path;
+- bilingual FR / EN rendering;
+- a structural validator;
+- a future-week generator.
+
+The current cycle ends on:
+
+```text
+2026-11-28
+```
+
+The next cycle should be designed from actual evidence gathered during this one.
