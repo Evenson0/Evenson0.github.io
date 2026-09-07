@@ -1,5 +1,5 @@
 version: 1
-updated_at: 2026-09-06
+updated_at: 2026-09-07
 
 title: Current Physical Protocol
 title_fr: Protocole physique actuel
@@ -20,7 +20,7 @@ daily_baseline:
 cards:
 
   # ============================================================
-  # MORNING
+  # MORNING ROUTINE
   # ============================================================
 
   - id: morning
@@ -38,7 +38,7 @@ cards:
         text_fr: Stomach vacuum — 3 × 20–30 s
 
       - text: Gentle shoulder, hip, and ankle mobility — 1–2 min
-        text_fr: Mobilité douce épaules, hanches et chevilles — 1–2 min
+        text_fr: Mobilité douce des épaules, hanches et chevilles — 1–2 min
 
       - text: Push-ups — 42 total reps
         text_fr: Pompes — 42 répétitions au total
@@ -62,14 +62,15 @@ cards:
         text_fr: Eau et une intention pour la journée
 
   # ============================================================
-  # ARNOLD — VARIATION 2
+  # STRENGTH TRAINING
+  # ARNOLD VOLUME — VARIATION 2
   # ============================================================
 
   - id: strength
     title: Arnold Volume Training
     title_fr: Programme Arnold Volume
-    meta: Variation 2 · 6 days/week
-    meta_fr: Variation 2 · 6 jours/semaine
+    meta: "Variation 2 · 6 days/week"
+    meta_fr: "Variation 2 · 6 jours/semaine"
 
     schedule:
 
@@ -81,6 +82,7 @@ cards:
       - weekday: monday
         title: Day 1 — Chest & Back
         title_fr: Jour 1 — Poitrine et dos
+
         exercises:
           - Bench Press — 3–4 × 10
           - Incline Bench Press — 3–4 × 10
@@ -93,6 +95,7 @@ cards:
       - weekday: tuesday
         title: Day 2 — Shoulders & Arms
         title_fr: Jour 2 — Épaules et bras
+
         exercises:
           - Barbell Clean and Press — 3–4 × 10
           - Dumbbell Lateral Raise — 3–4 × 10
@@ -109,6 +112,7 @@ cards:
       - weekday: wednesday
         title: Day 3 — Legs & Lower Back
         title_fr: Jour 3 — Jambes et bas du dos
+
         exercises:
           - Squat — 3–4 × 10
           - Lunge — 3–4 × 10
@@ -121,6 +125,7 @@ cards:
       - weekday: thursday
         title: Day 4 — Chest & Back
         title_fr: Jour 4 — Poitrine et dos
+
         exercises:
           - Bench Press — 3–4 × 10
           - Incline Bench Press — 3–4 × 10
@@ -133,6 +138,7 @@ cards:
       - weekday: friday
         title: Day 5 — Shoulders & Arms
         title_fr: Jour 5 — Épaules et bras
+
         exercises:
           - Barbell Clean and Press — 3–4 × 10
           - Dumbbell Lateral Raise — 3–4 × 10
@@ -149,6 +155,7 @@ cards:
       - weekday: saturday
         title: Day 6 — Legs & Lower Back
         title_fr: Jour 6 — Jambes et bas du dos
+
         exercises:
           - Squat — 3–4 × 10
           - Lunge — 3–4 × 10
@@ -159,7 +166,7 @@ cards:
           - Crunches — 5 × 25
 
   # ============================================================
-  # MOVEMENT
+  # DAILY MOVEMENT
   # ============================================================
 
   - id: movement
@@ -169,28 +176,29 @@ cards:
     meta_fr: 12 000–15 000 pas/jour
 
     distribution:
+
       - title: Morning
         title_fr: Matin
-        target: 2500 steps
+        target: 2,500 steps
         target_fr: 2 500 pas
 
       - title: Lunch
         title_fr: Midi
-        target: 2500 steps
+        target: 2,500 steps
         target_fr: 2 500 pas
 
       - title: Daily life / commute
         title_fr: Déplacements et activité quotidienne
-        target: 3000 steps
+        target: 3,000 steps
         target_fr: 3 000 pas
 
       - title: Evening
         title_fr: Soir
-        target: 4000–7000 steps
+        target: 4,000–7,000 steps
         target_fr: 4 000–7 000 pas
 
   # ============================================================
-  # EVENING
+  # EVENING ROUTINE
   # ============================================================
 
   - id: evening
