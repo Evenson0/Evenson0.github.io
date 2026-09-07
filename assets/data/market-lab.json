@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-07T17:45:46.685944+00:00",
+  "updated_at": "2026-09-07T20:47:51.065196+00:00",
   "assets": {
     "Indices": [
       {
@@ -164,31 +164,31 @@
         "symbol": "CAD=X",
         "name": "USD / CAD",
         "price": 1.3813,
-        "change_pct": 0.17,
+        "change_pct": 0.167,
         "low_52w": 1.3492,
         "high_52w": 1.4235
       },
       {
         "symbol": "EURUSD=X",
         "name": "EUR / USD",
-        "price": 1.1628,
-        "change_pct": -0.003,
+        "price": 1.1625,
+        "change_pct": -0.027,
         "low_52w": 1.1354,
         "high_52w": 1.2018
       },
       {
         "symbol": "GBPUSD=X",
         "name": "GBP / USD",
-        "price": 1.3543,
-        "change_pct": 0.084,
+        "price": 1.3542,
+        "change_pct": 0.073,
         "low_52w": 1.3022,
         "high_52w": 1.3825
       },
       {
         "symbol": "JPY=X",
         "name": "USD / JPY",
-        "price": 154.353,
-        "change_pct": -0.84,
+        "price": 154.366,
+        "change_pct": -0.831,
         "low_52w": 146.413,
         "high_52w": 163.864
       }
@@ -255,6 +255,27 @@
       "time": "Latest"
     },
     {
+      "title": "Could This Vanguard Growth ETF Be a No-Brainer Buy for Long-Term Investors?",
+      "link": "https://www.fool.com/investing/2026/09/07/could-this-vanguard-growth-etf-be-a-no-brainer-buy-for-long-term-investors/",
+      "publisher": "Motley Fool",
+      "related": "^GSPC",
+      "time": "Latest"
+    },
+    {
+      "title": "Nvidia Stock: Is It Still a Good Buy at $230?",
+      "link": "https://www.fool.com/investing/2026/09/07/nvidia-stock-is-it-still-a-good-buy-at-230/",
+      "publisher": "Motley Fool",
+      "related": "^GSPC",
+      "time": "Latest"
+    },
+    {
+      "title": "Illumina and Everpure to Join S&P 500 in September Rebalancing: What it Means for Investors",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/illumina-everpure-join-p-500-191523204.html",
+      "publisher": "Insider Monkey",
+      "related": "^GSPC",
+      "time": "Latest"
+    },
+    {
       "title": "IBB Just Beat the S&P 500 by 22 Points in Three Months. Are You Late to the Party?",
       "link": "https://247wallst.com/investing/etf/2026/09/07/ibb-just-beat-the-sp-500-by-22-points-in-three-months-are-you-late-to-the-party/",
       "publisher": "24/7 Wall St.",
@@ -265,27 +286,6 @@
       "title": "Philips Expands Women's Health Ultrasound Portfolio With New Transducer",
       "link": "https://finance.yahoo.com/healthcare/articles/philips-expands-womens-health-ultrasound-162000921.html",
       "publisher": "Zacks",
-      "related": "^GSPC",
-      "time": "Latest"
-    },
-    {
-      "title": "Which Telecom Stock Has Dominated in 2026: AT&T, Verizon, or T-Mobile? (It’s Not Even Close)",
-      "link": "https://247wallst.com/investing/2026/09/07/which-telecom-stock-has-dominated-in-2026-att-verizon-or-t-mobile-its-not-even-close/",
-      "publisher": "24/7 Wall St.",
-      "related": "^GSPC",
-      "time": "Latest"
-    },
-    {
-      "title": "Berkshire Hathaway B (BRK.B) Down 3% Since Last Earnings Report: Can It Rebound?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-b-brk-b-153001871.html",
-      "publisher": "Zacks",
-      "related": "^GSPC",
-      "time": "Latest"
-    },
-    {
-      "title": "What's Wrong With PepsiCo Stock?",
-      "link": "https://www.fool.com/investing/2026/09/07/what-s-wrong-with-pepsico-stock/",
-      "publisher": "Motley Fool",
       "related": "^GSPC",
       "time": "Latest"
     },
