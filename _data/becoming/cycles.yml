@@ -3,8 +3,8 @@ current_cycle: foundations-01
 cycles:
 
   - id: foundations-01
-    title: FM · P&C Pricing · Training
-    title_fr: FM · Tarification IARD · Entraînement
+    title: P · P&C Pricing · Training
+    title_fr: P · Tarification IARD · Entraînement
     cycle_number: 1
 
     start_date: 2026-09-06
@@ -29,7 +29,7 @@ cycles:
       - building
 
     objectives:
-      - Prepare seriously for FM and sit the October 2026 exam.
+      - Prepare seriously for Exam P and sit the examination on November 7, 2026, while keeping FM warm before making FM the primary actuarial focus after P.
       - Build a serious foundation in P&C pricing research, beginning with GLMs and progressing toward modern actuarial models.
       - Establish a consistent physical routine that continues beyond this twelve-week planning window.
       - Maintain regular English practice with progressively more demanding uses.
@@ -37,7 +37,7 @@ cycles:
       - Formalize a small amount of mathematics in Lean every week.
 
     objectives_fr:
-      - Se préparer sérieusement à FM et passer l'examen d'octobre 2026.
+      - Se préparer sérieusement à l'examen P et le passer le 7 novembre 2026, tout en maintenant FM actif avant d'en faire la priorité actuarielle après P.
       - Construire une base sérieuse en recherche sur la tarification IARD, en commençant par les GLM puis en allant vers les modèles actuariels modernes.
       - Établir une routine physique régulière qui se poursuit au-delà de cette fenêtre de douze semaines.
       - Maintenir une pratique régulière de l'anglais avec des usages progressivement plus exigeants.
