@@ -17,16 +17,24 @@ nodes:
     title_fr: Processus physique
     type: foundation
     status: in_progress
+
     description: >
-      Build a sustainable weekly system for strength, running,
-      daily movement, recovery, and private progress tracking.
+      Build a sustainable physical operating system combining a daily
+      morning routine, structured strength training, daily movement,
+      evening recovery, and private progress tracking.
+
     description_fr: >
-      Construire un système hebdomadaire durable combinant musculation,
-      course, mouvement quotidien, récupération et suivi privé de la progression.
+      Construire un système physique durable combinant une routine
+      matinale quotidienne, un programme structuré de musculation,
+      du mouvement quotidien, une routine de récupération le soir
+      et un suivi privé de la progression.
+
     unlock_requirements:
-      - Weekly plan defined
+      - Current physical protocol defined
+      - Weekly training schedule defined
+      - Daily movement system defined
+      - Morning and evening routines defined
       - Sessions tracked privately
-      - Daily movement tracked privately
       - Weekly process review completed
 
   - id: physical-training-consistency
@@ -34,13 +42,16 @@ nodes:
     title_fr: Régularité de l'entraînement
     type: process
     status: in_progress
+
     requires:
       - physical-process
+
     progress:
       mode: streak
       current: 0
       target: 8
       unit: weeks
+
     unlock_requirements:
       - Eight substantially completed weeks
       - Weekly plan reviewed when necessary
@@ -50,8 +61,10 @@ nodes:
     title: Sustainable Physical Routine
     title_fr: Routine physique durable
     type: mastery
+
     requires:
       - physical-training-consistency
+
     unlock_requirements:
       - Consistent routine maintained over multiple months
       - Training adjusted when life constraints change
@@ -62,9 +75,11 @@ nodes:
     title_fr: Point de départ — 138 kg
     type: physical_milestone
     status: in_progress
+
     description: >
       Baseline milestone for the current long-term body-mass trajectory.
       Exact personal records remain private.
+
     description_fr: >
       Point de référence pour la trajectoire de masse corporelle à long terme.
       Les données personnelles exactes restent privées.
@@ -116,11 +131,14 @@ nodes:
     title_fr: Atteindre 80 kg
     short_title: 80 kg
     type: boss
+
     requires:
       - physical-85
+
     description: >
       Reach the current user-defined long-term body-mass target.
       Reaching the number once is not considered long-term completion.
+
     description_fr: >
       Atteindre l'objectif de masse corporelle à long terme actuellement
       défini. Atteindre ce nombre une seule fois ne constitue pas la fin
@@ -130,6 +148,7 @@ nodes:
     title: Establish Target Maintenance
     title_fr: Stabiliser le poids cible
     type: maintenance
+
     requires:
       - physical-80
 
@@ -137,6 +156,7 @@ nodes:
     title: Three Months Maintained
     title_fr: Maintien pendant trois mois
     type: physical_milestone
+
     requires:
       - physical-target-maintenance
 
@@ -144,6 +164,7 @@ nodes:
     title: Six Months Maintained
     title_fr: Maintien pendant six mois
     type: physical_milestone
+
     requires:
       - physical-maintenance-3m
 
@@ -152,9 +173,11 @@ nodes:
     title_fr: Évaluation de la capacité physique
     type: assessment
     status: available
+
     description: >
       Establish a private baseline for endurance, strength, mobility,
       and hiking capacity before defining long-term performance targets.
+
     description_fr: >
       Établir un point de départ privé pour l'endurance, la force,
       la mobilité et la capacité en randonnée avant de fixer des
@@ -164,6 +187,7 @@ nodes:
     title: Endurance Progression
     title_fr: Progression en endurance
     type: skill
+
     requires:
       - physical-capacity-baseline
 
@@ -171,6 +195,7 @@ nodes:
     title: Strength Progression
     title_fr: Progression en force
     type: skill
+
     requires:
       - physical-capacity-baseline
 
@@ -178,11 +203,14 @@ nodes:
     title: Hiking Capacity
     title_fr: Capacité en randonnée
     type: skill
+
     requires:
       - physical-capacity-baseline
+
     description: >
       Build the endurance and resilience required for increasingly
       demanding hikes, using completed routes to track progress.
+
     description_fr: >
       Développer l'endurance et la résistance nécessaires à des randonnées
       progressivement plus exigeantes en utilisant les parcours complétés
@@ -192,6 +220,7 @@ nodes:
     title: Physical Capacity
     title_fr: Capacité physique
     type: mastery
+
     requires:
       - physical-endurance
       - physical-strength
@@ -201,6 +230,7 @@ nodes:
     title: Physical Transformation
     title_fr: Transformation physique
     type: legendary
+
     requires:
       - physical-maintenance-6m
       - physical-capacity
