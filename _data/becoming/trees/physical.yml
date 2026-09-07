@@ -88,6 +88,7 @@ nodes:
     title: 130 kg
     title_fr: 130 kg
     type: physical_milestone
+
     requires:
       - physical-138
 
@@ -95,6 +96,7 @@ nodes:
     title: 120 kg
     title_fr: 120 kg
     type: physical_milestone
+
     requires:
       - physical-130
 
@@ -102,6 +104,7 @@ nodes:
     title: 110 kg
     title_fr: 110 kg
     type: physical_milestone
+
     requires:
       - physical-120
 
@@ -109,6 +112,7 @@ nodes:
     title: Below 100 kg
     title_fr: Sous les 100 kg
     type: physical_milestone
+
     requires:
       - physical-110
 
@@ -116,6 +120,7 @@ nodes:
     title: 90 kg
     title_fr: 90 kg
     type: physical_milestone
+
     requires:
       - physical-below-100
 
@@ -123,6 +128,7 @@ nodes:
     title: 85 kg
     title_fr: 85 kg
     type: physical_milestone
+
     requires:
       - physical-90
 
