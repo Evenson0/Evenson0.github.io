@@ -1,13 +1,14 @@
 current_cycle: foundations-01
 
 cycles:
+
   - id: foundations-01
     title: FM · P&C Pricing · Training
     title_fr: FM · Tarification IARD · Entraînement
     cycle_number: 1
 
-    start_date: 2026-08-30
-    end_date: 2026-11-21
+    start_date: 2026-09-06
+    end_date: 2026-11-28
 
     status: active
 
