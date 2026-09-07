@@ -113,8 +113,7 @@
     var(--b-accent) 10%,
     var(--global-bg-color)
   );
-  box-shadow:
-    inset 0 -3px 0 var(--b-accent);
+  box-shadow: inset 0 -3px 0 var(--b-accent);
 }
 
 .becoming-day-button.is-today::after {
@@ -164,6 +163,13 @@
   font-size: .7rem;
 }
 
+.becoming-day-progress {
+  margin: -.3rem 0 1rem;
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .68rem;
+}
+
 .becoming-daily-task-stack {
   display: grid;
   gap: .55rem;
@@ -171,15 +177,31 @@
 
 .becoming-daily-task {
   display: grid;
-  gap: .25rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .75rem;
+  align-items: start;
   padding: .85rem 1rem;
   border: 1px solid var(--b-line);
   border-radius: 8px;
   background: var(--global-bg-color);
+  cursor: pointer;
+  transition:
+    opacity .2s ease,
+    border-color .2s ease;
 }
 
 .becoming-daily-task.is-baseline {
   border-left: 3px solid var(--b-accent);
+}
+
+.becoming-daily-task input {
+  margin-top: .3rem;
+  accent-color: var(--b-accent);
+}
+
+.becoming-daily-task__body {
+  display: grid;
+  gap: .25rem;
 }
 
 .becoming-daily-task__meta {
@@ -195,6 +217,14 @@
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
+}
+
+.becoming-daily-task.is-done {
+  opacity: .62;
+}
+
+.becoming-daily-task.is-done .becoming-daily-task__text {
+  text-decoration: line-through;
 }
 
 .becoming-daily-empty {
@@ -279,7 +309,6 @@
 
 .becoming-protocol-distribution {
   display: grid;
-  gap: 0;
 }
 
 .becoming-protocol-distribution__row {
@@ -318,8 +347,7 @@
 
 .becoming-protocol-session ul {
   margin: 0;
-  padding:
-    .15rem 1.2rem .85rem 2rem;
+  padding: .15rem 1.2rem .85rem 2rem;
 }
 
 .becoming-protocol-session li {
@@ -331,6 +359,7 @@
    ============================================================ */
 
 @media (max-width: 760px) {
+
   .becoming-extension__head {
     display: block;
   }
