@@ -221,32 +221,43 @@ nodes:
       - Final formula review system ready
       - Exam-day strategy defined
 
-  - id: actuarial-fm-attempt
+    - id: actuarial-fm-attempt
     title: FM Exam Attempt
     title_fr: Tentative à l'examen FM
     type: exam
+
     requires:
       - actuarial-fm-readiness
-    exam_window:
-      start: 2026-10-01
-      end: 2026-10-12
-    registration_deadline: 2026-09-02
+
     appointment_date: null
+    target_date: 2026-12
+
     notes: >
-      The October 2026 SOA FM testing window is October 1–12.
-      The personal appointment date may remain in private.yml.
-      Sitting the examination is not equivalent to passing it.
+      Planned personal FM attempt in December 2026.
+      The exact appointment date and testing-window details should be
+      recorded once confirmed. Sitting the examination is not equivalent
+      to passing it.
+
+    notes_fr: >
+      Tentative personnelle à l'examen FM prévue en décembre 2026.
+      La date exacte du rendez-vous et les détails de la fenêtre d'examen
+      seront ajoutés une fois confirmés. Passer l'examen ne signifie pas
+      automatiquement l'avoir réussi.
 
   - id: actuarial-fm
     title: Exam 2 / Financial Mathematics
     title_fr: Examen 2 / Mathématiques financières
     short_title: FM
     type: credential
+
     requires:
       - actuarial-fm-attempt
-    target_date: 2026-10
+
+    target_date: 2026-12
+
     unlock_requirements:
       - Official passing result recorded
+
     source:
       organization: Society of Actuaries
       title: Financial Mathematics Exam
@@ -262,10 +273,30 @@ nodes:
     title_fr: Examen 1 / Probabilités
     short_title: P
     type: exam
-    status: available
-    unlock_requirements:
-      - Official CAS-recognized Exam 1 credit
+    status: in_progress
 
+    appointment_date: 2026-11-07
+    target_date: 2026-11-07
+
+    description: >
+      Prepare for and sit Exam P on November 7, 2026, with cumulative
+      probability practice, systematic error review, and timed mixed sets.
+
+    description_fr: >
+      Se préparer à l'examen P du 7 novembre 2026 et le passer en utilisant
+      une pratique cumulative de la probabilité, une revue systématique des
+      erreurs et des séries mixtes chronométrées.
+
+    unlock_requirements:
+      - General probability reviewed
+      - Discrete random variables reviewed
+      - Continuous random variables reviewed
+      - Multivariate probability reviewed
+      - Multiple mixed sets completed
+      - Timed practice completed
+      - Recurring errors reviewed
+      - Exam sat on November 7, 2026
+      - Official CAS-recognized Exam 1 credit
   - id: actuarial-vee-economics
     title: VEE Economics
     title_fr: VEE Économie
