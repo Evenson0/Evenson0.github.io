@@ -1,0 +1,85 @@
+<section
+  id="becoming-daily"
+  class="becoming-extension becoming-daily"
+  aria-labelledby="becoming-daily-heading"
+>
+  <header class="becoming-extension__head">
+    <div>
+      <p
+        class="becoming-extension__eyebrow"
+        id="becoming-daily-eyebrow"
+      >
+        Plan quotidien
+      </p>
+
+      <h2 id="becoming-daily-heading">
+        Aujourd'hui
+      </h2>
+
+      <p
+        class="becoming-extension__intro"
+        id="becoming-daily-intro"
+      >
+        Les objectifs de la semaine, transformés en actions concrètes jour par jour.
+      </p>
+    </div>
+
+    <span id="becoming-daily-week"></span>
+  </header>
+
+  <nav
+    id="becoming-day-rail"
+    class="becoming-day-rail"
+    aria-label="Jours de la semaine"
+  ></nav>
+
+  <article
+    id="becoming-day-detail"
+    class="becoming-day-detail"
+  ></article>
+</section>
+
+<section
+  id="physical-protocol"
+  class="becoming-extension becoming-protocol"
+  aria-labelledby="physical-protocol-heading"
+>
+  <header class="becoming-extension__head">
+    <div>
+      <p
+        class="becoming-extension__eyebrow"
+        id="physical-protocol-eyebrow"
+      >
+        Système permanent
+      </p>
+
+      <h2 id="physical-protocol-heading">
+        Protocole physique actuel
+      </h2>
+
+      <p
+        class="becoming-extension__intro"
+        id="physical-protocol-intro"
+      >
+        La routine utilisée actuellement pour construire régularité,
+        force, mouvement quotidien et récupération.
+      </p>
+    </div>
+  </header>
+
+  <div
+    id="becoming-physical-protocol"
+    class="becoming-protocol-grid"
+  ></div>
+</section>
+
+<script
+  id="becoming-daily-data"
+  type="application/json"
+>
+{
+  "weeks": {{ site.becoming | jsonify }},
+  "domains": {{ site.data.becoming.domains | jsonify }},
+  "physicalProtocol": {{ site.data.becoming.physical_protocol | jsonify }}
+}
+</script>
