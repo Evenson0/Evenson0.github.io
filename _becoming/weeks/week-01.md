@@ -1,20 +1,22 @@
 ---
-title: FM · P · Insurance GLMs · Physical System
-title_fr: FM · P · GLM en assurance · Système physique
+title: P Diagnostic · Insurance GLM · Physical System
+title_fr: Diagnostic P · GLM en assurance · Système physique
 
 cycle: foundations-01
 cycle_week: 1
+
 start_date: 2026-09-06
 end_date: 2026-09-12
+
 status: in_progress
 
 active:
-  - actuarial-fm-diagnostic
   - actuarial-exam-1
   - research-actuarial-glm-tweedie
   - physical-process
 
 maintenance:
+  - actuarial-fm-diagnostic
   - english-conversation-practice
   - lean-fundamentals
   - writing-reading-practice
@@ -25,15 +27,55 @@ user_inputs:
 
 quests:
 
-  - domain: actuarial
-    node: actuarial-fm-diagnostic
-    task: Prioritize FM study, exercises, and a first mixed diagnostic.
-    task_fr: Prioriser FM avec études, exercices et un premier diagnostic mixte.
+  # ============================================================
+  # ACTUARIAL — EXAM P
+  # ============================================================
 
   - domain: actuarial
     node: actuarial-exam-1
-    task: Keep Exam P warm with two focused practice sessions.
-    task_fr: Maintenir P actif avec deux séances ciblées d'exercices.
+    task: Complete an Exam P diagnostic, review general probability, and begin a structured error log.
+    task_fr: Compléter un diagnostic de l'examen P, revoir la probabilité générale et commencer un journal d'erreurs structuré.
+
+    completion:
+      - Complete one mixed Exam P diagnostic
+      - Identify the three weakest probability areas
+      - Create an error log
+      - Review general probability
+      - Review conditional probability
+      - Review independence
+      - Complete cumulative practice
+
+    completion_fr:
+      - Compléter un diagnostic mixte de l'examen P
+      - Identifier les trois principales faiblesses en probabilité
+      - Créer un journal d'erreurs
+      - Revoir la probabilité générale
+      - Revoir la probabilité conditionnelle
+      - Revoir l'indépendance
+      - Compléter une pratique cumulative
+
+  # ============================================================
+  # ACTUARIAL — FM MAINTENANCE
+  # ============================================================
+
+  - domain: actuarial
+    node: actuarial-fm-diagnostic
+    task: Keep FM warm with two short practice sessions.
+    task_fr: Maintenir FM actif avec deux courtes séances de pratique.
+
+    completion:
+      - Complete two short FM sessions
+      - Review interest-theory fundamentals
+      - Record any recurring FM errors
+
+    completion_fr:
+      - Compléter deux courtes séances FM
+      - Revoir les bases de la théorie de l'intérêt
+      - Noter les erreurs FM récurrentes
+
+  # ============================================================
+  # RESEARCH
+  # ============================================================
 
   - domain: research
     node: research-actuarial-glm-tweedie
@@ -47,6 +89,7 @@ quests:
       - Explain the link function
       - Understand continuous and categorical predictors
       - Write three technical questions
+      - Produce one page of original notes
 
     completion_fr:
       - Lire le chapitre 1 et les sections 2.1 à 2.4
@@ -55,10 +98,15 @@ quests:
       - Expliquer la fonction de lien
       - Comprendre les variables continues et catégorielles
       - Écrire trois questions techniques
+      - Produire une page de notes originales
 
   - domain: research
     task: Complete two focused sessions of the FUN MOOC Machine Learning in Python with scikit-learn.
     task_fr: Compléter deux séances ciblées du FUN MOOC Machine Learning in Python with scikit-learn.
+
+  # ============================================================
+  # READING / WRITING
+  # ============================================================
 
   - domain: writing
     node: writing-reading-practice
@@ -70,104 +118,150 @@ quests:
     task: Read Chapters 1–2 of The Intelligent Investor and take brief notes.
     task_fr: Lire les chapitres 1 et 2 de L'Investisseur intelligent et prendre quelques notes.
 
+  # ============================================================
+  # LEAN
+  # ============================================================
+
   - domain: lean
     node: lean-fundamentals
     task: Set up Lean 4, review basic expressions and types, and add one small understood theorem.
     task_fr: Installer Lean 4, revoir les expressions et types de base et ajouter un petit théorème compris.
+
+  # ============================================================
+  # ENGLISH
+  # ============================================================
 
   - domain: english
     node: english-conversation-practice
     task: Complete one 60-minute general English conversation.
     task_fr: Compléter une conversation générale de 60 minutes en anglais.
 
+  # ============================================================
+  # PHYSICAL
+  # ============================================================
+
   - domain: physical
     node: physical-process
     task: Establish and follow the current physical protocol throughout the week.
     task_fr: Mettre en place et suivre le protocole physique actuel pendant toute la semaine.
 
+    completion:
+      - Morning routine used consistently
+      - Strength-training schedule followed
+      - Daily movement target pursued
+      - Evening routine used consistently
+      - Weekly physical process reviewed
+
+    completion_fr:
+      - Routine du matin suivie régulièrement
+      - Programme de musculation suivi
+      - Objectif de mouvement quotidien poursuivi
+      - Routine du soir suivie régulièrement
+      - Processus physique de la semaine revu
+
+
+# ============================================================
+# DAILY PLAN
+# ============================================================
+
 days:
 
   # ============================================================
-  # SUNDAY
+  # SUNDAY — SEPTEMBER 6
   # ============================================================
 
   - date: 2026-09-06
     weekday: sunday
-    title: Start clean
-    title_fr: Commencer proprement
+    title: Establish the baseline
+    title_fr: Établir le point de départ
 
     tasks:
+
       - domain: actuarial
+        node: actuarial-exam-1
         time: 60–90 min
-        text: FM diagnostic and interest-theory practice.
-        text_fr: Diagnostic FM et pratique de théorie de l'intérêt.
+        text: Complete an Exam P diagnostic and identify the main weak areas.
+        text_fr: Compléter un diagnostic P et identifier les principales faiblesses.
 
       - domain: research
+        node: research-actuarial-glm-tweedie
         time: 30–45 min
         text: Read Goldburd pages 1–5.
         text_fr: Lire les pages 1 à 5 de Goldburd.
 
       - domain: writing
+        node: writing-reading-practice
         time: 25–30 min
         text: Read about 15 pages of Mort à crédit.
         text_fr: Lire environ 15 pages de Mort à crédit.
 
       - time: 15 min
-        text: Prepare the week and identify the three most important outcomes.
-        text_fr: Préparer la semaine et identifier les trois résultats les plus importants.
+        text: Review the Becoming week and identify the three most important outcomes.
+        text_fr: Revoir la semaine Becoming et identifier les trois résultats les plus importants.
+
 
   # ============================================================
-  # MONDAY
+  # MONDAY — SEPTEMBER 7
   # ============================================================
 
   - date: 2026-09-07
     weekday: monday
-    title: Build momentum
-    title_fr: Prendre de l'élan
+    title: Probability foundations
+    title_fr: Fondements de la probabilité
 
     tasks:
+
       - domain: actuarial
+        node: actuarial-exam-1
         time: 60–90 min
-        text: FM — complete 20–25 focused problems.
-        text_fr: FM — compléter 20 à 25 exercices ciblés.
+        text: Exam P — complete 20–25 general probability problems and record every meaningful error.
+        text_fr: Examen P — compléter 20 à 25 exercices de probabilité générale et noter chaque erreur importante.
 
       - domain: research
+        node: research-actuarial-glm-tweedie
         time: 30–45 min
         text: Read Goldburd pages 6–10.
         text_fr: Lire les pages 6 à 10 de Goldburd.
 
       - domain: writing
+        node: writing-reading-practice
         time: 30 min
-        text: Read Chapter 1 of The Intelligent Investor.
-        text_fr: Lire le chapitre 1 de L'Investisseur intelligent.
+        text: Read Chapter 1 of The Intelligent Investor and take brief notes.
+        text_fr: Lire le chapitre 1 de L'Investisseur intelligent et prendre quelques notes.
+
 
   # ============================================================
-  # TUESDAY
+  # TUESDAY — SEPTEMBER 8
   # ============================================================
 
   - date: 2026-09-08
     weekday: tuesday
-    title: Keep P alive
-    title_fr: Maintenir P actif
+    title: Conditional probability
+    title_fr: Probabilité conditionnelle
 
     tasks:
-      - domain: actuarial
-        time: 45–60 min
-        text: Exam P — complete 15–20 focused probability problems.
-        text_fr: Examen P — compléter 15 à 20 exercices ciblés de probabilité.
 
-      - domain: research
+      - domain: actuarial
+        node: actuarial-exam-1
+        time: 60–75 min
+        text: Exam P — conditional probability, independence, unions, and intersections.
+        text_fr: Examen P — probabilités conditionnelles, indépendance, unions et intersections.
+
+      - domain: actuarial
+        node: actuarial-fm-diagnostic
         time: 30–45 min
-        text: Read Goldburd pages 11–15 and mark the key GLM ideas.
-        text_fr: Lire les pages 11 à 15 de Goldburd et noter les idées essentielles sur les GLM.
+        text: FM maintenance — interest-theory and rate-conversion problems.
+        text_fr: Entretien FM — théorie de l'intérêt et exercices de conversion des taux.
 
       - domain: writing
+        node: writing-reading-practice
         time: 25–30 min
-        text: Read another 15–20 pages of Mort à crédit.
+        text: Read 15–20 more pages of Mort à crédit.
         text_fr: Lire 15 à 20 pages supplémentaires de Mort à crédit.
 
+
   # ============================================================
-  # WEDNESDAY
+  # WEDNESDAY — SEPTEMBER 9
   # ============================================================
 
   - date: 2026-09-09
@@ -176,48 +270,57 @@ days:
     title_fr: Produire quelque chose
 
     tasks:
+
       - domain: actuarial
+        node: actuarial-exam-1
         time: 60–90 min
-        text: FM — complete another 20–25 problems and review mistakes.
-        text_fr: FM — compléter 20 à 25 exercices supplémentaires et revoir les erreurs.
+        text: Exam P — complete a focused probability set and classify the errors.
+        text_fr: Examen P — compléter une série ciblée de probabilité et classer les erreurs.
+
+      - domain: research
+        node: research-actuarial-glm-tweedie
+        time: 30–45 min
+        text: Read Goldburd pages 11–15 and identify the essential GLM concepts.
+        text_fr: Lire les pages 11 à 15 de Goldburd et identifier les concepts essentiels des GLM.
 
       - domain: research
         time: 45–60 min
-        text: Draft the one-page explanation of an insurance GLM.
-        text_fr: Rédiger la première version de la page expliquant un GLM d'assurance.
+        text: Complete FUN MOOC Machine Learning in Python session 1.
+        text_fr: Compléter la première séance du FUN MOOC Machine Learning in Python.
 
-      - domain: research
-        time: 45–60 min
-        text: FUN MOOC — Machine Learning in Python session 1.
-        text_fr: FUN MOOC — première séance Machine Learning in Python.
 
   # ============================================================
-  # THURSDAY
+  # THURSDAY — SEPTEMBER 10
   # ============================================================
 
   - date: 2026-09-10
     weekday: thursday
-    title: Second probability block
-    title_fr: Deuxième bloc de probabilité
+    title: Connect the concepts
+    title_fr: Relier les concepts
 
     tasks:
+
       - domain: actuarial
+        node: actuarial-exam-1
+        time: 60–90 min
+        text: Exam P — counting, conditional probability, independence, unions, and intersections in mixed problems.
+        text_fr: Examen P — dénombrement, probabilités conditionnelles, indépendance, unions et intersections dans des problèmes mixtes.
+
+      - domain: research
+        node: research-actuarial-glm-tweedie
         time: 45–60 min
-        text: Exam P — second focused practice session.
-        text_fr: Examen P — deuxième séance ciblée d'exercices.
+        text: Draft the one-page explanation of an insurance GLM.
+        text_fr: Rédiger la première version de la page expliquant un GLM d'assurance.
 
       - domain: writing
+        node: writing-reading-practice
         time: 30 min
         text: Read Chapter 2 of The Intelligent Investor and take brief notes.
         text_fr: Lire le chapitre 2 de L'Investisseur intelligent et prendre quelques notes.
 
-      - domain: writing
-        time: 25–30 min
-        text: Continue Mort à crédit.
-        text_fr: Poursuivre Mort à crédit.
 
   # ============================================================
-  # FRIDAY
+  # FRIDAY — SEPTEMBER 11
   # ============================================================
 
   - date: 2026-09-11
@@ -226,23 +329,28 @@ days:
     title_fr: Tester et communiquer
 
     tasks:
+
       - domain: actuarial
-        time: 60–90 min
-        text: FM — complete a timed mixed set and review every error.
-        text_fr: FM — compléter une série mixte chronométrée et revoir chaque erreur.
+        node: actuarial-exam-1
+        time: 60–75 min
+        text: Exam P — complete a mixed set and fully review every error.
+        text_fr: Examen P — compléter une série mixte et revoir entièrement chaque erreur.
+
+      - domain: actuarial
+        node: actuarial-fm-diagnostic
+        time: 30–45 min
+        text: FM maintenance — complete one short mixed set.
+        text_fr: Entretien FM — compléter une courte série mixte.
 
       - domain: english
+        node: english-conversation-practice
         time: 60 min
         text: Complete one general English conversation.
         text_fr: Compléter une conversation générale de 60 minutes en anglais.
 
-      - domain: lean
-        time: 30–45 min
-        text: Set up Lean 4 and review basic expressions and types.
-        text_fr: Installer Lean 4 et revoir les expressions et types de base.
 
   # ============================================================
-  # SATURDAY
+  # SATURDAY — SEPTEMBER 12
   # ============================================================
 
   - date: 2026-09-12
@@ -251,27 +359,32 @@ days:
     title_fr: Consolider et revoir
 
     tasks:
+
       - domain: actuarial
-        time: 60–90 min
-        text: Review the week's FM and P mistakes and record the main weak areas.
-        text_fr: Revoir les erreurs FM et P de la semaine et noter les principales faiblesses.
+        node: actuarial-exam-1
+        time: 75–90 min
+        text: Exam P — complete a cumulative Week 01 set and review the full error log.
+        text_fr: Examen P — compléter une série cumulative de la semaine 01 et revoir tout le journal d'erreurs.
 
       - domain: research
         time: 45–60 min
-        text: FUN MOOC — Machine Learning in Python session 2.
-        text_fr: FUN MOOC — deuxième séance Machine Learning in Python.
+        text: Complete FUN MOOC Machine Learning in Python session 2.
+        text_fr: Compléter la deuxième séance du FUN MOOC Machine Learning in Python.
 
       - domain: research
+        node: research-actuarial-glm-tweedie
         time: 30 min
         text: Finish and clean the one-page GLM explanation.
         text_fr: Terminer et nettoyer la page expliquant le GLM.
 
       - domain: lean
-        time: 20–30 min
-        text: Add one small Lean theorem that you understand completely.
-        text_fr: Ajouter un petit théorème Lean entièrement compris.
+        node: lean-fundamentals
+        time: 30–45 min
+        text: Set up Lean 4, review basic expressions and types, and add one small theorem you understand completely.
+        text_fr: Installer Lean 4, revoir les expressions et types de base et ajouter un petit théorème entièrement compris.
 
       - domain: writing
+        node: writing-reading-practice
         time: 30 min
         text: Reach the week's 70–100 page target for Mort à crédit.
         text_fr: Atteindre l'objectif hebdomadaire de 70 à 100 pages de Mort à crédit.
