@@ -1,0 +1,371 @@
+---
+---
+
+.becoming-extension {
+  --b-accent: #0f766e;
+  --b-accent-bright: #14b8a6;
+  --b-line: color-mix(
+    in srgb,
+    var(--global-text-color) 17%,
+    transparent
+  );
+  --b-surface: color-mix(
+    in srgb,
+    var(--global-bg-color) 94%,
+    var(--b-accent) 6%
+  );
+
+  width: 100%;
+  margin: 4rem 0 0;
+  color: var(--global-text-color);
+}
+
+.becoming-extension__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--b-line);
+}
+
+.becoming-extension__head h2 {
+  margin: 0 0 .65rem;
+  border: 0;
+  font-family: Georgia, Times, serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 500;
+}
+
+.becoming-extension__eyebrow {
+  margin: 0 0 .65rem;
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.becoming-extension__intro {
+  max-width: 720px;
+  margin: 0;
+  color: var(--global-text-color-light);
+}
+
+#becoming-daily-week {
+  flex: 0 0 auto;
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   DAILY RAIL
+   ============================================================ */
+
+.becoming-day-rail {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .45rem;
+  margin-bottom: 1rem;
+}
+
+.becoming-day-button {
+  display: grid;
+  gap: .2rem;
+  min-height: 64px;
+  padding: .65rem .4rem;
+  border: 1px solid var(--b-line);
+  border-radius: 9px;
+  background: var(--global-bg-color);
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+
+.becoming-day-button:hover {
+  border-color: var(--b-accent);
+  transform: translateY(-2px);
+}
+
+.becoming-day-button strong {
+  font-family: Georgia, Times, serif;
+  font-size: .88rem;
+  text-transform: capitalize;
+}
+
+.becoming-day-button small {
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .61rem;
+}
+
+.becoming-day-button.is-selected {
+  border-color: var(--b-accent);
+  background: color-mix(
+    in srgb,
+    var(--b-accent) 10%,
+    var(--global-bg-color)
+  );
+  box-shadow:
+    inset 0 -3px 0 var(--b-accent);
+}
+
+.becoming-day-button.is-today::after {
+  width: .35rem;
+  height: .35rem;
+  margin: .15rem auto 0;
+  border-radius: 50%;
+  background: var(--b-accent-bright);
+  content: "";
+}
+
+/* ============================================================
+   DAY DETAIL
+   ============================================================ */
+
+.becoming-day-detail {
+  padding: 1.25rem;
+  border: 1px solid var(--b-line);
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      145deg,
+      var(--global-bg-color),
+      var(--b-surface)
+    );
+}
+
+.becoming-day-detail__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.becoming-day-detail__head h3 {
+  margin: 0;
+  border: 0;
+  font-family: Georgia, Times, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.becoming-day-detail__head span {
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .7rem;
+}
+
+.becoming-daily-task-stack {
+  display: grid;
+  gap: .55rem;
+}
+
+.becoming-daily-task {
+  display: grid;
+  gap: .25rem;
+  padding: .85rem 1rem;
+  border: 1px solid var(--b-line);
+  border-radius: 8px;
+  background: var(--global-bg-color);
+}
+
+.becoming-daily-task.is-baseline {
+  border-left: 3px solid var(--b-accent);
+}
+
+.becoming-daily-task__meta {
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .62rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.becoming-daily-task__text {
+  font-family: Georgia, Times, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.becoming-daily-empty {
+  margin: 0;
+  color: var(--global-text-color-light);
+}
+
+/* ============================================================
+   PHYSICAL PROTOCOL
+   ============================================================ */
+
+.becoming-protocol-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.becoming-protocol-card {
+  min-width: 0;
+  padding: 1.15rem;
+  border: 1px solid var(--b-line);
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      145deg,
+      var(--global-bg-color),
+      var(--b-surface)
+    );
+  box-shadow:
+    0 8px 24px
+    color-mix(
+      in srgb,
+      var(--global-text-color) 6%,
+      transparent
+    );
+}
+
+.becoming-protocol-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.becoming-protocol-card__head h3 {
+  margin: 0;
+  border: 0;
+  font-family: Georgia, Times, serif;
+  font-size: 1.25rem;
+}
+
+.becoming-protocol-card__head span {
+  color: var(--global-text-color-light);
+  font-family: Monaco, Consolas, monospace;
+  font-size: .65rem;
+}
+
+.becoming-protocol-card__image {
+  display: block;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--b-line);
+  border-radius: 8px;
+}
+
+.becoming-protocol-card__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.becoming-protocol-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.becoming-protocol-list li {
+  margin: .35rem 0;
+}
+
+.becoming-protocol-distribution {
+  display: grid;
+  gap: 0;
+}
+
+.becoming-protocol-distribution__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .65rem 0;
+  border-top: 1px solid var(--b-line);
+}
+
+.becoming-protocol-distribution__row:first-child {
+  border-top: 0;
+}
+
+.becoming-protocol-distribution__row strong {
+  white-space: nowrap;
+}
+
+.becoming-protocol-schedule {
+  display: grid;
+  gap: .45rem;
+}
+
+.becoming-protocol-session {
+  border: 1px solid var(--b-line);
+  border-radius: 7px;
+  background: var(--global-bg-color);
+}
+
+.becoming-protocol-session summary {
+  padding: .7rem .8rem;
+  font-family: Georgia, Times, serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.becoming-protocol-session ul {
+  margin: 0;
+  padding:
+    .15rem 1.2rem .85rem 2rem;
+}
+
+.becoming-protocol-session li {
+  margin: .3rem 0;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 760px) {
+  .becoming-extension__head {
+    display: block;
+  }
+
+  #becoming-daily-week {
+    display: block;
+    margin-top: .75rem;
+  }
+
+  .becoming-day-rail {
+    display: flex;
+    gap: .45rem;
+    padding-bottom: .35rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .becoming-day-button {
+    flex: 0 0 76px;
+  }
+
+  .becoming-protocol-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .becoming-day-detail {
+    padding: 1rem;
+  }
+
+  .becoming-day-detail__head {
+    display: block;
+  }
+
+  .becoming-day-detail__head span {
+    display: block;
+    margin-top: .3rem;
+  }
+}
