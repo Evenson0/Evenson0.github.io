@@ -27,6 +27,7 @@ cards:
     title: Morning Routine
     title_fr: Routine du matin
     duration: 10–20 min
+
     image_fr: /assets/images/becoming/physical/routine-du-matin.png
     image_en:
 
@@ -61,6 +62,7 @@ cards:
       - text: Water and one intention for the day
         text_fr: Eau et une intention pour la journée
 
+
   # ============================================================
   # STRENGTH TRAINING
   # ARNOLD VOLUME — VARIATION 2
@@ -69,8 +71,9 @@ cards:
   - id: strength
     title: Arnold Volume Training
     title_fr: Programme Arnold Volume
-    meta: "Variation 2 · 6 days/week"
-    meta_fr: "Variation 2 · 6 jours/semaine"
+
+    meta: Variation 2 · 6 days/week
+    meta_fr: Variation 2 · 6 jours/semaine
 
     schedule:
 
@@ -165,6 +168,7 @@ cards:
           - Standing Calf Raise — 3–4 × 10
           - Crunches — 5 × 25
 
+
   # ============================================================
   # DAILY MOVEMENT
   # ============================================================
@@ -172,6 +176,7 @@ cards:
   - id: movement
     title: Daily Movement
     title_fr: Mouvement quotidien
+
     meta: 12,000–15,000 steps/day
     meta_fr: 12 000–15 000 pas/jour
 
@@ -197,6 +202,7 @@ cards:
         target: 4,000–7,000 steps
         target_fr: 4 000–7 000 pas
 
+
   # ============================================================
   # EVENING ROUTINE
   # ============================================================
@@ -205,6 +211,7 @@ cards:
     title: Evening Routine
     title_fr: Routine du soir
     duration: 10–20 min
+
     image_fr: /assets/images/becoming/physical/routine-du-soir.png
     image_en:
 
