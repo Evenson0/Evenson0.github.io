@@ -9,7 +9,8 @@ source:
 nodes:
 
   # ============================================================
-  # EXAM 2 / FM — CURRENT ACTIVE PATH
+  # EXAM 2 / FM
+  # CURRENTLY MAINTAINED UNTIL EXAM P, THEN PRIMARY FOCUS
   # ============================================================
 
   - id: actuarial-fm-diagnostic
@@ -17,13 +18,16 @@ nodes:
     title_fr: Diagnostic FM et classification des erreurs
     type: assessment
     status: in_progress
+
     description: >
       Establish the current FM baseline through mixed practice and classify
       mistakes by topic, concept, calculation, calculator use, and time pressure.
+
     description_fr: >
       Établir le niveau actuel en FM à partir d'exercices mixtes et classer
       les erreurs par sujet, concept, calcul, utilisation de la calculatrice
       et gestion du temps.
+
     unlock_requirements:
       - Mixed diagnostic completed
       - Errors classified
@@ -34,11 +38,18 @@ nodes:
     title: FM Study System and Calculator Workflow
     title_fr: Système d'étude FM et maîtrise de la calculatrice
     type: foundation
+
     requires:
       - actuarial-fm-diagnostic
+
     description: >
       Establish the study, formula, calculator, and error-review workflow
       that will be used throughout FM preparation.
+
+    description_fr: >
+      Établir le système d'étude, de formules, de calculatrice et de revue
+      des erreurs qui sera utilisé pendant toute la préparation à FM.
+
     unlock_requirements:
       - Sustainable study routine
       - Formula-review workflow
@@ -49,11 +60,19 @@ nodes:
     title: Interest Rate Measures
     title_fr: Mesures des taux d'intérêt
     type: skill
+
     requires:
       - actuarial-fm-foundations
+
     description: >
       Master accumulation and discount functions, effective and nominal
       rates, discount rates, force of interest, and rate conversion.
+
+    description_fr: >
+      Maîtriser les fonctions d'accumulation et d'actualisation, les taux
+      effectifs et nominaux, les taux d'escompte, la force d'intérêt
+      et les conversions de taux.
+
     unlock_requirements:
       - Solve representative exam-level problems
       - Convert consistently between rate measures
@@ -64,11 +83,19 @@ nodes:
     title: Annuities and Non-Contingent Cash Flows
     title_fr: Rentes et flux monétaires non contingents
     type: skill
+
     requires:
       - actuarial-fm-foundations
+
     description: >
       Master present and accumulated values of level and non-level annuities,
       perpetuities, arithmetic progressions, and geometric progressions.
+
+    description_fr: >
+      Maîtriser les valeurs actuelles et accumulées des rentes constantes
+      et non constantes, des perpétuités et des progressions arithmétiques
+      et géométriques.
+
     unlock_requirements:
       - Level annuities
       - Annuity-due and annuity-immediate
@@ -81,12 +108,20 @@ nodes:
     title: Loans
     title_fr: Emprunts
     type: skill
+
     requires:
       - actuarial-fm-foundations
+
     description: >
       Master loan valuation, amortization, outstanding balances,
       principal-interest decomposition, refinancing, balloon payments,
       and drop payments.
+
+    description_fr: >
+      Maîtriser l'évaluation des emprunts, l'amortissement, les soldes
+      impayés, la décomposition capital-intérêt, le refinancement,
+      les paiements ballon et les paiements finaux ajustés.
+
     unlock_requirements:
       - Loan payment calculations
       - Outstanding balance calculations
@@ -99,12 +134,20 @@ nodes:
     title: Bonds
     title_fr: Obligations
     type: skill
+
     requires:
       - actuarial-fm-foundations
+
     description: >
       Master bond pricing, book value, yield rate, coupon relationships,
       premium and discount bonds, and callable bonds where required
       by the current syllabus.
+
+    description_fr: >
+      Maîtriser la valorisation des obligations, leur valeur comptable,
+      le rendement, les relations entre coupons et rendement, les obligations
+      à prime ou à escompte et les obligations remboursables lorsque requis.
+
     unlock_requirements:
       - Price bonds from yield
       - Solve for yield or coupon information
@@ -116,11 +159,19 @@ nodes:
     title: General Cash Flows, Yield Curves, and Portfolios
     title_fr: Flux monétaires généraux, courbes de taux et portefeuilles
     type: skill
+
     requires:
       - actuarial-fm-foundations
+
     description: >
       Master valuation using spot rates, forward rates, yield curves,
       portfolio cash flows, and general rate-of-return concepts.
+
+    description_fr: >
+      Maîtriser l'évaluation utilisant les taux spot, les taux forward,
+      les courbes de taux, les flux de portefeuilles et les concepts
+      généraux de rendement.
+
     unlock_requirements:
       - Spot-rate valuation
       - Forward-rate calculations
@@ -132,11 +183,18 @@ nodes:
     title: Duration, Convexity, Matching, and Immunization
     title_fr: Durée, convexité, appariement et immunisation
     type: skill
+
     requires:
       - actuarial-fm-foundations
+
     description: >
       Master Macaulay and modified duration, convexity, cash-flow matching,
       duration matching, and immunization.
+
+    description_fr: >
+      Maîtriser la durée de Macaulay, la durée modifiée, la convexité,
+      l'appariement des flux, l'appariement par durée et l'immunisation.
+
     unlock_requirements:
       - Macaulay duration
       - Modified duration
@@ -151,14 +209,18 @@ nodes:
     title_fr: Journal d'erreurs FM
     type: practice
     status: in_progress
+
     requires:
       - actuarial-fm-diagnostic
+
     description: >
       Maintain a living record of recurring mistakes and verify that
       corrected errors stay corrected.
+
     description_fr: >
       Maintenir un registre vivant des erreurs récurrentes et vérifier
       que les erreurs corrigées ne réapparaissent pas.
+
     unlock_requirements:
       - Errors categorized consistently
       - Root cause recorded
@@ -170,6 +232,7 @@ nodes:
     title: Mixed FM Practice
     title_fr: Pratique FM mixte
     type: practice
+
     requires:
       - actuarial-fm-interest
       - actuarial-fm-annuities
@@ -177,9 +240,15 @@ nodes:
       - actuarial-fm-bonds
       - actuarial-fm-cashflows
       - actuarial-fm-duration
+
     description: >
       Transition from isolated syllabus topics to cumulative exam-style
       problem solving.
+
+    description_fr: >
+      Passer des sujets étudiés séparément à une résolution cumulative
+      de problèmes représentatifs de l'examen FM.
+
     unlock_requirements:
       - Multiple cumulative mixed sets
       - Weak areas deliberately represented
@@ -190,11 +259,18 @@ nodes:
     title: Timed FM Practice
     title_fr: Pratique FM chronométrée
     type: practice
+
     requires:
       - actuarial-fm-mixed
+
     description: >
       Demonstrate the ability to solve mixed FM problems under realistic
       examination time pressure.
+
+    description_fr: >
+      Démontrer la capacité à résoudre des problèmes FM mixtes sous
+      des contraintes de temps réalistes.
+
     unlock_requirements:
       - Multiple substantial timed simulations
       - Every simulation reviewed
@@ -206,13 +282,20 @@ nodes:
     title: FM Exam Readiness
     title_fr: Préparation finale à l'examen FM
     type: mastery
+
     requires:
       - actuarial-fm-mixed
       - actuarial-fm-timed
       - actuarial-fm-error-log
+
     description: >
       Reach a stable level of cumulative preparation rather than relying
       on one isolated practice score.
+
+    description_fr: >
+      Atteindre un niveau de préparation cumulative stable plutôt que
+      de dépendre du résultat d'une seule simulation.
+
     unlock_requirements:
       - Full syllabus reviewed
       - Timed practice completed
@@ -221,7 +304,7 @@ nodes:
       - Final formula review system ready
       - Exam-day strategy defined
 
-    - id: actuarial-fm-attempt
+  - id: actuarial-fm-attempt
     title: FM Exam Attempt
     title_fr: Tentative à l'examen FM
     type: exam
@@ -264,8 +347,10 @@ nodes:
       checked_at: 2026-08-28
       url: https://www.soa.org/education/exam-req/edu-exam-fm-detail.aspx
 
+
   # ============================================================
-  # ACAS — PRELIMINARY REQUIREMENTS
+  # EXAM 1 / P
+  # CURRENT PRIMARY ACTUARIAL OBJECTIVE
   # ============================================================
 
   - id: actuarial-exam-1
@@ -284,8 +369,8 @@ nodes:
 
     description_fr: >
       Se préparer à l'examen P du 7 novembre 2026 et le passer en utilisant
-      une pratique cumulative de la probabilité, une revue systématique des
-      erreurs et des séries mixtes chronométrées.
+      une pratique cumulative de la probabilité, une revue systématique
+      des erreurs et des séries mixtes chronométrées.
 
     unlock_requirements:
       - General probability reviewed
@@ -297,11 +382,18 @@ nodes:
       - Recurring errors reviewed
       - Exam sat on November 7, 2026
       - Official CAS-recognized Exam 1 credit
+
+
+  # ============================================================
+  # ACAS — PRELIMINARY REQUIREMENTS
+  # ============================================================
+
   - id: actuarial-vee-economics
     title: VEE Economics
     title_fr: VEE Économie
     type: credential
     status: available
+
     unlock_requirements:
       - Official VEE Economics credit
 
@@ -310,8 +402,10 @@ nodes:
     title_fr: VEE Comptabilité et finance
     type: credential
     status: available
+
     unlock_requirements:
       - Official VEE Accounting and Finance credit
+
 
   # ============================================================
   # CAS DATA & INSURANCE SERIES COURSES
@@ -334,6 +428,7 @@ nodes:
     title_fr: DISC IA — Comptabilité d'assurance, analyse des garanties, droit et réglementation
     type: course
     status: available
+
 
   # ============================================================
   # ACAS — CORE EXAMINATIONS
@@ -364,9 +459,11 @@ nodes:
     short_title: Exam 6
     type: exam
     status: available
+
     notes: >
       Complete the version appropriate to the candidate's jurisdiction
       (Canada, United States, International, or Taipei).
+
 
   # ============================================================
   # PCPA
@@ -378,12 +475,15 @@ nodes:
     short_title: PCPA Exam
     type: exam
     status: available
+
     description: >
       Demonstrate practical predictive-analytics knowledge for P&C
       actuarial applications.
+
     description_fr: >
       Démontrer la maîtrise pratique de l'analytique prédictive appliquée
       à l'actuariat IARD.
+
     notes: >
       CAS states that there is no formal prerequisite for the PCPA Exam,
       but strongly recommends completing MAS-I, MAS-II, and Exam 5 first.
@@ -393,21 +493,27 @@ nodes:
     title_fr: Projet PCPA — Analytique prédictive en assurances IARD
     short_title: PCPA Project
     type: project
+
     requires:
       - actuarial-pcpa-exam
+
     description: >
       Complete the independent PCPA predictive-modeling project after
       passing the PCPA Exam.
+
     description_fr: >
       Réaliser de façon indépendante le projet de modélisation prédictive
       PCPA après avoir réussi l'examen PCPA.
+
     unlock_requirements:
       - PCPA Exam passed
       - Official project completion credit
+
     notes: >
       CAS requires the Exam to be passed before the Project.
       Candidates have one year after passing the exam to complete
       the project before needing to retake the exam.
+
 
   # ============================================================
   # PROFESSIONALISM
@@ -419,9 +525,11 @@ nodes:
     short_title: COP
     type: course
     status: available
+
     notes: >
       Registration eligibility depends on examination credit.
       Verify current CAS eligibility requirements before registration.
+
 
   # ============================================================
   # ACAS
@@ -432,6 +540,7 @@ nodes:
     title_fr: Associate de la Casualty Actuarial Society
     short_title: ACAS
     type: boss
+
     requires:
       - actuarial-exam-1
       - actuarial-fm
@@ -447,13 +556,16 @@ nodes:
       - actuarial-pcpa-exam
       - actuarial-pcpa-project
       - actuarial-cop
+
     unlock_requirements:
       - All applicable 2026 Associateship requirements credited by CAS
       - ACAS credential officially awarded
+
     notes: >
       PCPA Exam and Project are required for candidates earning ACAS
       on or after January 1, 2026. Individual transition and waiver
       rules should always be verified before marking completion.
+
 
   # ============================================================
   # FCAS
@@ -464,6 +576,7 @@ nodes:
     title_fr: Examen 7 — Estimation avancée des provisions pour sinistres
     short_title: Exam 7
     type: exam
+
     requires:
       - actuarial-acas
 
@@ -472,6 +585,7 @@ nodes:
     title_fr: Examen 8 — Tarification avancée
     short_title: Exam 8
     type: exam
+
     requires:
       - actuarial-acas
 
@@ -480,6 +594,7 @@ nodes:
     title_fr: Examen 9 — Gestion des risques pour actuaires
     short_title: Exam 9
     type: exam
+
     requires:
       - actuarial-acas
 
@@ -488,11 +603,13 @@ nodes:
     title_fr: Fellow de la Casualty Actuarial Society
     short_title: FCAS
     type: legendary
+
     requires:
       - actuarial-acas
       - actuarial-exam-7
       - actuarial-exam-8
       - actuarial-exam-9
+
     unlock_requirements:
       - All Associateship requirements completed
       - Exam 7 credit
