@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-07T20:47:51.065196+00:00",
+  "updated_at": "2026-09-07T23:32:07.556275+00:00",
   "assets": {
     "Indices": [
       {
@@ -53,8 +53,8 @@
       {
         "symbol": "^FTSE",
         "name": "FTSE 100",
-        "price": 10822.1299,
-        "change_pct": -0.083,
+        "price": 10831.0996,
+        "change_pct": -0.004,
         "low_52w": 9195.7002,
         "high_52w": 10910.5996
       },
@@ -163,32 +163,32 @@
       {
         "symbol": "CAD=X",
         "name": "USD / CAD",
-        "price": 1.3813,
-        "change_pct": 0.167,
+        "price": 1.3809,
+        "change_pct": -0.181,
         "low_52w": 1.3492,
         "high_52w": 1.4235
       },
       {
         "symbol": "EURUSD=X",
         "name": "EUR / USD",
-        "price": 1.1625,
-        "change_pct": -0.027,
+        "price": 1.1632,
+        "change_pct": 0.155,
         "low_52w": 1.1354,
         "high_52w": 1.2018
       },
       {
         "symbol": "GBPUSD=X",
         "name": "GBP / USD",
-        "price": 1.3542,
-        "change_pct": 0.073,
+        "price": 1.3548,
+        "change_pct": 0.226,
         "low_52w": 1.3022,
         "high_52w": 1.3825
       },
       {
         "symbol": "JPY=X",
         "name": "USD / JPY",
-        "price": 154.366,
-        "change_pct": -0.831,
+        "price": 153.943,
+        "change_pct": -1.443,
         "low_52w": 146.413,
         "high_52w": 163.864
       }
@@ -197,34 +197,34 @@
       {
         "symbol": "GC=F",
         "name": "Gold",
-        "price": 4476.6001,
-        "change_pct": 1.056,
+        "price": 4457.5,
+        "change_pct": 0.625,
         "low_52w": 3636.8999,
         "high_52w": 5318.3999
       },
       {
         "symbol": "CL=F",
         "name": "WTI Crude",
-        "price": 91.48,
-        "change_pct": 0.0,
+        "price": 92.59,
+        "change_pct": 1.213,
         "low_52w": 55.27,
         "high_52w": 112.95
       },
       {
         "symbol": "NG=F",
         "name": "Natural Gas",
-        "price": 2.975,
-        "change_pct": 0.0,
+        "price": 2.979,
+        "change_pct": 0.134,
         "low_52w": 2.523,
         "high_52w": 7.46
       },
       {
         "symbol": "HG=F",
         "name": "Copper",
-        "price": 6.6825,
-        "change_pct": 1.296,
+        "price": 6.7255,
+        "change_pct": 1.948,
         "low_52w": 4.4905,
-        "high_52w": 6.7095
+        "high_52w": 6.7255
       }
     ]
   },
@@ -255,37 +255,37 @@
       "time": "Latest"
     },
     {
-      "title": "Could This Vanguard Growth ETF Be a No-Brainer Buy for Long-Term Investors?",
-      "link": "https://www.fool.com/investing/2026/09/07/could-this-vanguard-growth-etf-be-a-no-brainer-buy-for-long-term-investors/",
+      "title": "The AI Memory Stock That Could Outshine the Obvious Picks",
+      "link": "https://www.fool.com/investing/2026/09/07/the-ai-memory-stock-that-could-outshine-the-obviou/",
       "publisher": "Motley Fool",
       "related": "^GSPC",
       "time": "Latest"
     },
     {
-      "title": "Nvidia Stock: Is It Still a Good Buy at $230?",
-      "link": "https://www.fool.com/investing/2026/09/07/nvidia-stock-is-it-still-a-good-buy-at-230/",
-      "publisher": "Motley Fool",
+      "title": "Sandisk Soars Nearly 12% Before Joining the S&P 100",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sandisk-soars-nearly-12-joining-215620577.html",
+      "publisher": "GuruFocus.com",
       "related": "^GSPC",
       "time": "Latest"
     },
     {
-      "title": "Illumina and Everpure to Join S&P 500 in September Rebalancing: What it Means for Investors",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/illumina-everpure-join-p-500-191523204.html",
-      "publisher": "Insider Monkey",
+      "title": "S&P 500 Investors Brace for Brutal Holiday Pattern",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/p-500-investors-brace-brutal-215051560.html",
+      "publisher": "GuruFocus.com",
       "related": "^GSPC",
       "time": "Latest"
     },
     {
-      "title": "IBB Just Beat the S&P 500 by 22 Points in Three Months. Are You Late to the Party?",
-      "link": "https://247wallst.com/investing/etf/2026/09/07/ibb-just-beat-the-sp-500-by-22-points-in-three-months-are-you-late-to-the-party/",
-      "publisher": "24/7 Wall St.",
+      "title": "Walmart Gets $2.9 Billion Windfall, Makes Surprise Move",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/walmart-gets-2-9-billion-214920824.html",
+      "publisher": "GuruFocus.com",
       "related": "^GSPC",
       "time": "Latest"
     },
     {
-      "title": "Philips Expands Women's Health Ultrasound Portfolio With New Transducer",
-      "link": "https://finance.yahoo.com/healthcare/articles/philips-expands-womens-health-ultrasound-162000921.html",
-      "publisher": "Zacks",
+      "title": "S&P 500 Adds 3 Surging Stocks in Major Shake-Up",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/p-500-adds-3-surging-214536624.html",
+      "publisher": "GuruFocus.com",
       "related": "^GSPC",
       "time": "Latest"
     },
