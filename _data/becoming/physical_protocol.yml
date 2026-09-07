@@ -1,0 +1,238 @@
+version: 1
+updated_at: 2026-09-06
+
+title: Current Physical Protocol
+title_fr: Protocole physique actuel
+
+description: >
+  Current operating system for daily movement, strength training,
+  morning activation, evening recovery, and consistency.
+
+description_fr: >
+  Système actuel combinant mouvement quotidien, musculation,
+  activation matinale, récupération du soir et régularité.
+
+daily_baseline:
+  - card: morning
+  - card: movement
+  - card: evening
+
+cards:
+
+  # ============================================================
+  # MORNING
+  # ============================================================
+
+  - id: morning
+    title: Morning Routine
+    title_fr: Routine du matin
+    duration: 10–20 min
+    image_fr: /assets/images/becoming/physical/routine-du-matin.png
+    image_en:
+
+    items:
+      - text: 5 deep breathing cycles
+        text_fr: 5 cycles de respiration profonde
+
+      - text: Stomach vacuum — 3 × 20–30 s
+        text_fr: Stomach vacuum — 3 × 20–30 s
+
+      - text: Gentle shoulder, hip, and ankle mobility — 1–2 min
+        text_fr: Mobilité douce épaules, hanches et chevilles — 1–2 min
+
+      - text: Push-ups — 42 total reps
+        text_fr: Pompes — 42 répétitions au total
+
+      - text: Squats — 2 × 20
+        text_fr: Squats — 2 × 20
+
+      - text: Reverse lunges — 10 per leg
+        text_fr: Fentes arrière — 10 par jambe
+
+      - text: Glute bridges — 2 × 15
+        text_fr: Glute bridges — 2 × 15
+
+      - text: Plank — 1–3 min total
+        text_fr: Planche — 1 à 3 min au total
+
+      - text: Dead bug — 2 × 10 per side
+        text_fr: Dead bug — 2 × 10 par côté
+
+      - text: Water and one intention for the day
+        text_fr: Eau et une intention pour la journée
+
+  # ============================================================
+  # ARNOLD — VARIATION 2
+  # ============================================================
+
+  - id: strength
+    title: Arnold Volume Training
+    title_fr: Programme Arnold Volume
+    meta: Variation 2 · 6 days/week
+    meta_fr: Variation 2 · 6 jours/semaine
+
+    schedule:
+
+      - weekday: sunday
+        title: Recovery Day
+        title_fr: Journée de récupération
+        exercises: []
+
+      - weekday: monday
+        title: Day 1 — Chest & Back
+        title_fr: Jour 1 — Poitrine et dos
+        exercises:
+          - Bench Press — 3–4 × 10
+          - Incline Bench Press — 3–4 × 10
+          - Dumbbell Pullovers — 3–4 × 10
+          - Chin Up — 3–4 × 10
+          - Bent Over Row — 3–4 × 10
+          - Deadlift — 3–4 × 10
+          - Crunches — 5 × 25
+
+      - weekday: tuesday
+        title: Day 2 — Shoulders & Arms
+        title_fr: Jour 2 — Épaules et bras
+        exercises:
+          - Barbell Clean and Press — 3–4 × 10
+          - Dumbbell Lateral Raise — 3–4 × 10
+          - Upright Row — 3–4 × 10
+          - Military Press — 3–4 × 10
+          - Standing Barbell Curl — 3–4 × 10
+          - Seated Dumbbell Curl — 3–4 × 10
+          - Close Grip Bench Press — 3–4 × 10
+          - Standing Barbell Tricep Extension — 3–4 × 10
+          - Wrist Curls — 3–4 × 10
+          - Reverse Wrist Curls — 3–4 × 10
+          - Reverse Crunch — 5 × 25
+
+      - weekday: wednesday
+        title: Day 3 — Legs & Lower Back
+        title_fr: Jour 3 — Jambes et bas du dos
+        exercises:
+          - Squat — 3–4 × 10
+          - Lunge — 3–4 × 10
+          - Leg Curl — 3–4 × 10
+          - Stiff Leg Deadlift — 3–4 × 10
+          - Good Mornings — 3–4 × 10
+          - Standing Calf Raise — 3–4 × 10
+          - Crunches — 5 × 25
+
+      - weekday: thursday
+        title: Day 4 — Chest & Back
+        title_fr: Jour 4 — Poitrine et dos
+        exercises:
+          - Bench Press — 3–4 × 10
+          - Incline Bench Press — 3–4 × 10
+          - Dumbbell Pullovers — 3–4 × 10
+          - Chin Up — 3–4 × 10
+          - Bent Over Row — 3–4 × 10
+          - Deadlift — 3–4 × 10
+          - Crunches — 5 × 25
+
+      - weekday: friday
+        title: Day 5 — Shoulders & Arms
+        title_fr: Jour 5 — Épaules et bras
+        exercises:
+          - Barbell Clean and Press — 3–4 × 10
+          - Dumbbell Lateral Raise — 3–4 × 10
+          - Upright Row — 3–4 × 10
+          - Military Press — 3–4 × 10
+          - Standing Barbell Curl — 3–4 × 10
+          - Seated Dumbbell Curl — 3–4 × 10
+          - Close Grip Bench Press — 3–4 × 10
+          - Standing Barbell Tricep Extension — 3–4 × 10
+          - Wrist Curls — 3–4 × 10
+          - Reverse Wrist Curls — 3–4 × 10
+          - Reverse Crunch — 5 × 25
+
+      - weekday: saturday
+        title: Day 6 — Legs & Lower Back
+        title_fr: Jour 6 — Jambes et bas du dos
+        exercises:
+          - Squat — 3–4 × 10
+          - Lunge — 3–4 × 10
+          - Leg Curl — 3–4 × 10
+          - Stiff Leg Deadlift — 3–4 × 10
+          - Good Mornings — 3–4 × 10
+          - Standing Calf Raise — 3–4 × 10
+          - Crunches — 5 × 25
+
+  # ============================================================
+  # MOVEMENT
+  # ============================================================
+
+  - id: movement
+    title: Daily Movement
+    title_fr: Mouvement quotidien
+    meta: 12,000–15,000 steps/day
+    meta_fr: 12 000–15 000 pas/jour
+
+    distribution:
+      - title: Morning
+        title_fr: Matin
+        target: 2500 steps
+        target_fr: 2 500 pas
+
+      - title: Lunch
+        title_fr: Midi
+        target: 2500 steps
+        target_fr: 2 500 pas
+
+      - title: Daily life / commute
+        title_fr: Déplacements et activité quotidienne
+        target: 3000 steps
+        target_fr: 3 000 pas
+
+      - title: Evening
+        title_fr: Soir
+        target: 4000–7000 steps
+        target_fr: 4 000–7 000 pas
+
+  # ============================================================
+  # EVENING
+  # ============================================================
+
+  - id: evening
+    title: Evening Routine
+    title_fr: Routine du soir
+    duration: 10–20 min
+    image_fr: /assets/images/becoming/physical/routine-du-soir.png
+    image_en:
+
+    items:
+      - text: Slow breathing — 1–2 min
+        text_fr: Respiration lente — 1–2 min
+
+      - text: Gentle standing movement — 1 min
+        text_fr: Marche lente ou étirements debout — 1 min
+
+      - text: Relax neck and shoulders — 30–60 s
+        text_fr: Relâcher la nuque et les épaules — 30–60 s
+
+      - text: Cat-cow — 8–10 reps
+        text_fr: Cat-cow — 8–10 répétitions
+
+      - text: Child's pose — 45–60 s
+        text_fr: Child's pose — 45–60 s
+
+      - text: Hip stretch — 45 s per side
+        text_fr: Étirement des hanches — 45 s par côté
+
+      - text: Hamstring stretch — 45 s per side
+        text_fr: Étirement des ischio-jambiers — 45 s par côté
+
+      - text: Thoracic rotation — 8 reps per side
+        text_fr: Rotation thoracique — 8 répétitions par côté
+
+      - text: Legs up the wall — 2–5 min
+        text_fr: Jambes au mur — 2–5 min
+
+      - text: Prepare tomorrow's 3 priorities
+        text_fr: Préparer les 3 priorités de demain
+
+      - text: Write 3 journal lines
+        text_fr: Écrire 3 lignes de journal
+
+      - text: Gratitude or prayer — 1 min
+        text_fr: Gratitude ou prière — 1 min
